@@ -81,23 +81,24 @@
     <Style x:Key="ToolRadioStyle" TargetType="{x:Type RadioButton}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Background">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <!--<Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox">
                     <GradientStop Color="#FF858585" Offset="0.047"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Grid>
                         <!-- Background Layer -->
-                        <Ellipse x:Name="BackgroundLayer" Fill="{TemplateBinding Background}" Stroke="White" StrokeThickness="2"/>
+                        <!--<Ellipse x:Name="BackgroundLayer" Fill="{TemplateBinding Background}" Stroke="White" StrokeThickness="2"/>-->
                         <!-- ContentPresenter -->
-                        <ContentControl x:Name="ContentHolder" Margin="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image x:Name="Image" Width="70" Height="70" Source="..\images\calendarR.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform">
+                        <!--<ContentControl x:Name="ContentHolder" Margin="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">-->
+                            <Image x:Name="Image" Width="Auto" Height="Auto" Source="..\images\icon01.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None">
                                 <Image.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -107,7 +108,7 @@
                                     </TransformGroup>
                                 </Image.RenderTransform>
                             </Image>
-                        </ContentControl>
+                        <!--</ContentControl>-->
                     </Grid>
                     <ControlTemplate.Triggers>
                         <!-- Calendar Layer -->
@@ -117,8 +118,7 @@
                                 <Condition Property="Tag" Value="Calendar" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="BackgroundLayer" Property="Fill" Value="#FF7E1517" />
-                                <Setter TargetName="Image" Property="Source" Value="..\images\calendarW.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon01.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -127,7 +127,7 @@
                                 <Condition Property="Tag" Value="Calendar" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="Image" Property="Source" Value="..\images\calendarR.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon01.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
 
@@ -137,9 +137,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Tag" Value="Navigation" />
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="BackgroundLayer" Property="Fill" Value="#FF7E1517" />
-                                <Setter TargetName="Image" Property="Source" Value="..\images\NavigationW.png" />
+                            <MultiTrigger.Setters>                                
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon02.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -148,7 +147,7 @@
                                 <Condition Property="Tag" Value="Navigation" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="Image" Property="Source" Value="..\images\NavigationR.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon02.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
 
@@ -158,9 +157,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Tag" Value="Transportation" />
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="BackgroundLayer" Property="Fill" Value="#FF7E1517" />
-                                <Setter TargetName="Image" Property="Source" Value="..\images\transportationW.png" />
+                            <MultiTrigger.Setters>                                
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon06.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -169,7 +167,7 @@
                                 <Condition Property="Tag" Value="Transportation" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="Image" Property="Source" Value="..\images\transportationR.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon06.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
 
@@ -179,9 +177,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Tag" Value="Weather" />
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="BackgroundLayer" Property="Fill" Value="#FF7E1517" />
-                                <Setter TargetName="Image" Property="Source" Value="..\images\WeatherW.png" />
+                            <MultiTrigger.Setters>                                
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon05.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -190,7 +187,7 @@
                                 <Condition Property="Tag" Value="Weather" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="Image" Property="Source" Value="..\images\WeatherR.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon05.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
 
@@ -200,9 +197,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Tag" Value="Food" />
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="BackgroundLayer" Property="Fill" Value="#FF7E1517" />
-                                <Setter TargetName="Image" Property="Source" Value="..\images\foodW.png" />
+                            <MultiTrigger.Setters>                                
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon03.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -211,7 +207,7 @@
                                 <Condition Property="Tag" Value="Food" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="Image" Property="Source" Value="..\images\foodR.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon03.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
 
@@ -221,9 +217,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Tag" Value="LandMark" />
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="BackgroundLayer" Property="Fill" Value="#FF7E1517" />
-                                <Setter TargetName="Image" Property="Source" Value="..\images\LandMarkW.png" />
+                            <MultiTrigger.Setters>                                
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon04.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -232,7 +227,7 @@
                                 <Condition Property="Tag" Value="LandMark" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="Image" Property="Source" Value="..\images\landMarkR.png" />
+                                <Setter TargetName="Image" Property="Source" Value="..\images\icon04.png" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>

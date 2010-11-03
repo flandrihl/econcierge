@@ -12,15 +12,15 @@
         <DockPanel LastChildFill="True" Height="{Binding ElementName=MainCanvas, Path=MainCanvas}">
             <Grid x:Name="toolDock" DockPanel.Dock="Bottom" Panel.ZIndex="99999999">
                 <Rectangle Fill="{DynamicResource DockToolBGBrush}" Height="105" Width="{Binding ElementName=MainCanvas, Path=ActualWidth}" />
-                <DockPanel LastChildFill="False" x:Name="FeatureToolPanel" Margin="0,-35,0,0" Panel.ZIndex="100001" Width="{Binding ElementName=MainCanvas, Path=ActualWidth}">
-                    <RadioButton x:Name="mConciergeTool" Margin="10,-10,10,0" DockPanel.Dock="Left" VerticalAlignment="Top" Style="{DynamicResource mConciergeOptionStyle}" Width="301" Height="142" GroupName="Tools" Tag="mConcierge" Unchecked="HotelExplorerUnchecked" HorizontalAlignment="Left" />
-                    <RadioButton x:Name="TransportationTool" Margin="25,0" DockPanel.Dock="Right" VerticalAlignment="Top" Style="{DynamicResource ToolRadioStyle}" Width="90" Height="90" GroupName="Tools" Tag="Transportation" Unchecked="TransportationUnchecked" />
-                    <RadioButton x:Name="WeatherTool" Margin="25,0" DockPanel.Dock="Right"  VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" Width="90" Height="90" GroupName="Tools" Tag="Weather" Unchecked="WeatherUnchecked"  />
-                    <RadioButton x:Name="LandMarkTool" Margin="25,0" DockPanel.Dock="Right"  VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" Width="90" Height="90" GroupName="Tools" Tag="LandMark" Unchecked="LandMarkUnchecked"  />
-                    <RadioButton x:Name="DiningTool" Margin="25,0" DockPanel.Dock="Right"  VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" Width="90" Height="90" GroupName="Tools" Tag="Food" Unchecked="DiningUnchecked"  />
-                    <RadioButton x:Name="NavigationTool" Margin="25,0" DockPanel.Dock="Right"  VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" Width="90" Height="90" GroupName="Tools" Tag="Navigation" Unchecked="NavigationUnchecked"  />
-                    <RadioButton x:Name="CalendarTool" Margin="25,0" DockPanel.Dock="Right" VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" Width="90" Height="90" GroupName="Tools" Tag="Calendar" Unchecked="CalendarUnchecked"  />
-                </DockPanel>
+                <StackPanel x:Name="FeatureToolPanel" Orientation="Horizontal" Margin="0,-35,0,0" Panel.ZIndex="100001" HorizontalAlignment="Center">
+                    <!--<RadioButton x:Name="mConciergeTool" Margin="10,-10,10,0" DockPanel.Dock="Left" VerticalAlignment="Top" Style="{DynamicResource mConciergeOptionStyle}" Width="301" Height="142" GroupName="Tools" Tag="mConcierge" Unchecked="HotelExplorerUnchecked" HorizontalAlignment="Left" />-->
+                    <RadioButton x:Name="TransportationTool" Margin="25,0" VerticalAlignment="Top" Style="{DynamicResource ToolRadioStyle}" GroupName="Tools" Tag="Transportation" Unchecked="TransportationUnchecked" />
+                    <RadioButton x:Name="WeatherTool" Margin="25,0" VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" GroupName="Tools" Tag="Weather" Unchecked="WeatherUnchecked"  />
+                    <RadioButton x:Name="LandMarkTool" Margin="25,0" VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" GroupName="Tools" Tag="LandMark" Unchecked="LandMarkUnchecked"  />
+                    <RadioButton x:Name="DiningTool" Margin="25,0" VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" GroupName="Tools" Tag="Food" Unchecked="DiningUnchecked"  />
+                    <RadioButton x:Name="NavigationTool" Margin="25,0" VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" GroupName="Tools" Tag="Navigation" Unchecked="NavigationUnchecked"  />
+                    <RadioButton x:Name="CalendarTool" Margin="25,0" VerticalAlignment="Top"  Style="{DynamicResource ToolRadioStyle}" GroupName="Tools" Tag="Calendar" Unchecked="CalendarUnchecked"  />
+                </StackPanel>
             </Grid>
             <Canvas Name="canvas" Height="{Binding ElementName=MainCanvas,Path=ActualHeight, Converter={StaticResource SubractValueConverter}, ConverterParameter=105}" DockPanel.Dock="Bottom" Margin="0,0,0,0" />
         </DockPanel>

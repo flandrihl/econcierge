@@ -22,8 +22,8 @@ namespace mConciergeClient
         private void LoadHotelExplorer()
         {
             LoadSlider();
-            FrameworkManager.RegisterElement(mConciergeTool, false, new[] { TouchAction.Tap });
-            mConciergeTool.Checked += HotelExplorerToolSelected;
+            //FrameworkManager.RegisterElement(mConciergeTool, false, new[] { TouchAction.Tap });
+            //mConciergeTool.Checked += HotelExplorerToolSelected;
         }
 
         void HotelExplorerToolSelected(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace mConciergeClient
                 FrameworkManager.RemoveControl(_hotelExplorer);
                 _hotelExplorer.Closed -= HotelExplorerClosed;
                 _skipHeClosedEvent = true;
-                mConciergeTool.IsChecked = false;
+                //mConciergeTool.IsChecked = false;
             }
         }
 
@@ -92,7 +92,7 @@ namespace mConciergeClient
             RemoveAccomodationPhotos(); 
             FrameworkManager.RemoveControl(_hotelExplorer);
             _skipHeClosedEvent = true;
-            mConciergeTool.IsChecked = false;
+            //mConciergeTool.IsChecked = false;
         }
 
         void HotelExplorerDrag(object sender, Infrasturcture.Global.Helpers.Events.DataEventArgs e)
