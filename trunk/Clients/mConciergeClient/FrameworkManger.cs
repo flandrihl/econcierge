@@ -19,7 +19,7 @@ namespace mConciergeClient
 {
     public class FrameworkManger : IFrameworkManger
     {
-        private readonly DockPanel _toolDock;
+        private readonly StackPanel _toolDock;
         private Dictionary<int, UIElement> _points = new Dictionary<int, UIElement>();
         private const TrackingHelper.TrackingType CURRENT_TRACKING_TYPE = TrackingHelper.TrackingType.TUIO;
         private static readonly Random RandomGen = new Random();
@@ -28,7 +28,7 @@ namespace mConciergeClient
         private int _maxZIndex;
 
         public FrameworkControl Framework { get; set; }
-        public FrameworkManger(Canvas canvas, DockPanel toolDock)
+        public FrameworkManger(Canvas canvas, StackPanel toolDock)
         {
             _toolDock = toolDock;
             Canvas = canvas;
