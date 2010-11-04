@@ -1,0 +1,68 @@
+<Window x:Class="eConcierge.Foundation.Presentation.Views.DialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Presenters="clr-namespace:eConcierge.Foundation.Applications.Presenters;assembly=eConcierge.Foundation.Applications" Height="Auto" Width="Auto"
+        Focusable="False"
+        AllowsTransparency="{Binding AllowsTransparency}"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Background="Transparent"
+        WindowState="Normal"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight"
+        Title="{Binding Title}"
+        >
+    <StackPanel Orientation="Vertical">
+        <Border Background="White" BorderThickness="1" BorderBrush="Gray" Margin="12" CornerRadius="12" x:Name="Container">
+            <Border.BitmapEffect>                
+                <DropShadowBitmapEffect Color="Black" Direction="320"
+                  ShadowDepth="2"
+                  Softness="0.5"
+                  Opacity="0.5"/>
+            </Border.BitmapEffect>
+            <StackPanel>
+                <Border Height="32" Margin="0,0,0,0" CornerRadius="7 7 0 0" Panel.ZIndex="1" Visibility="{Binding TitleBarVisibility}" Background="{DynamicResource DialogTitleBarBGBrush}">                    
+                    <Grid x:Name="titlePanel">
+                        <Image x:Name="DialogIcon" HorizontalAlignment="Left" Height="16" Margin="5,0,0,0"></Image>
+                        <Thumb x:Name="moveThumb" BorderThickness="0" HorizontalAlignment="Stretch" Tag="{Binding Title}" Cursor="ScrollAll" DragDelta="MoveThumbDragDelta"/>
+                        <Button Style="{DynamicResource DialogCloseButtonStyle}"  Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.Cancel}" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Margin="5,0" Background="Transparent" 
+                                Cursor="Hand">
+                        </Button>
+                    </Grid>
+                </Border>
+                <Rectangle Fill="#ffffff" StrokeThickness="0"  Margin="0,0,0,0" VerticalAlignment="Top" Height="1" Visibility="{Binding TitleBarVisibility}"/>
+                <Rectangle Fill="#cfd8da" StrokeThickness="0"  Margin="0,0,0,0" VerticalAlignment="Top" Height="1" Visibility="{Binding TitleBarVisibility}"/>
+                <Border Padding="12,0">
+                    <Border Style="{DynamicResource  FrameBKPanel}" >
+                        <StackPanel >
+                            <ContentControl Panel.ZIndex="-100" Content="{Binding UserView}" />
+                            <Rectangle Fill="#cfd8da" StrokeThickness="0"  Margin="0,10,0,0" VerticalAlignment="Top" Height="1" Visibility="{Binding CommandPanelVisibility}" />
+                            <Rectangle Fill="#ffffff" StrokeThickness="0"  Margin="0,0,0,0" VerticalAlignment="Top" Height="1" Visibility="{Binding CommandPanelVisibility}" />
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,10,0,0" Visibility="{Binding CommandPanelVisibility}" >                                                    
+                                <Button 
+                                    Style="{DynamicResource  Level1SecondaryButtonStyle}" 
+                                    Command="{Binding DialogCommand}" 
+                                    CommandParameter="{x:Static Presenters:DialogResult.Cancel}" 
+                                    Visibility="{Binding CancelButtonVisibility}" 
+                                    Content="{Binding CancelButtonCaption}" 
+                                    HorizontalAlignment="Right"
+                                    />
+                                <TextBlock Style="{DynamicResource OrTextBlockStyle}" Margin="10,0" Visibility="{Binding CancelButtonVisibility}" Text="Or" VerticalAlignment="Center"/>
+                                <Button IsDefault="True"  Style="{DynamicResource  Level1PrimaryButtonStyle}" Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.OK}"  Visibility="{Binding OkButtonVisibility}" Content="{Binding OkButtonCaption}" HorizontalAlignment="Right"/>
+                                
+                                <Button Style="{DynamicResource  Level1SecondaryButtonStyle}" Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.No}" Visibility="{Binding NoButtonVisibility}" Content="{Binding NoButtonCaption}" HorizontalAlignment="Right" />                            
+                                <TextBlock Style="{DynamicResource OrTextBlockStyle}" Margin="10,0" Visibility="{Binding NoButtonVisibility}" Text="Or"  VerticalAlignment="Center"/>
+                                <Button IsDefault="True" Style="{DynamicResource  Level1PrimaryButtonStyle}" Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.Yes}" Visibility="{Binding YesButtonVisibility}" Content="{Binding YesButtonCaption}" HorizontalAlignment="Right" />
+                                
+                                <Button Style="{DynamicResource  Level1SecondaryButtonStyle}" Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.Ignore}" Visibility="{Binding IgnoreButtonVisibility}" HorizontalAlignment="Right" Content="{Binding IgnoreButtonCaption}" />                            
+                                <TextBlock Style="{DynamicResource OrTextBlockStyle}" Margin="10,0" Visibility="{Binding IgnoreButtonVisibility}" Text="Or"  VerticalAlignment="Center"/>
+                                <Button Style="{DynamicResource  Level1SecondaryButtonStyle}" Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.Abort}" Visibility="{Binding AbortButtonVisibility}" HorizontalAlignment="Right" Content="{Binding AbortButtonCaption}" />                            
+                                <TextBlock Style="{DynamicResource OrTextBlockStyle}" Margin="10,0" Visibility="{Binding AbortButtonVisibility}" Text="Or"  VerticalAlignment="Center"/>
+                                <Button IsDefault="True" Style="{DynamicResource  Level1PrimaryButtonStyle}" Command="{Binding DialogCommand}" CommandParameter="{x:Static Presenters:DialogResult.Retry}" Visibility="{Binding RetryButtonVisibility}" HorizontalAlignment="Right" Content="{Binding RetryButtonCaption}" />                            
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>
