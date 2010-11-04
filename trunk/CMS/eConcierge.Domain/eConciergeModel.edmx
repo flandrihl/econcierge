@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eConciergeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="eConciergeModelStoreContainer">
+          <EntitySet Name="Account" EntityType="eConciergeModel.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AccountTypeLookup" EntityType="eConciergeModel.Store.AccountTypeLookup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BankAccount" EntityType="eConciergeModel.Store.BankAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cheque" EntityType="eConciergeModel.Store.Cheque" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contact" EntityType="eConciergeModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Deposit" EntityType="eConciergeModel.Store.Deposit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InvestmentAccount" EntityType="eConciergeModel.Store.InvestmentAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="eConciergeModel.Store.Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nominee" EntityType="eConciergeModel.Store.Nominee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transaction" EntityType="eConciergeModel.Store.Transaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransactionType" EntityType="eConciergeModel.Store.TransactionType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Treasurer" EntityType="eConciergeModel.Store.Treasurer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Withdrawal" EntityType="eConciergeModel.Store.Withdrawal" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Account_AccountTypeLookup" Association="eConciergeModel.Store.FK_Account_AccountTypeLookup">
+            <End Role="AccountTypeLookup" EntitySet="AccountTypeLookup" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankAccount_Account" Association="eConciergeModel.Store.FK_BankAccount_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cheque_Transaction" Association="eConciergeModel.Store.FK_Cheque_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Account" Association="eConciergeModel.Store.FK_Deposit_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Transaction" Association="eConciergeModel.Store.FK_Deposit_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentAccount_Account" Association="eConciergeModel.Store.FK_InvestmentAccount_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="InvestmentAccount" EntitySet="InvestmentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentAccount_Contact" Association="eConciergeModel.Store.FK_InvestmentAccount_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="InvestmentAccount" EntitySet="InvestmentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentAccount_Member" Association="eConciergeModel.Store.FK_InvestmentAccount_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="InvestmentAccount" EntitySet="InvestmentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Contact" Association="eConciergeModel.Store.FK_Member_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nominee_Account" Association="eConciergeModel.Store.FK_Nominee_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Nominee" EntitySet="Nominee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nominee_Contact" Association="eConciergeModel.Store.FK_Nominee_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Nominee" EntitySet="Nominee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_TransactionType" Association="eConciergeModel.Store.FK_Transaction_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treasurer_Account" Association="eConciergeModel.Store.FK_Treasurer_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Treasurer" EntitySet="Treasurer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treasurer_Contact" Association="eConciergeModel.Store.FK_Treasurer_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Treasurer" EntitySet="Treasurer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Account" Association="eConciergeModel.Store.FK_Withdrawal_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Withdrawal" EntitySet="Withdrawal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Transaction" Association="eConciergeModel.Store.FK_Withdrawal_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Withdrawal" EntitySet="Withdrawal" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="TypeId" Type="numeric" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTypeLookup">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BankAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankAccountNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cheque">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="ChequeNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransactionId" Type="numeric" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Gender" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="ContactNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Deposit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="TransactionId" Type="numeric" Nullable="false" />
+          <Property Name="AccountId" Type="numeric" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvestmentAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="AccountHolderId" Type="numeric" Nullable="false" />
+          <Property Name="MemberId" Type="numeric" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="numeric" Nullable="false" />
+          <Property Name="MembershipDate" Type="datetime" Nullable="false" />
+          <Property Name="KAZEmployeeId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nominee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="ContactId" Type="numeric" Nullable="false" />
+          <Property Name="AccountId" Type="numeric" Nullable="false" />
+          <Property Name="Percentage" Type="decimal" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="numeric" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Treasurer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContactId" Type="numeric" Nullable="false" />
+          <Property Name="ApointmentDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="AccountId" Type="numeric" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Withdrawal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionId" Type="numeric" Nullable="false" />
+          <Property Name="AccountId" Type="numeric" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_AccountTypeLookup">
+          <End Role="AccountTypeLookup" Type="eConciergeModel.Store.AccountTypeLookup" Multiplicity="1" />
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypeLookup">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankAccount_Account">
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="1" />
+          <End Role="BankAccount" Type="eConciergeModel.Store.BankAccount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankAccount">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cheque_Transaction">
+          <End Role="Transaction" Type="eConciergeModel.Store.Transaction" Multiplicity="1" />
+          <End Role="Cheque" Type="eConciergeModel.Store.Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Account">
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="1" />
+          <End Role="Deposit" Type="eConciergeModel.Store.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Transaction">
+          <End Role="Transaction" Type="eConciergeModel.Store.Transaction" Multiplicity="1" />
+          <End Role="Deposit" Type="eConciergeModel.Store.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentAccount_Account">
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="1" />
+          <End Role="InvestmentAccount" Type="eConciergeModel.Store.InvestmentAccount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentAccount">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentAccount_Contact">
+          <End Role="Contact" Type="eConciergeModel.Store.Contact" Multiplicity="1" />
+          <End Role="InvestmentAccount" Type="eConciergeModel.Store.InvestmentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentAccount">
+              <PropertyRef Name="AccountHolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentAccount_Member">
+          <End Role="Member" Type="eConciergeModel.Store.Member" Multiplicity="1" />
+          <End Role="InvestmentAccount" Type="eConciergeModel.Store.InvestmentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentAccount">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Contact">
+          <End Role="Contact" Type="eConciergeModel.Store.Contact" Multiplicity="1" />
+          <End Role="Member" Type="eConciergeModel.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nominee_Account">
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="1" />
+          <End Role="Nominee" Type="eConciergeModel.Store.Nominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Nominee">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nominee_Contact">
+          <End Role="Contact" Type="eConciergeModel.Store.Contact" Multiplicity="1" />
+          <End Role="Nominee" Type="eConciergeModel.Store.Nominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Nominee">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_TransactionType">
+          <End Role="TransactionType" Type="eConciergeModel.Store.TransactionType" Multiplicity="1" />
+          <End Role="Transaction" Type="eConciergeModel.Store.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treasurer_Account">
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="1" />
+          <End Role="Treasurer" Type="eConciergeModel.Store.Treasurer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Treasurer">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treasurer_Contact">
+          <End Role="Contact" Type="eConciergeModel.Store.Contact" Multiplicity="1" />
+          <End Role="Treasurer" Type="eConciergeModel.Store.Treasurer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Treasurer">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Withdrawal_Account">
+          <End Role="Account" Type="eConciergeModel.Store.Account" Multiplicity="1" />
+          <End Role="Withdrawal" Type="eConciergeModel.Store.Withdrawal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Withdrawal_Transaction">
+          <End Role="Transaction" Type="eConciergeModel.Store.Transaction" Multiplicity="1" />
+          <End Role="Withdrawal" Type="eConciergeModel.Store.Withdrawal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eConciergeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="eConciergeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="eConciergeModel.Account" />
+          <EntitySet Name="AccountTypeLookups" EntityType="eConciergeModel.AccountTypeLookup" />
+          <EntitySet Name="BankAccounts" EntityType="eConciergeModel.BankAccount" />
+          <EntitySet Name="Cheques" EntityType="eConciergeModel.Cheque" />
+          <EntitySet Name="Contacts" EntityType="eConciergeModel.Contact" />
+          <EntitySet Name="Deposits" EntityType="eConciergeModel.Deposit" />
+          <EntitySet Name="InvestmentAccounts" EntityType="eConciergeModel.InvestmentAccount" />
+          <EntitySet Name="Members" EntityType="eConciergeModel.Member" />
+          <EntitySet Name="Nominees" EntityType="eConciergeModel.Nominee" />
+          <EntitySet Name="Transactions" EntityType="eConciergeModel.Transaction" />
+          <EntitySet Name="TransactionTypes" EntityType="eConciergeModel.TransactionType" />
+          <EntitySet Name="Treasurers" EntityType="eConciergeModel.Treasurer" />
+          <EntitySet Name="Withdrawals" EntityType="eConciergeModel.Withdrawal" />
+          <AssociationSet Name="FK_Account_AccountTypeLookup" Association="eConciergeModel.FK_Account_AccountTypeLookup">
+            <End Role="AccountTypeLookup" EntitySet="AccountTypeLookups" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankAccount_Account" Association="eConciergeModel.FK_BankAccount_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="BankAccount" EntitySet="BankAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Account" Association="eConciergeModel.FK_Deposit_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Deposit" EntitySet="Deposits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentAccount_Account" Association="eConciergeModel.FK_InvestmentAccount_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="InvestmentAccount" EntitySet="InvestmentAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nominee_Account" Association="eConciergeModel.FK_Nominee_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Nominee" EntitySet="Nominees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treasurer_Account" Association="eConciergeModel.FK_Treasurer_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Treasurer" EntitySet="Treasurers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Account" Association="eConciergeModel.FK_Withdrawal_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Withdrawal" EntitySet="Withdrawals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cheque_Transaction" Association="eConciergeModel.FK_Cheque_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Cheque" EntitySet="Cheques" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentAccount_Contact" Association="eConciergeModel.FK_InvestmentAccount_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="InvestmentAccount" EntitySet="InvestmentAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Contact" Association="eConciergeModel.FK_Member_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nominee_Contact" Association="eConciergeModel.FK_Nominee_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Nominee" EntitySet="Nominees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treasurer_Contact" Association="eConciergeModel.FK_Treasurer_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Treasurer" EntitySet="Treasurers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Transaction" Association="eConciergeModel.FK_Deposit_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Deposit" EntitySet="Deposits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentAccount_Member" Association="eConciergeModel.FK_InvestmentAccount_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="InvestmentAccount" EntitySet="InvestmentAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_TransactionType" Association="eConciergeModel.FK_Transaction_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionTypes" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Transaction" Association="eConciergeModel.FK_Withdrawal_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Withdrawal" EntitySet="Withdrawals" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="Decimal" Name="TypeId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountTypeLookup" Relationship="eConciergeModel.FK_Account_AccountTypeLookup" FromRole="Account" ToRole="AccountTypeLookup" />
+          <NavigationProperty Name="BankAccount" Relationship="eConciergeModel.FK_BankAccount_Account" FromRole="Account" ToRole="BankAccount" />
+          <NavigationProperty Name="Deposits" Relationship="eConciergeModel.FK_Deposit_Account" FromRole="Account" ToRole="Deposit" />
+          <NavigationProperty Name="InvestmentAccount" Relationship="eConciergeModel.FK_InvestmentAccount_Account" FromRole="Account" ToRole="InvestmentAccount" />
+          <NavigationProperty Name="Nominees" Relationship="eConciergeModel.FK_Nominee_Account" FromRole="Account" ToRole="Nominee" />
+          <NavigationProperty Name="Treasurers" Relationship="eConciergeModel.FK_Treasurer_Account" FromRole="Account" ToRole="Treasurer" />
+          <NavigationProperty Name="Withdrawals" Relationship="eConciergeModel.FK_Withdrawal_Account" FromRole="Account" ToRole="Withdrawal" />
+        </EntityType>
+        <EntityType Name="AccountTypeLookup">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Type="Decimal" Name="TypeId" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="eConciergeModel.FK_Account_AccountTypeLookup" FromRole="AccountTypeLookup" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="BankAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="BankName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BankAccountNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="eConciergeModel.FK_BankAccount_Account" FromRole="BankAccount" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Cheque">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="ChequeNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BankName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BranchName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TransactionId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Transaction" Relationship="eConciergeModel.FK_Cheque_Transaction" FromRole="Cheque" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+          <Property Type="String" Name="ContactNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InvestmentAccounts" Relationship="eConciergeModel.FK_InvestmentAccount_Contact" FromRole="Contact" ToRole="InvestmentAccount" />
+          <NavigationProperty Name="Members" Relationship="eConciergeModel.FK_Member_Contact" FromRole="Contact" ToRole="Member" />
+          <NavigationProperty Name="Nominees" Relationship="eConciergeModel.FK_Nominee_Contact" FromRole="Contact" ToRole="Nominee" />
+          <NavigationProperty Name="Treasurers" Relationship="eConciergeModel.FK_Treasurer_Contact" FromRole="Contact" ToRole="Treasurer" />
+        </EntityType>
+        <EntityType Name="Deposit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TransactionId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AccountId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Account" Relationship="eConciergeModel.FK_Deposit_Account" FromRole="Deposit" ToRole="Account" />
+          <NavigationProperty Name="Transaction" Relationship="eConciergeModel.FK_Deposit_Transaction" FromRole="Deposit" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="InvestmentAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AccountHolderId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MemberId" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Account" Relationship="eConciergeModel.FK_InvestmentAccount_Account" FromRole="InvestmentAccount" ToRole="Account" />
+          <NavigationProperty Name="Contact" Relationship="eConciergeModel.FK_InvestmentAccount_Contact" FromRole="InvestmentAccount" ToRole="Contact" />
+          <NavigationProperty Name="Member" Relationship="eConciergeModel.FK_InvestmentAccount_Member" FromRole="InvestmentAccount" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="PersonId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="MembershipDate" Nullable="false" />
+          <Property Type="String" Name="KAZEmployeeId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="eConciergeModel.FK_Member_Contact" FromRole="Member" ToRole="Contact" />
+          <NavigationProperty Name="InvestmentAccounts" Relationship="eConciergeModel.FK_InvestmentAccount_Member" FromRole="Member" ToRole="InvestmentAccount" />
+        </EntityType>
+        <EntityType Name="Nominee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="ContactId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AccountId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Percentage" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="CreateDate" />
+          <Property Type="Boolean" Name="IsActive" />
+          <NavigationProperty Name="Account" Relationship="eConciergeModel.FK_Nominee_Account" FromRole="Nominee" ToRole="Account" />
+          <NavigationProperty Name="Contact" Relationship="eConciergeModel.FK_Nominee_Contact" FromRole="Nominee" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Type" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Cheques" Relationship="eConciergeModel.FK_Cheque_Transaction" FromRole="Transaction" ToRole="Cheque" />
+          <NavigationProperty Name="Deposits" Relationship="eConciergeModel.FK_Deposit_Transaction" FromRole="Transaction" ToRole="Deposit" />
+          <NavigationProperty Name="TransactionType" Relationship="eConciergeModel.FK_Transaction_TransactionType" FromRole="Transaction" ToRole="TransactionType" />
+          <NavigationProperty Name="Withdrawals" Relationship="eConciergeModel.FK_Withdrawal_Transaction" FromRole="Transaction" ToRole="Withdrawal" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Transactions" Relationship="eConciergeModel.FK_Transaction_TransactionType" FromRole="TransactionType" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Treasurer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="ContactId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="ApointmentDate" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Decimal" Name="AccountId" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Account" Relationship="eConciergeModel.FK_Treasurer_Account" FromRole="Treasurer" ToRole="Account" />
+          <NavigationProperty Name="Contact" Relationship="eConciergeModel.FK_Treasurer_Contact" FromRole="Treasurer" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Withdrawal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Decimal" Name="Id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="TransactionId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AccountId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Account" Relationship="eConciergeModel.FK_Withdrawal_Account" FromRole="Withdrawal" ToRole="Account" />
+          <NavigationProperty Name="Transaction" Relationship="eConciergeModel.FK_Withdrawal_Transaction" FromRole="Withdrawal" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_Account_AccountTypeLookup">
+          <End Type="eConciergeModel.AccountTypeLookup" Role="AccountTypeLookup" Multiplicity="1" />
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypeLookup">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankAccount_Account">
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="eConciergeModel.BankAccount" Role="BankAccount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankAccount">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Account">
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="eConciergeModel.Deposit" Role="Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentAccount_Account">
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="eConciergeModel.InvestmentAccount" Role="InvestmentAccount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentAccount">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nominee_Account">
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="eConciergeModel.Nominee" Role="Nominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Nominee">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treasurer_Account">
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="eConciergeModel.Treasurer" Role="Treasurer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Treasurer">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Withdrawal_Account">
+          <End Type="eConciergeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="eConciergeModel.Withdrawal" Role="Withdrawal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cheque_Transaction">
+          <End Type="eConciergeModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="eConciergeModel.Cheque" Role="Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentAccount_Contact">
+          <End Type="eConciergeModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="eConciergeModel.InvestmentAccount" Role="InvestmentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentAccount">
+              <PropertyRef Name="AccountHolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Contact">
+          <End Type="eConciergeModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="eConciergeModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nominee_Contact">
+          <End Type="eConciergeModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="eConciergeModel.Nominee" Role="Nominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Nominee">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treasurer_Contact">
+          <End Type="eConciergeModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="eConciergeModel.Treasurer" Role="Treasurer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Treasurer">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Transaction">
+          <End Type="eConciergeModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="eConciergeModel.Deposit" Role="Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentAccount_Member">
+          <End Type="eConciergeModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="eConciergeModel.InvestmentAccount" Role="InvestmentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentAccount">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_TransactionType">
+          <End Type="eConciergeModel.TransactionType" Role="TransactionType" Multiplicity="1" />
+          <End Type="eConciergeModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Withdrawal_Transaction">
+          <End Type="eConciergeModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="eConciergeModel.Withdrawal" Role="Withdrawal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eConciergeModelStoreContainer" CdmEntityContainer="eConciergeEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="eConciergeModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTypeLookups">
+            <EntityTypeMapping TypeName="eConciergeModel.AccountTypeLookup">
+              <MappingFragment StoreEntitySet="AccountTypeLookup">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankAccounts">
+            <EntityTypeMapping TypeName="eConciergeModel.BankAccount">
+              <MappingFragment StoreEntitySet="BankAccount">
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cheques">
+            <EntityTypeMapping TypeName="eConciergeModel.Cheque">
+              <MappingFragment StoreEntitySet="Cheque">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="eConciergeModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deposits">
+            <EntityTypeMapping TypeName="eConciergeModel.Deposit">
+              <MappingFragment StoreEntitySet="Deposit">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestmentAccounts">
+            <EntityTypeMapping TypeName="eConciergeModel.InvestmentAccount">
+              <MappingFragment StoreEntitySet="InvestmentAccount">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="AccountHolderId" ColumnName="AccountHolderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="eConciergeModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="KAZEmployeeId" ColumnName="KAZEmployeeId" />
+                <ScalarProperty Name="MembershipDate" ColumnName="MembershipDate" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nominees">
+            <EntityTypeMapping TypeName="eConciergeModel.Nominee">
+              <MappingFragment StoreEntitySet="Nominee">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="eConciergeModel.Transaction">
+              <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="eConciergeModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treasurers">
+            <EntityTypeMapping TypeName="eConciergeModel.Treasurer">
+              <MappingFragment StoreEntitySet="Treasurer">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ApointmentDate" ColumnName="ApointmentDate" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Withdrawals">
+            <EntityTypeMapping TypeName="eConciergeModel.Withdrawal">
+              <MappingFragment StoreEntitySet="Withdrawal">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="eConciergeModel">
+        <EntityTypeShape EntityType="eConciergeModel.Account" Width="1.5" PointX="3" PointY="8.625" Height="3.1340950520833388" />
+        <EntityTypeShape EntityType="eConciergeModel.AccountTypeLookup" Width="1.5" PointX="0.75" PointY="9.375" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="eConciergeModel.BankAccount" Width="1.5" PointX="5.25" PointY="9.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="eConciergeModel.Cheque" Width="1.5" PointX="5.25" PointY="15.875" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="eConciergeModel.Contact" Width="1.5" PointX="6" PointY="1.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="eConciergeModel.Deposit" Width="1.5" PointX="5.25" PointY="6.125" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="eConciergeModel.InvestmentAccount" Width="1.5" PointX="5.25" PointY="12.125" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="eConciergeModel.Member" Width="1.5" PointX="3" PointY="13" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="eConciergeModel.Nominee" Width="1.5" PointX="8.25" PointY="8.875" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="eConciergeModel.Transaction" Width="1.5" PointX="3" PointY="4.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="eConciergeModel.TransactionType" Width="1.5" PointX="0.75" PointY="5.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="eConciergeModel.Treasurer" Width="1.5" PointX="8.25" PointY="5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="eConciergeModel.Withdrawal" Width="1.5" PointX="8.25" PointY="13.125" Height="2.1725878906250102" />
+        <AssociationConnector Association="eConciergeModel.FK_Account_AccountTypeLookup" >
+          <ConnectorPoint PointX="2.25" PointY="10.172841796875002" />
+          <ConnectorPoint PointX="3" PointY="10.172841796875002" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_BankAccount_Account" >
+          <ConnectorPoint PointX="4.5" PointY="10.143992513020834" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="10.143992513020834" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="10.143992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="10.143992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Deposit_Account" >
+          <ConnectorPoint PointX="4.5" PointY="8.6261528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="8.2511528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="8.6737407367788428" />
+          <ConnectorPoint PointX="4.8785744349011209" PointY="8.67016630187772" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="8.5523151716799628" />
+          <ConnectorPoint PointX="5.0660744349011209" PointY="8.48266630187772" />
+          <ConnectorPoint PointX="5.1839255650988791" PointY="8.3648151716799628" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="8.297587890624996" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_InvestmentAccount_Account" >
+          <ConnectorPoint PointX="4.5" PointY="11.759095052083339" />
+          <ConnectorPoint PointX="4.875" PointY="12.134095052083339" />
+          <ConnectorPoint PointX="4.875" PointY="11.748847153846153" />
+          <ConnectorPoint PointX="4.8785744349011217" PointY="11.752421588747273" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="11.870272718945031" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="12.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Nominee_Account" >
+          <ConnectorPoint PointX="4.5" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="7.0416671666666675" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="7.2083338333333336" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="7.2604194166666671" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="7.4270860833333332" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="11.266337890625003" />
+          <ConnectorPoint PointX="8.25" PointY="11.266337890625003" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Treasurer_Account" >
+          <ConnectorPoint PointX="4.5" PointY="9.38507267958734" />
+          <ConnectorPoint PointX="5" PointY="9.38507267958734" />
+          <ConnectorPoint PointX="5" PointY="8.625" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="8.625" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="8.625" />
+          <ConnectorPoint PointX="6.8541644166666673" PointY="8.625" />
+          <ConnectorPoint PointX="7.0208310833333334" PointY="8.625" />
+          <ConnectorPoint PointX="7.0416671666666675" PointY="8.625" />
+          <ConnectorPoint PointX="7.2083338333333336" PointY="8.625" />
+          <ConnectorPoint PointX="7.2604194166666671" PointY="8.625" />
+          <ConnectorPoint PointX="7.4270860833333332" PointY="8.625" />
+          <ConnectorPoint PointX="9" PointY="8.625" />
+          <ConnectorPoint PointX="9" PointY="7.3648893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Withdrawal_Account" >
+          <ConnectorPoint PointX="4.5" PointY="10.705165201822918" />
+          <ConnectorPoint PointX="5" PointY="10.705165201822918" />
+          <ConnectorPoint PointX="5" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="7.0416671666666675" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="7.2083338333333336" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="7.2604194166666671" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="7.4270860833333332" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="9" PointY="11.682190755208339" />
+          <ConnectorPoint PointX="9" PointY="13.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Cheque_Transaction" >
+          <ConnectorPoint PointX="4.5" PointY="7.4371834951923033" />
+          <ConnectorPoint PointX="4.9375" PointY="7.8746834951923033" />
+          <ConnectorPoint PointX="4.9375" PointY="17.153595377604169" />
+          <ConnectorPoint PointX="5.25" PointY="17.153595377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_InvestmentAccount_Contact" >
+          <ConnectorPoint PointX="7.1250005000000005" PointY="4.6917936197916674" />
+          <ConnectorPoint PointX="7.1250005000000005" PointY="13.211293945312502" />
+          <ConnectorPoint PointX="6.75" PointY="13.211293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Member_Contact" >
+          <ConnectorPoint PointX="7.34375275" PointY="4.6917936197916674" />
+          <ConnectorPoint PointX="7.34375275" PointY="14.862488606770835" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="14.862488606770835" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="14.862488606770835" />
+          <ConnectorPoint PointX="4.5" PointY="14.862488606770835" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Nominee_Contact" >
+          <ConnectorPoint PointX="6.93749775" PointY="4.6917936197916674" />
+          <ConnectorPoint PointX="6.93749775" PointY="9.03125" />
+          <ConnectorPoint PointX="7.0416671666666675" PointY="9.03125" />
+          <ConnectorPoint PointX="7.2083338333333336" PointY="9.03125" />
+          <ConnectorPoint PointX="7.2604194166666671" PointY="9.03125" />
+          <ConnectorPoint PointX="7.4270860833333332" PointY="9.03125" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="9.03125" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="9.03125" />
+          <ConnectorPoint PointX="8.25" PointY="9.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Treasurer_Contact" >
+          <ConnectorPoint PointX="7.5" PointY="3.2208968098958337" />
+          <ConnectorPoint PointX="9" PointY="3.2208968098958337" />
+          <ConnectorPoint PointX="9" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Deposit_Transaction" >
+          <ConnectorPoint PointX="4.5" PointY="6.7498392475961584" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="6.7498392475961575" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="6.7498392475961584" />
+          <ConnectorPoint PointX="5.25" PointY="6.7498392475961584" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_InvestmentAccount_Member" >
+          <ConnectorPoint PointX="4.5" PointY="13.648793945312502" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="13.648793945312502" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="13.648793945312502" />
+          <ConnectorPoint PointX="5.25" PointY="13.648793945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Transaction_TransactionType" >
+          <ConnectorPoint PointX="2.25" PointY="6.1439925130208337" />
+          <ConnectorPoint PointX="3" PointY="6.1439925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="eConciergeModel.FK_Withdrawal_Transaction" >
+          <ConnectorPoint PointX="4.5" PointY="5.7186676237980851" />
+          <ConnectorPoint PointX="5.125" PointY="5.7186676237980851" />
+          <ConnectorPoint PointX="5.125" PointY="8.75" />
+          <ConnectorPoint PointX="6.8541644166666673" PointY="8.75" />
+          <ConnectorPoint PointX="7.0208310833333334" PointY="8.75" />
+          <ConnectorPoint PointX="7.0416671666666675" PointY="8.75" />
+          <ConnectorPoint PointX="7.2083338333333336" PointY="8.75" />
+          <ConnectorPoint PointX="7.2604194166666671" PointY="8.75" />
+          <ConnectorPoint PointX="7.4270860833333332" PointY="8.75" />
+          <ConnectorPoint PointX="8" PointY="8.75" />
+          <ConnectorPoint PointX="8" PointY="12.75" />
+          <ConnectorPoint PointX="8.593748" PointY="12.75" />
+          <ConnectorPoint PointX="8.593748" PointY="13.125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
