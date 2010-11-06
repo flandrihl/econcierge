@@ -27,7 +27,7 @@
         	<StackPanel x:Name="stackPanel" Orientation="Vertical" Height="{Binding ActualHeight, ConverterParameter=0.86, Converter={StaticResource MultiplyValueConverter}, ElementName=animatableControl, Mode=OneWay}" VerticalAlignment="Top" Margin="{Binding ActualWidth, ConverterParameter=0.06193, Converter={StaticResource MultiplyValueConverter}, ElementName=Description, Mode=OneWay}" HorizontalAlignment="Left">            	
                 <StackPanel Margin="0,0,0,20" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <TextBlock Text="EXPLORE THE VEGAS HILTON" TextWrapping="Wrap" Foreground="#FF480E0F" FontSize="{Binding ActualWidth, ConverterParameter=0.048, Converter={StaticResource MultiplyValueConverter}, ElementName=animatableControl, Mode=OneWay}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,14,0,0" FontFamily="Leelawadee"/>
+                        <TextBlock Text="HOTEL INFO EXPLORER" TextWrapping="Wrap" Foreground="#FF480E0F" FontSize="{Binding ActualWidth, ConverterParameter=0.048, Converter={StaticResource MultiplyValueConverter}, ElementName=animatableControl, Mode=OneWay}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,14,0,0" FontFamily="Leelawadee"/>
                     </StackPanel>
                     <Rectangle Fill="#FF480E0F" Stroke="Black" Height="3" Width="{Binding ActualWidth, ConverterParameter=0.743, Converter={StaticResource MultiplyValueConverter}, ElementName=animatableControl, Mode=OneWay}" HorizontalAlignment="Left"/>
                 </StackPanel>

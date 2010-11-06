@@ -43,14 +43,14 @@
   <Style x:Key="TaxiItemTitleTextStyle" TargetType="{x:Type TextBlock}">
     <Setter Property="FontFamily" Value="./Fonts/#GILSANUB" />
     <Setter Property="FontSize" Value="18" />
-    <Setter Property="Foreground" Value="Gray" />
+    <Setter Property="Foreground" Value="#FFFFFFFF" />
     <Setter Property="FontWeight" Value="UltraBold" />
   </Style>
 
   <Style x:Key="TaxiItemNumberTextStyle" TargetType="{x:Type TextBlock}">
     <Setter Property="FontFamily" Value="./Fonts/#LTE51250" />
     <Setter Property="FontSize" Value="15" />
-    <Setter Property="Foreground" Value="Gray" />
+    <Setter Property="Foreground" Value="#FFFFFFFF" />
   </Style>
   
   <Style x:Key="WeatherItemDayTextStyle" TargetType="{x:Type TextBlock}">
