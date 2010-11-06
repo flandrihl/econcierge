@@ -38,6 +38,25 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Button.RenderTransform>
-        	<Image Source="Images/close.png" Stretch="Fill"/>
+        	<Grid Margin="6.5,0,0,6.5">
+        		<Ellipse Width="45" Height="45" d:LayoutOverrides="Margin" Stroke="#558D8C8C">
+        			<Ellipse.Fill>
+        				<RadialGradientBrush>
+        					<GradientStop Color="White" Offset="0.091"/>
+        					<GradientStop Color="#FF00B3E2" Offset="0.909"/>
+        				</RadialGradientBrush>
+        			</Ellipse.Fill>
+        		</Ellipse>
+        		<Path Data="M19.389403,2.7182948 C23.595125,4.7310413 26.5,9.0262857 26.5,14 26.5,20.903559 20.903559,26.5 14,26.5 7.0964406,26.5 1.5,20.903559 1.5,14 1.5,9.0466683 4.381115,4.7662571 8.5589565,2.7431548" Stretch="Fill" Stroke="#FF3B3B3B" StrokeThickness="3" Margin="11.5,14.7,11.5,9.7" />
+        		<Rectangle Height="9.562" Margin="0,11.8,0,0" Stroke="#FF3B3B3B" StrokeThickness="3" VerticalAlignment="Top" HorizontalAlignment="Center" RadiusX="3" RadiusY="2"/>
+        		<Ellipse Margin="9,7.8,9,20.2">
+        			<Ellipse.Fill>
+        				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        					<GradientStop Color="White" Offset="0"/>
+        					<GradientStop Color="#2FFFFFFF" Offset="1"/>
+        				</LinearGradientBrush>
+        			</Ellipse.Fill>
+        		</Ellipse>
+        	</Grid>
     </Button>
 </UserControl>

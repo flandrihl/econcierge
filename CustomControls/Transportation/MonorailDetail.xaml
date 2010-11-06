@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:CustomControls_InheritedFrameworkControls="clr-namespace:CustomControls.InheritedFrameworkControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="600" Height="300" Width="680">
-    <DockPanel x:Name="contentDock" DockPanel.Dock="Top" Style="{DynamicResource DialogContentDockStyle}">
+             d:DesignHeight="300" d:DesignWidth="600" Height="300" Width="742">
+    <DockPanel x:Name="contentDock" DockPanel.Dock="Top" Style="{DynamicResource DialogContentDockStyle}" Background="#00000000">
         <CustomControls_InheritedFrameworkControls:IPhoneScrollViewer x:Name="contentScroller" 
 		Width="{Binding ActualWidth, ElementName=contentDock, Mode=OneWay}"
         Height="{Binding ActualHeight, ElementName=contentDock, Mode=OneWay}" 
         ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CanContentScroll="True">
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CanContentScroll="True" Background="#FF545454" Foreground="{x:Null}">
             <DockPanel x:Name="grdCategory" d:LayoutOverrides="HorizontalAlignment" >
-                <Image x:Name="imgMonorail"  Stretch="Fill"  Height="270" Width="280" d:LayoutOverrides="HorizontalAlignment" Margin="0"  />
+                <Image x:Name="imgMonorail"  Stretch="Fill"  Height="270" Width="280" d:LayoutOverrides="HorizontalAlignment" Margin="10,0,0,0"  />
                 <DockPanel x:Name="dockPanel" Margin="15,22,0,15">
-                    <TextBlock Text="Las Vegas Monorail" x:Name="txbTitle" DockPanel.Dock="Top" Style="{DynamicResource DialogInnerTitleTextStyle}" VerticalAlignment="Top" />
-                    <TextBlock  x:Name="txbDescription" Text="Description" DockPanel.Dock="Top" TextWrapping="Wrap" Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,8,0,0" TextAlignment="Justify" Width="385"/>
+                    <TextBlock Text="Las Vegas Monorail" x:Name="txbTitle" DockPanel.Dock="Top" Style="{DynamicResource DialogInnerTitleTextStyle}" VerticalAlignment="Top" Foreground="White" />
+                    <TextBlock  x:Name="txbDescription" Text="Description" DockPanel.Dock="Top" Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,8,0,0" TextAlignment="Justify" Width="406.334" Foreground="White" HorizontalAlignment="Left" TextOptions.TextFormattingMode="Display" TextWrapping="Wrap"/>
                 </DockPanel>
             </DockPanel>
         </CustomControls_InheritedFrameworkControls:IPhoneScrollViewer>

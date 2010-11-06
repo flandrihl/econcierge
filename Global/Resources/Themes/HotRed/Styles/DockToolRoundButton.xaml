@@ -112,6 +112,14 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <!-- Calendar Layer -->
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Effect">
+								<Setter.Value>										
+                    		       <DropShadowEffect BlurRadius="15" Color="#FFE2E2E2" ShadowDepth="0"/>
+								</Setter.Value>
+							</Setter>
+						</Trigger>
+						
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="True" />

@@ -48,7 +48,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-    	<Border x:Name="MainControlBorder" Style="{DynamicResource DialogBorderStyle}" >		
+    	<Border x:Name="MainControlBorder" Style="{DynamicResource DialogBorderStyle}" CornerRadius="12" Background="#50000000" BorderBrush="#2CFFFFFF" >		
         
     		<Grid Margin="0">
     			<DockPanel>
@@ -58,6 +58,12 @@
     				</DockPanel>
     				<DockPanel x:Name="controlsDock" DockPanel.Dock="Bottom" Height="59" VerticalAlignment="Top"/>
     				<DockPanel x:Name="contentDock" DockPanel.Dock="Top" Style="{DynamicResource DialogContentDockStyle}">
+    					<DockPanel.Background>
+    						<RadialGradientBrush>
+    							<GradientStop Color="#3FC0BFBF" Offset="1"/>
+    							<GradientStop Color="#3FFFFFFF" Offset="0"/>
+    						</RadialGradientBrush>
+    					</DockPanel.Background>
     					<CustomControls_InheritedFrameworkControls:IPhoneScrollViewer x:Name="contentScroller" Width="{Binding ActualWidth, ElementName=contentDock, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=contentDock, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CanContentScroll="True">
     						<Grid x:Name="grdCategory" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
     					</CustomControls_InheritedFrameworkControls:IPhoneScrollViewer>
