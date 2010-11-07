@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using eConcierge.Model;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using eConcierge.Common;
 
@@ -133,6 +134,28 @@ namespace eConcierge.ServerDataHandler
         //}
 
        
+        #endregion
+
+        #region Event Calendar Category
+        public List<DTOEventCalendarCategory> GetEventCalendarCategorys(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Name, Description FROM EventCalendarCategory";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateEventCalendarCategorys);
+        }
+        private List<DTOEventCalendarCategory> PopulateEventCalendarCategorys(DbDataReader oDbDataReader)
+        {
+            List<DTOEventCalendarCategory> lst = new List<DTOEventCalendarCategory>();
+            while (oDbDataReader.Read())
+            {
+                DTOEventCalendarCategory oDTOEventCalendarCategory = new DTOEventCalendarCategory();
+                oDTOEventCalendarCategory.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOEventCalendarCategory.Id;
+                oDTOEventCalendarCategory.Name = oDbDataReader["Name"] != DBNull.Value ? Convert.ToString(oDbDataReader["Name"]) : oDTOEventCalendarCategory.Name;
+                oDTOEventCalendarCategory.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOEventCalendarCategory.Description;
+                lst.Add(oDTOEventCalendarCategory);
+            }
+            return lst;
+        }
         #endregion
     }
 }

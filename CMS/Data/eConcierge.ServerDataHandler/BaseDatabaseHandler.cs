@@ -18,10 +18,7 @@ namespace eConcierge.ServerDataHandler
         {
             CONNECTIONSTRING = ConfigurationManager.ConnectionStrings["eConciergeDB"].ConnectionString;
         }
-        protected void SwitchToDefaultConnectionString()
-        {
-            CONNECTIONSTRING = ConfigurationManager.ConnectionStrings["eConciergeDB"].ConnectionString;
-        }
+       
 
         protected Database GetSQLDatabase()
         {
