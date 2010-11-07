@@ -11,5 +11,10 @@ namespace eConcierge.Foundation.Constants
         public const string Members="Members";
         public const string Accounts = "Accounts";
         public const string Home="Home";
+        public const string Resort = "Resort";
+        public const string Video = "Video";
+        public const string Accommodation = "Accommodation";
+        public const string Category = "Category";
+        public const string EventCalendar = "EventCalendar";
     }
 }
