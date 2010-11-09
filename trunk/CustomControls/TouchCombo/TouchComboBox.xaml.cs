@@ -123,7 +123,7 @@ namespace CustomControls.TouchCombo
 
         private void TitleToggleButtonChecked(object sender, RoutedEventArgs e)
         {
-            border.Background =new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF4E0000"));
+            border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF50013F"));
             border.BorderThickness=new Thickness(3);
             optionsBorder.Width = Double.NaN;
             optionsBorder.Height = Double.NaN;
