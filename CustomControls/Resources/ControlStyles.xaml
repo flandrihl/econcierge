@@ -2,9 +2,9 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Style x:Key="DialogBorderStyle" TargetType="{x:Type Border}">
-  	<Setter Property="Background" Value="#7B8D0000" />
-    <Setter Property="CornerRadius" Value="55" />
-    <Setter Property="BorderBrush" Value="#97E2E2E2" />
+  	<Setter Property="Background" Value="#50000000" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="BorderBrush" Value="#2BE2E2E2" />
     <Setter Property="BorderThickness" Value="4" />
     <!--<Setter Property="Effect">
       <Setter.Value>

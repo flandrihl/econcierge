@@ -14,7 +14,7 @@
             <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
         </ControlTemplate>
     </UserControl.Resources>
-    <Border x:Name="MainControlBorder" Style="{DynamicResource DialogBorderStyle}" Background="#50000000" CornerRadius="12" BorderBrush="#2BE2E2E2" >
+    <Border x:Name="MainControlBorder" Style="{DynamicResource DialogBorderStyle}" >
 
         <Grid x:Name="grd" Margin="0">
             <DockPanel>
