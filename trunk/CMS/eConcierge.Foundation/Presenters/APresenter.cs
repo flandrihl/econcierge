@@ -3,7 +3,7 @@ using eConcierge.Foundation.Views;
 
 namespace eConcierge.Foundation.Presenters
 {
-    public abstract class APresenter : DependencyObject, IPresenter
+    public abstract class APresenter : NotifyingObject, IPresenter
     {
         protected APresenter(IView view)
         {

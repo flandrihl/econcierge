@@ -15,6 +15,7 @@ namespace eConcierge.Resort.Presentation.EventCalendar
         public EcCategoryView()
         {
             InitializeComponent();
+            
         }
 
         public IPresenter Presenter
