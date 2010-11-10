@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using eConcierge.Foundation.Presenters;
+using eConcierge.Model;
+using eConcierge.Resort.Applications.Presenters;
 using eConcierge.Resort.Applications.Views;
 
 namespace eConcierge.Resort.Presentation
@@ -34,7 +36,17 @@ namespace eConcierge.Resort.Presentation
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var v = grd.SelectedItem;
+            DTOEventCalendarCategory v = (DTOEventCalendarCategory)grd.SelectedItem;
+            ((EventCalendarCategoryPresenter) DataContext).Edit(v);
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(MessageBox.Show("Are you sure, you want to delete this item.", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                Image img = (Image)sender;
+                ((EventCalendarCategoryPresenter)DataContext).Delete(Convert.ToInt32(img.Tag));
+            }
         }
     }
 }

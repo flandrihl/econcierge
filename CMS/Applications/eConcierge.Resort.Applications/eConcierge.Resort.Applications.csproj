@@ -41,9 +41,12 @@
       <HintPath>..\..\Lib\CompositeApplicationLibrary\Desktop\Microsoft.Practices.Composite.Presentation.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,6 +85,10 @@
     <ProjectReference Include="..\..\eConcierge.Foundation\eConcierge.Foundation.csproj">
       <Project>{6DB8FADC-0264-424B-B428-4A22A4D46E51}</Project>
       <Name>eConcierge.Foundation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Presentation\eConcierge.Foundation.Presentation\eConcierge.Foundation.Presentation.csproj">
+      <Project>{5C414542-FB41-4C5C-80C1-8A632832F7F4}</Project>
+      <Name>eConcierge.Foundation.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\eConcierge.Foundation.Applications\eConcierge.Foundation.Applications.csproj">
       <Project>{6BDA3689-C83D-4FF3-AD69-EFA473EB9C65}</Project>

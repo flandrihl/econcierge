@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using eConcierge.Business;
 using eConcierge.Foundation.Applications.Commands;
 using eConcierge.Foundation.Applications.Presenters;
 using eConcierge.Foundation.Applications.Views;
+using eConcierge.Foundation.Presentation.Views;
 using eConcierge.Model;
 using eConcierge.Resort.Applications.Views;
 
@@ -28,11 +30,16 @@ namespace eConcierge.Resort.Applications.Presenters
             }
         }
         [ImportingConstructor]
-        public EventCalendarCategoryPresenter(IBaseToolView view, IEventCalendarCategoryToolView body )
+        public EventCalendarCategoryPresenter(IBaseToolView view, IEventCalendarCategoryToolView body)
             : base(view, null, null, body)
         {
             TitleVisibility = Visibility.Collapsed;
             DescriptionVisibility = Visibility.Collapsed;
+            PrepareView();
+        }
+
+        void Value_SaveSuccessEvent(object sender, EventArgs e)
+        {
             PrepareView();
         }
 
@@ -52,26 +59,56 @@ namespace eConcierge.Resort.Applications.Presenters
         [Import]
         private Lazy<ECCategoryPresenter> ECCategoryPresenter { get; set; }
 
-        [Import]
-        private Lazy<DialogPresenter> DialogPresenter { get; set; }
-
+      
         private void Add(object obj)
         {
-            DialogPresenter.Value.OkButtonCaption = "Save";
-            DialogPresenter.Value.ShowModal(ECCategoryPresenter.Value, "EC Category", DialogButton.OKCancel);
+            DialogPresenter dialog = new DialogPresenter(new DialogView());
+
+            if (dialog.ShowModal(ECCategoryPresenter.Value, "EC Category") == DialogResult.OK)
+            {
+                PrepareView();
+            }
+            
         }
-      
+        public void Edit(DTOEventCalendarCategory category)
+        {
+            ECCategoryPresenter.Value.Name = category.Name;
+            ECCategoryPresenter.Value.Description = category.Description;
+            ECCategoryPresenter.Value.IsEdit = true;
+            ECCategoryPresenter.Value.Id = category.Id;
+
+            DialogPresenter dialog = new DialogPresenter(new DialogView());
+
+            if (dialog.ShowModal(ECCategoryPresenter.Value, "EC Category") == DialogResult.OK)
+            {
+                PrepareView();
+            }
+
+        }
+        public void Delete(int id)
+        {
+            if(Service.Delete(id))
+            {
+                PrepareView();
+            }
+        }
 
         private void PrepareView()
         {
-            this.Categories = Service.GetEventCalendarCategorys();
+            Categories = new ObservableCollection<DTOEventCalendarCategory>(Service.GetEventCalendarCategorys());
         }
-        
 
-        public List<DTOEventCalendarCategory> Categories
+
+        //public ObservableCollection<DTOEventCalendarCategory> Categories
+        //{
+        //    set;
+        //    get;
+        //}
+
+        public ObservableCollection<DTOEventCalendarCategory> Categories
         {
-            private set;
-            get;
+            get { return GetValue(() => Categories); }
+            set { SetValue(() => Categories, value); }
         }
     }
 }
