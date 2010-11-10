@@ -17,9 +17,9 @@
 			<Setter Property="Background">
 				<Setter.Value>
 					<RadialGradientBrush>
-						<GradientStop Color="#FFC0BFBF" Offset="1"/>
-						<GradientStop Color="White" Offset="0"/>
-					</RadialGradientBrush>
+    							<GradientStop Color="#3FC0BFBF" Offset="1"/>
+    							<GradientStop Color="#3FFFFFFF" Offset="0"/>
+    						</RadialGradientBrush>
 				</Setter.Value>
 			</Setter>
 		</Style>
