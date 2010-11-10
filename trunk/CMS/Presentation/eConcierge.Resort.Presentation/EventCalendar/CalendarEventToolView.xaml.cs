@@ -18,18 +18,19 @@ using eConcierge.Model;
 using eConcierge.Resort.Applications.Presenters;
 using eConcierge.Resort.Applications.Views;
 
-namespace eConcierge.Resort.Presentation
+namespace eConcierge.Resort.Presentation.EventCalendar
 {
     /// <summary>
-    /// Interaction logic for EventCalendarCategoryToolView.xaml
+    /// Interaction logic for CalendarEventToolView.xaml
     /// </summary>
-     [Export(typeof(IEventCalendarCategoryToolView))]
-    public partial class EventCalendarCategoryToolView : IEventCalendarCategoryToolView
+   [Export(typeof(ICalendarEventToolView))]
+    public partial class CalendarEventToolView : ICalendarEventToolView
     {
-        public EventCalendarCategoryToolView()
+        public CalendarEventToolView()
         {
             InitializeComponent();
         }
+
         public IPresenter Presenter
         {
             set { DataContext = value; }
@@ -37,8 +38,8 @@ namespace eConcierge.Resort.Presentation
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DTOEventCalendarCategory v = (DTOEventCalendarCategory)grd.SelectedItem;
-            ((EventCalendarCategoryPresenter) DataContext).Edit(v);
+            DTOCalendarEvent v = (DTOCalendarEvent)grd.SelectedItem;
+            ((CalendarEventPresenter)DataContext).Edit(v);
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -46,7 +47,7 @@ namespace eConcierge.Resort.Presentation
             if (MessageBox.Show(WellKnownNames.MessageString.DeleteConfirmationMessage, WellKnownNames.MessageString.Confirmation, MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
                 Image img = (Image)sender;
-                ((EventCalendarCategoryPresenter)DataContext).Delete(Convert.ToInt32(img.Tag));
+                ((CalendarEventPresenter)DataContext).Delete(Convert.ToInt32(img.Tag));
             }
         }
     }

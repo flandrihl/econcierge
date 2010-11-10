@@ -157,5 +157,34 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Event Calendar
+        public List<DTOCalendarEvent> GetCalendarEvents(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, CategoryId, Title, Description, Photo, StartDate, EndDate, Location, Latitude, Longitude FROM CalendarEvent";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateCalendarEvents);
+        }
+        private List<DTOCalendarEvent> PopulateCalendarEvents(DbDataReader oDbDataReader)
+        {
+            List<DTOCalendarEvent> lst = new List<DTOCalendarEvent>();
+            while (oDbDataReader.Read())
+            {
+                DTOCalendarEvent oDTOCalendarEvent = new DTOCalendarEvent();
+                oDTOCalendarEvent.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOCalendarEvent.Id;
+                oDTOCalendarEvent.CategoryId = oDbDataReader["CategoryId"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["CategoryId"]) : oDTOCalendarEvent.CategoryId;
+                oDTOCalendarEvent.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOCalendarEvent.Title;
+                oDTOCalendarEvent.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOCalendarEvent.Description;
+                oDTOCalendarEvent.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTOCalendarEvent.Photo;
+                oDTOCalendarEvent.StartDate = oDbDataReader["StartDate"] != DBNull.Value ? Convert.ToDateTime(oDbDataReader["StartDate"]) : oDTOCalendarEvent.StartDate;
+                oDTOCalendarEvent.EndDate = oDbDataReader["EndDate"] != DBNull.Value ? Convert.ToDateTime(oDbDataReader["EndDate"]) : oDTOCalendarEvent.EndDate;
+                oDTOCalendarEvent.Location = oDbDataReader["Location"] != DBNull.Value ? Convert.ToString(oDbDataReader["Location"]) : oDTOCalendarEvent.Location;
+                oDTOCalendarEvent.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOCalendarEvent.Latitude;
+                oDTOCalendarEvent.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOCalendarEvent.Longitude;
+                lst.Add(oDTOCalendarEvent);
+            }
+            return lst;
+        }
+        #endregion
     }
 }

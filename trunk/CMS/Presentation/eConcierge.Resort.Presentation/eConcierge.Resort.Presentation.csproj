@@ -57,8 +57,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventCalendar\CalendarEventToolView.xaml.cs">
+      <DependentUpon>CalendarEventToolView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EventCalendar\EcCategoryView.xaml.cs">
       <DependentUpon>EcCategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EventCalendar\EcEventView.xaml.cs">
+      <DependentUpon>EcEventView.xaml</DependentUpon>
     </Compile>
     <Compile Include="EventCalendar\EventCalendarCategoryToolView.xaml.cs">
       <DependentUpon>EventCalendarCategoryToolView.xaml</DependentUpon>
@@ -69,14 +75,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Applications\eConcierge.Foundation.Applications\eConcierge.Foundation.Applications.csproj">
-      <Project>{6BDA3689-C83D-4FF3-AD69-EFA473EB9C65}</Project>
-      <Name>eConcierge.Foundation.Applications</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Applications\eConcierge.Resort.Applications\eConcierge.Resort.Applications.csproj">
-      <Project>{ACBD156B-0303-4BAF-A80A-5CB622BCDF68}</Project>
-      <Name>eConcierge.Resort.Applications</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Data\eConcierge.Model\eConcierge.Model.csproj">
       <Project>{3265E3CC-5EA9-4240-A2BF-9DEB4B905DED}</Project>
       <Name>eConcierge.Model</Name>
@@ -85,13 +83,25 @@
       <Project>{6DB8FADC-0264-424B-B428-4A22A4D46E51}</Project>
       <Name>eConcierge.Foundation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Global\eConcierge.Common\eConcierge.Common.csproj">
+      <Project>{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}</Project>
+      <Name>eConcierge.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eConcierge.Foundation.Presentation\eConcierge.Foundation.Presentation.csproj">
       <Project>{5C414542-FB41-4C5C-80C1-8A632832F7F4}</Project>
       <Name>eConcierge.Foundation.Presentation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="EventCalendar\CalendarEventToolView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EventCalendar\EcCategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EventCalendar\EcEventView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

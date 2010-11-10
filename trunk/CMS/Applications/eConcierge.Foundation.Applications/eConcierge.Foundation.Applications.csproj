@@ -60,6 +60,7 @@
     <Compile Include="Presenters\ABaseToolPresenter.cs" />
     <Compile Include="Presenters\ADialogContentPresenter.cs" />
     <Compile Include="Presenters\DialogButton.cs" />
+    <Compile Include="Presenters\DialogConciergePresenter.cs" />
     <Compile Include="Presenters\DialogPresenter.cs" />
     <Compile Include="Presenters\DialogResult.cs" />
     <Compile Include="Presenters\FooterPresenter.cs" />

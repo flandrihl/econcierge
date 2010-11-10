@@ -126,16 +126,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\eConcierge.Domain\eConcierge.Domain.csproj">
-      <Project>{338A710B-0398-44D0-9A67-2ED404EE76C7}</Project>
-      <Name>eConcierge.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eConcierge.Foundation\eConcierge.Foundation.csproj">
-      <Project>{6DB8FADC-0264-424B-B428-4A22A4D46E51}</Project>
-      <Name>eConcierge.Foundation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\delete.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

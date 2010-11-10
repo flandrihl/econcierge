@@ -6,4 +6,8 @@ namespace eConcierge.Resort.Applications.Views
     {
 
     }
+    public interface IECEventView : IView
+    {
+
+    }
 }

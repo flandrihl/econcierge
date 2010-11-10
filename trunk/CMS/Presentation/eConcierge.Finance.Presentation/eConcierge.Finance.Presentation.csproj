@@ -107,14 +107,6 @@
       <Project>{338A710B-0398-44D0-9A67-2ED404EE76C7}</Project>
       <Name>eConcierge.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Applications\eConcierge.Finance.Applications\eConcierge.Finance.Applications.csproj">
-      <Project>{F141F299-488C-4A73-BC5A-105420C7F50A}</Project>
-      <Name>eConcierge.Finance.Applications</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Applications\eConcierge.Foundation.Applications\eConcierge.Foundation.Applications.csproj">
-      <Project>{6BDA3689-C83D-4FF3-AD69-EFA473EB9C65}</Project>
-      <Name>eConcierge.Foundation.Applications</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
