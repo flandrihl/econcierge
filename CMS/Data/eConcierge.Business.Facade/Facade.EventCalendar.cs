@@ -14,5 +14,10 @@ namespace eConcierge.Business.Facade
         {
             return new ServerDatabaseHandler().GetEventCalendarCategorys(queryParamList, ref error);
         }
+
+        public static List<DTOCalendarEvent> GetCalendarEvent(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetCalendarEvents(queryParamList, ref error);
+        }
     }
 }

@@ -16,21 +16,21 @@ using eConcierge.Resort.Applications.Views;
 
 namespace eConcierge.Resort.Applications.Presenters
 {
-    [Export(typeof(EventCalendarCategoryPresenter))]
-    public class EventCalendarCategoryPresenter : ABaseToolPresenter
+    [Export(typeof(CalendarEventPresenter))]
+    public class CalendarEventPresenter : ABaseToolPresenter
     {
-        private ICommand addCommand;
+         private ICommand addCommand;
 
-        private EventCalendarCategoryService _service;
-        private EventCalendarCategoryService Service
+         private CalendarEventService _service;
+         private CalendarEventService Service
         {
             get
             {
-                return _service ?? (_service = new EventCalendarCategoryService());
+                return _service ?? (_service = new CalendarEventService());
             }
         }
         [ImportingConstructor]
-        public EventCalendarCategoryPresenter(IBaseToolView view, IEventCalendarCategoryToolView body)
+         public CalendarEventPresenter(IBaseToolView view, ICalendarEventToolView body)
             : base(view, null, null, body)
         {
             TitleVisibility = Visibility.Collapsed;
@@ -38,10 +38,7 @@ namespace eConcierge.Resort.Applications.Presenters
             PrepareView();
         }
 
-        void Value_SaveSuccessEvent(object sender, EventArgs e)
-        {
-            PrepareView();
-        }
+       
 
         public ICommand AddCommand
         {
@@ -57,28 +54,28 @@ namespace eConcierge.Resort.Applications.Presenters
         }
 
         [Import]
-        private Lazy<ECCategoryPresenter> ECCategoryPresenter { get; set; }
+        private Lazy<ECEventPresenter> ECEventPresenter { get; set; }
 
       
         private void Add(object obj)
         {
             DialogPresenter dialog = new DialogPresenter(new DialogView());
-            ECCategoryPresenter.Value.InitializeViewModel(null);
-            if (dialog.ShowModal(ECCategoryPresenter.Value, "EC Category") == DialogResult.OK)
+            ECEventPresenter.Value.InitializeViewModel(null);
+            if (dialog.ShowModal(ECEventPresenter.Value, "Event Calendar") == DialogResult.OK)
             {
                 PrepareView();
             }
             
         }
-        public void Edit(DTOEventCalendarCategory category)
+        public void Edit(DTOCalendarEvent category)
         {
-            ECCategoryPresenter.Value.InitializeViewModel(category);
-            DialogPresenter dialog = new DialogPresenter(new DialogView());
+            //ECCategoryPresenter.Value.InitializeViewModel(category);
+            //DialogPresenter dialog = new DialogPresenter(new DialogView());
 
-            if (dialog.ShowModal(ECCategoryPresenter.Value, "EC Category") == DialogResult.OK)
-            {
-                PrepareView();
-            }
+            //if (dialog.ShowModal(ECCategoryPresenter.Value, "EC Category") == DialogResult.OK)
+            //{
+            //    PrepareView();
+            //}
 
         }
         public void Delete(int id)
@@ -91,7 +88,7 @@ namespace eConcierge.Resort.Applications.Presenters
 
         private void PrepareView()
         {
-            Categories = new ObservableCollection<DTOEventCalendarCategory>(Service.GetEventCalendarCategorys());
+            Events = new ObservableCollection<DTOCalendarEvent>(Service.GetCalendarEvents());
         }
 
 
@@ -101,10 +98,10 @@ namespace eConcierge.Resort.Applications.Presenters
         //    get;
         //}
 
-        public ObservableCollection<DTOEventCalendarCategory> Categories
+        public ObservableCollection<DTOCalendarEvent> Events
         {
-            get { return GetValue(() => Categories); }
-            set { SetValue(() => Categories, value); }
+            get { return GetValue(() => Events); }
+            set { SetValue(() => Events, value); }
         }
     }
 }

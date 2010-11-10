@@ -55,7 +55,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\CalendarEventPresenter.cs" />
     <Compile Include="Presenters\ECCategoryPresenter.cs" />
+    <Compile Include="Presenters\ECEventPresenter.cs" />
     <Compile Include="Presenters\EventCalendarCategoryPresenter.cs" />
     <Compile Include="Presenters\VideoToolPresenter.cs" />
     <Compile Include="ResortApplicationsModule.cs" />
@@ -65,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringTable.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\ICalendarEventToolView.cs" />
     <Compile Include="Views\IECCategoryView.cs" />
     <Compile Include="Views\IEventCalendarCategoryToolView.cs" />
     <Compile Include="Views\IVideoToolView.cs" />
@@ -89,10 +92,6 @@
     <ProjectReference Include="..\..\Presentation\eConcierge.Foundation.Presentation\eConcierge.Foundation.Presentation.csproj">
       <Project>{5C414542-FB41-4C5C-80C1-8A632832F7F4}</Project>
       <Name>eConcierge.Foundation.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eConcierge.Foundation.Applications\eConcierge.Foundation.Applications.csproj">
-      <Project>{6BDA3689-C83D-4FF3-AD69-EFA473EB9C65}</Project>
-      <Name>eConcierge.Foundation.Applications</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

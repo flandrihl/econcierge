@@ -95,12 +95,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\eConcierge.Domain\eConcierge.Domain.csproj">
-      <Project>{338A710B-0398-44D0-9A67-2ED404EE76C7}</Project>
-      <Name>eConcierge.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

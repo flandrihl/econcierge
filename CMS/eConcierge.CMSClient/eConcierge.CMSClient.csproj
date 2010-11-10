@@ -2,21 +2,22 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F99DB772-99F2-4AE2-AFAE-8A220DEBAE29}</ProjectGuid>
-    <OutputType>library</OutputType>
+    <ProjectGuid>{D3D7ED9D-E80D-47CC-B338-79993B810421}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eConcierge.Home.Presentation</RootNamespace>
-    <AssemblyName>eConcierge.Home.Presentation</AssemblyName>
+    <RootNamespace>eConcierge.CMSClient</RootNamespace>
+    <AssemblyName>eConcierge.CMSClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +26,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,17 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Composite">
-      <HintPath>..\..\Lib\CompositeApplicationLibrary\Desktop\Microsoft.Practices.Composite.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite.MefExtensions">
-      <HintPath>..\..\Lib\CompositeApplicationLibrary\Desktop\Microsoft.Practices.Composite.MefExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite.Presentation">
-      <HintPath>..\..\Lib\CompositeApplicationLibrary\Desktop\Microsoft.Practices.Composite.Presentation.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +49,46 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="CmsUserControl\EventCalendarCategoryDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CmsUserControl\HeaderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CmsUserControl\EventCalendarCategoryDetail.xaml.cs">
+      <DependentUpon>EventCalendarCategoryDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsUserControl\HeaderView.xaml.cs">
+      <DependentUpon>HeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Code\ANotifyPropertyChanged.cs" />
+    <Compile Include="Code\MainMenuItem.cs" />
+    <Compile Include="Code\SubMenuItem.cs" />
+    <Compile Include="Code\ToolManager.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -72,9 +104,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Views\HomeToolView.xaml.cs">
-      <DependentUpon>HomeToolView.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -86,22 +115,20 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\HomeToolView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\eConcierge.Foundation\eConcierge.Foundation.csproj">
-      <Project>{6DB8FADC-0264-424B-B428-4A22A4D46E51}</Project>
-      <Name>eConcierge.Foundation</Name>
+    <ProjectReference Include="..\Data\eConcierge.Business\eConcierge.Business.csproj">
+      <Project>{557F1763-0C5E-4376-963A-A16E06C18BCF}</Project>
+      <Name>eConcierge.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\eConcierge.Model\eConcierge.Model.csproj">
+      <Project>{3265E3CC-5EA9-4240-A2BF-9DEB4B905DED}</Project>
+      <Name>eConcierge.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global\eConcierge.Common\eConcierge.Common.csproj">
+      <Project>{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}</Project>
+      <Name>eConcierge.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>mkdir "$(SolutionDir)\CMS\eConcierge.Shell\$(OutDir)\Modules"
-copy "$(TargetPath)" "$(SolutionDir)\CMS\eConcierge.Shell\$(OutDir)\Modules\$(TargetFileName)"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

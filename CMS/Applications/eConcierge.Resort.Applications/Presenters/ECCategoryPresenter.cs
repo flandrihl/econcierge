@@ -14,11 +14,9 @@ using System.Linq;
 namespace eConcierge.Resort.Applications.Presenters
 {
     [Export(typeof(ECCategoryPresenter))]
-    public class ECCategoryPresenter : ADialogContentPresenter
+    public class ECCategoryPresenter : DialogConciergePresenter
     {
         public event EventHandler SaveSuccessEvent;
-        private ICommand saveCommand;
-      
 
 
         [ImportingConstructor]
@@ -28,8 +26,6 @@ namespace eConcierge.Resort.Applications.Presenters
 
 
         }
-
-        public bool IsEdit { get; set; }
 
         [Required]
         public string Name
@@ -50,22 +46,7 @@ namespace eConcierge.Resort.Applications.Presenters
             set { SetValue(() => Description, value); }
         }
 
-        public ICommand SaveCommand
-        {
-            get { return saveCommand ?? (saveCommand = new DelegateCommand(Save, CanSaveExecuted)); }
-        }
-
-       
-
-        public int Id { get; set; }
-
-        private bool CanSaveExecuted(object ob)
-        {
-            return this.IsValid();
-        }
-
-       
-        private void Save(object obj)
+        protected override void Save(object obj)
         {
             DTOEventCalendarCategory category = new DTOEventCalendarCategory();
             category.IsNew = !IsEdit;
@@ -75,6 +56,23 @@ namespace eConcierge.Resort.Applications.Presenters
             if (EventCalendarCategoryService.Value.Save(category))
             {
                 OnDialogResultEvent(DialogResult.OK);
+            }
+        }
+        public void InitializeViewModel(DTOEventCalendarCategory category)
+        {
+            if (category != null)
+            {
+                Name = category.Name;
+                Description = category.Description;
+                IsEdit = true;
+                Id = category.Id;
+            }
+            else
+            {
+                Name = string.Empty;
+                Description = string.Empty;
+                IsEdit = false;
+                Id = 0;
             }
         }
     }

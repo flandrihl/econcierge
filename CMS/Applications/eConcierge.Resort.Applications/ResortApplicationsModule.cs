@@ -25,6 +25,9 @@ namespace eConcierge.Resort.Applications
         private Lazy<EventCalendarCategoryPresenter> EventCalendarCategoryToolPresenter { get; set; }
 
         [Import]
+        private Lazy<CalendarEventPresenter> CalendarEventToolPresenter { get; set; }
+
+        [Import]
         private Lazy<IFooterPresenter> FooterPresenter { get; set; }
         //[Import]
         //private Lazy<DepositToolPresenter> DepositToolPresenter { get; set; }
@@ -33,16 +36,20 @@ namespace eConcierge.Resort.Applications
         {
             ToolManager.Value.CreateMainMenu(ToolNames.Resort, StringTable.ResortMenuHeader);
             ToolManager.Value.CreateSubMenu(ToolNames.Resort, ToolNames.Video, StringTable.VideoMenuHeader, true);
-           
-            ToolManager.Value.CreateMainMenu(ToolNames.Category, StringTable.CategoryMenuHeader);
-            ToolManager.Value.CreateSubMenu(ToolNames.Category, ToolNames.EventCalendar, StringTable.EventCalendarMenuHeader, true);
-           
 
-            ToolManager.Value.AddActiveView(ToolNames.Video, RegionNames.MiddleRegion, VideoToolPresenter);
-            ToolManager.Value.AddDeactiveView(ToolNames.Video, RegionNames.BottomRegion, FooterPresenter);
+            //ToolManager.Value.AddActiveView(ToolNames.Video, RegionNames.MiddleRegion, VideoToolPresenter);
+            //ToolManager.Value.AddDeactiveView(ToolNames.Video, RegionNames.BottomRegion, FooterPresenter);
 
-            ToolManager.Value.AddActiveView(ToolNames.EventCalendar, RegionNames.MiddleRegion, EventCalendarCategoryToolPresenter);
-            ToolManager.Value.AddDeactiveView(ToolNames.EventCalendar, RegionNames.BottomRegion, FooterPresenter);
+            ToolManager.Value.CreateMainMenu(ToolNames.EventCalendar, StringTable.EventCalendarMenuHeader);
+            ToolManager.Value.CreateSubMenu(ToolNames.EventCalendar, ToolNames.ECCategory, StringTable.CategoryMenuHeader, true);
+            ToolManager.Value.CreateSubMenu(ToolNames.EventCalendar, ToolNames.ECEvent, StringTable.EventMenuHeader);
+
+
+            ToolManager.Value.AddActiveView(ToolNames.ECEvent, RegionNames.MiddleRegion, EventCalendarCategoryToolPresenter);
+            ToolManager.Value.AddDeactiveView(ToolNames.ECEvent, RegionNames.BottomRegion, FooterPresenter);
+
+            ToolManager.Value.AddActiveView(ToolNames.ECEvent, RegionNames.MiddleRegion, CalendarEventToolPresenter);
+            ToolManager.Value.AddDeactiveView(ToolNames.ECEvent, RegionNames.BottomRegion, FooterPresenter);
 
 
             //ToolManager.Value.AddActiveView(ToolNames.Deposit, RegionNames.MiddleRegion, DepositToolPresenter);

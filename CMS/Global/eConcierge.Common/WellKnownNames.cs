@@ -21,5 +21,10 @@ namespace eConcierge.Common
 
             
         }
+        public static class MessageString
+        {
+            public static string DeleteConfirmationMessage = "Are you sure, you want to delete this item.";
+            public static string Confirmation = "Confirmation";
+        }
     }
 }

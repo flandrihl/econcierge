@@ -88,6 +88,15 @@ namespace eConcierge.Resort.Applications {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event.
+        /// </summary>
+        internal static string EventMenuHeader {
+            get {
+                return ResourceManager.GetString("EventMenuHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resort.
         /// </summary>
         internal static string ResortMenuHeader {

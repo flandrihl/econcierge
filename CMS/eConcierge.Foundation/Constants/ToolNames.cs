@@ -14,7 +14,8 @@ namespace eConcierge.Foundation.Constants
         public const string Resort = "Resort";
         public const string Video = "Video";
         public const string Accommodation = "Accommodation";
-        public const string Category = "Category";
+        public const string ECCategory = "ECCategory";
+        public const string ECEvent = "ECEvent";
         public const string EventCalendar = "EventCalendar";
     }
 }
