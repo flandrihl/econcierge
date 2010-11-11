@@ -11,7 +11,8 @@
     <RootNamespace>eConcierge.CMSClient</RootNamespace>
     <AssemblyName>eConcierge.CMSClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -63,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CmsWindow\wndECCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +85,11 @@
     </Compile>
     <Compile Include="CmsUserControl\HeaderView.xaml.cs">
       <DependentUpon>HeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsUserControl\UserControlBase.cs" />
+    <Compile Include="CmsWindow\WindowBase.cs" />
+    <Compile Include="CmsWindow\wndECCategory.xaml.cs">
+      <DependentUpon>wndECCategory.xaml</DependentUpon>
     </Compile>
     <Compile Include="Code\ANotifyPropertyChanged.cs" />
     <Compile Include="Code\MainMenuItem.cs" />
@@ -108,6 +118,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -127,6 +140,9 @@
       <Project>{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}</Project>
       <Name>eConcierge.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\delete.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
