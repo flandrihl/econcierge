@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CmsWindow\wndCalendarEvent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsWindow\wndECCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +99,9 @@
     </Compile>
     <Compile Include="CmsUserControl\UserControlBase.cs" />
     <Compile Include="CmsWindow\WindowBase.cs" />
+    <Compile Include="CmsWindow\wndCalendarEvent.xaml.cs">
+      <DependentUpon>wndCalendarEvent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsWindow\wndECCategory.xaml.cs">
       <DependentUpon>wndECCategory.xaml</DependentUpon>
     </Compile>
