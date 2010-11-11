@@ -6,7 +6,7 @@ using eConcierge.Model;
 
 namespace eConcierge.Business
 {
-    [Export(typeof(EventCalendarCategoryService))]
+   
 	public class EventCalendarCategoryService
 	{
 		
