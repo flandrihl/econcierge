@@ -12,8 +12,9 @@ namespace eConcierge.CMSClient.CmsWindow
         public WindowBase()
         {
             ShowInTaskbar = false;
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-            WindowStyle = System.Windows.WindowStyle.ToolWindow;
+            WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            WindowStyle = WindowStyle.ToolWindow;
+            SizeToContent = SizeToContent.WidthAndHeight;
           
         }
 
