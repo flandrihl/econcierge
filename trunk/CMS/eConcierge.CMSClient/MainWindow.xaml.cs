@@ -42,10 +42,18 @@ namespace eConcierge.CMSClient
         {
             if (name.Equals(WellKnownNames.ToolbarString.ECCategory))
             {
-                EventCalendarCategoryDetail detail = new EventCalendarCategoryDetail();
-                middleRegion.Content = detail;
+                SetMiddleContent<EventCalendarCategoryDetail>();
+            }
+            else if (name.Equals(WellKnownNames.ToolbarString.ECEvent))
+            {
+                SetMiddleContent<CalendarEventDetail>();
             }
             
+        }
+        private void SetMiddleContent<T>() where T:class, new() 
+        {
+            T detail = new T();
+            middleRegion.Content = detail;
         }
     }
 }

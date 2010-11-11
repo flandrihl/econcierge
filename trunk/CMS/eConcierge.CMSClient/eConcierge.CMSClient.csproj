@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CmsUserControl\CalendarEventDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\EventCalendarCategoryDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +83,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CmsUserControl\CalendarEventDetail.xaml.cs">
+      <DependentUpon>CalendarEventDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsUserControl\EventCalendarCategoryDetail.xaml.cs">
       <DependentUpon>EventCalendarCategoryDetail.xaml</DependentUpon>

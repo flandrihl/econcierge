@@ -1,0 +1,25 @@
+﻿<CmsUserControl:UserControlBase x:Class="eConcierge.CMSClient.CmsUserControl.CalendarEventDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel HorizontalAlignment="Left">
+        <Button Content="Add" Width="60" HorizontalAlignment="Left" Margin="0,0,0,5" Command="{Binding AddCommand}" />
+        <DataGrid ItemsSource="{Binding Events}"  x:Name="grd" Width="490" AutoGenerateColumns="False" 
+                  DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="24">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Tag="{Binding Id}" MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="/Image/delete.jpg"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Title}" Header="Title" Width="150"  />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StartDate}" Header="Start Date" Width="150"  />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding EndDate}" Header="End Date" Width="150"  />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</CmsUserControl:UserControlBase>
