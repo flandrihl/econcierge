@@ -54,6 +54,9 @@ namespace mConciergeClient
             FrameworkManager.Initialize();
             InitializeCanvas();
             LoadHotelExplorer();
+            LoadAtm();
+            LoadMall();
+            LoadCafe();
             LoadLandMark();
             LoadNavigation();
             LoadCalendar();
