@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CmsUserControl\PhotoUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsWindow\wndCalendarEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +101,9 @@
     <Compile Include="CmsUserControl\HeaderView.xaml.cs">
       <DependentUpon>HeaderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmsUserControl\PhotoUpload.xaml.cs">
+      <DependentUpon>PhotoUpload.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\UserControlBase.cs" />
     <Compile Include="CmsWindow\WindowBase.cs" />
     <Compile Include="CmsWindow\wndCalendarEvent.xaml.cs">
@@ -109,6 +116,7 @@
     <Compile Include="Code\MainMenuItem.cs" />
     <Compile Include="Code\SubMenuItem.cs" />
     <Compile Include="Code\ToolManager.cs" />
+    <Compile Include="Common\ImageHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
