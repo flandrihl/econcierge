@@ -88,7 +88,7 @@ namespace CustomControls.Mall
         private void PopulatePointOfInterests()
         {
             _mallItems = new List<MallItem>();
-            var atms = LandMarkDAL.GetInstance().GetLandMarks();
+            var atms = MallDAL.GetInstance().GetMalls();
             int col = -1, row = 0;
 
             foreach (var atm in atms)

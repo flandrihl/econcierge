@@ -70,9 +70,9 @@ namespace CustomControls.Atm
 
         public void Close()
         {
-            foreach (var landMarkItem in _atmItems)
+            foreach (var atmItem in _atmItems)
             {
-                FrameworkManager.UnRegisterElement(landMarkItem);
+                FrameworkManager.UnRegisterElement(atmItem);
             }
             FrameworkManager.UnRegisterElement(closeButton);
             FrameworkManager.UnRegisterElement(Slider);
@@ -88,7 +88,7 @@ namespace CustomControls.Atm
         private void PopulatePointOfInterests()
         {
             _atmItems = new List<AtmItem>();
-            var atms = LandMarkDAL.GetInstance().GetLandMarks();
+            var atms = AtmDAL.GetInstance().GetAtms();
             int col = -1, row = 0;
 
             foreach (var atm in atms)

@@ -21,7 +21,7 @@ namespace CustomControls.Mall
         public string Address { get; set; }
         public string Telephone { get; set; }
         
-        public MallDetail(DTOLandMark mall)
+        public MallDetail(DTOMall mall)
         {
             InitializeComponent();
             Picture = WpfUtil.BytesToImageSource(mall.Picture);
