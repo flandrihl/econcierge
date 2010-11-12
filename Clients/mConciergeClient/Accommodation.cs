@@ -12,7 +12,7 @@ using Helpers.Extensions;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     public partial class MainWindow
     {

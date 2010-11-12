@@ -10,7 +10,7 @@ using CustomControls.PictureControl;
 using DataAccessLayer;
 using Infrasturcture.TouchLibrary;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     public partial class MainWindow
     {

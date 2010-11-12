@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows;
+using CustomControls.Atm;
 using CustomControls.LandMark;
 using Infrasturcture.TouchLibrary;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     public partial class MainWindow
     {
@@ -12,7 +13,7 @@ namespace mConciergeClient
         {
             if (!_skipAtmClose)
             {
-                LandMarkControl.GetInstance().Close();
+                AtmControl.GetInstance().Close();
                 _skipAtmClose = false;
             }
         }
@@ -30,7 +31,7 @@ namespace mConciergeClient
 
         private void ShowAtm()
         {
-            var control = LandMarkControl.GetInstance();
+            var control = AtmControl.GetInstance();
             var top = canvas.ActualHeight / 2 - (control.Height / 2);
             var left = canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);

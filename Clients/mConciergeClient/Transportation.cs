@@ -4,7 +4,7 @@ using System.Windows;
 using CustomControls.Transportation;
 using Infrasturcture.TouchLibrary;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     public partial class MainWindow
     {
