@@ -35,7 +35,7 @@
                 		</RadialGradientBrush>
                 	</DockPanel.Background>
                     <CustomControls_InheritedFrameworkControls:IPhoneScrollViewer x:Name="contentScroller" Width="{Binding ActualWidth, ElementName=contentDock, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=contentDock, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CanContentScroll="True">
-                        <StackPanel x:Name="stkBody" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+                        <StackPanel x:Name="stkBody" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </CustomControls_InheritedFrameworkControls:IPhoneScrollViewer>
                 </DockPanel>
             </DockPanel>

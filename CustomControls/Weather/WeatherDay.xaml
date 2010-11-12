@@ -10,8 +10,8 @@
         </ControlTemplate>
     </UserControl.Resources>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock x:Name="txbDay" Text="Today" Margin="0,0,0,5"  Style="{DynamicResource WeatherItemDayTextStyle}"/>
-        <Border BorderBrush="Black" CornerRadius="10" BorderThickness="1">
+        <TextBlock x:Name="txbDay" Text="Today" Margin="0,0,0,5"  Style="{DynamicResource WeatherItemDayTextStyle}" Foreground="White"/>
+        <Border BorderBrush="White" CornerRadius="10" BorderThickness="1">
             <Border.Effect>
                 <BlurEffect Radius="6"/>
             </Border.Effect>
@@ -21,6 +21,6 @@
                 </Button.Content>
             </InheritedFrameworkControls:TouchButton>
         </Border>        
-        <TextBlock x:Name="txbTemparture" HorizontalAlignment="Center" Margin="0,5,0,0" Text="84F" Style="{DynamicResource WeatherItemTemperatureTextStyle}" />
+        <TextBlock x:Name="txbTemparture" HorizontalAlignment="Center" Margin="0,5,0,0" Text="84F" Style="{DynamicResource WeatherItemTemperatureTextStyle}" Foreground="White" />
     </StackPanel>
 </UserControl>

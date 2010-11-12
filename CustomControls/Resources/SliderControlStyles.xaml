@@ -134,16 +134,23 @@
         		<Setter.Value>
         			<ControlTemplate TargetType="{x:Type Thumb}">
         				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="-16.5,-11,-17.5,-12">
-        					<Ellipse x:Name="BackgroundLayer" Stroke="#FF56C1D0" StrokeThickness="2" Margin="0" Width="Auto" Height="Auto">
+        					<Ellipse x:Name="BackgroundLayer" Stroke="#FF56C1D0" StrokeThickness="1" Margin="0" Width="Auto" Height="Auto">
         						<Ellipse.Fill>
         							<RadialGradientBrush>
-        								<GradientStop Color="#FF4FDFEB" Offset="0.784"/>
-        								<GradientStop Color="#FF90DDF1" Offset="0.47"/>
-        								<GradientStop Color="White"/>
+        								<GradientStop Color="#FF0091B6" Offset="0.694"/>
+        								<GradientStop Color="White" Offset="0"/>
+        								<GradientStop Color="#FF23ABCE" Offset="0.504"/>
         							</RadialGradientBrush>
         						</Ellipse.Fill>
         					</Ellipse>
-        					<Path x:Name="path" Fill="#3FFFFFFF" Stretch="Fill" Stroke="{x:Null}" StrokeThickness="2" Margin="9.084,8.2,8.25,0" Data="M57,18 C56.499608,35.75004 44.713627,33.999882 29.249654,33.999882 13.785681,33.999882 0.99957064,35.751588 1,17 1.000395,-0.2504307 13.285808,0.24995434 28.749781,0.24995434 44.213754,0.24995434 57.493197,0.50516486 57,18 z" VerticalAlignment="Top" Height="16.166" Width="Auto"/>
+        					<Ellipse Height="Auto" Margin="6,5.375,5.792,17.875" Stroke="{x:Null}" StrokeThickness="2" VerticalAlignment="Stretch">
+        						<Ellipse.Fill>
+        							<LinearGradientBrush EndPoint="0.508,0.57" StartPoint="0.515,0.13">
+        								<GradientStop Color="#BFFFFFFF" Offset="0"/>
+        								<GradientStop Color="#0CFFFFFF" Offset="1"/>
+        							</LinearGradientBrush>
+        						</Ellipse.Fill>
+        					</Ellipse>
     					
         				</Grid>
         				<ControlTemplate.Triggers>

@@ -28,6 +28,6 @@
     </UserControl.Resources>
     <StackPanel Background="{x:Null}" >
 		<Image Width="220" Height="150" Source="{Binding Picture}" Stretch="Fill"/>
-		<TextBlock Text="{Binding Title}" x:Name="txtTitle" FontSize="13.333" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" Foreground="#FF5E5E5E" Margin="0,8,0,0"  />
+		<TextBlock Text="{Binding Title}" x:Name="txtTitle" FontSize="13.333" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" Foreground="White" Margin="0,8,0,0"  />
 	</StackPanel>
 </UserControl>

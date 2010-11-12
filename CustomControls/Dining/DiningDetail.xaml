@@ -8,7 +8,7 @@
             xmlns:CustomControls_InheritedFrameworkControls="clr-namespace:CustomControls.InheritedFrameworkControls" 
              xmlns:TouchCombo="clr-namespace:CustomControls.TouchCombo" 
              x:Class="CustomControls.Dining.DiningDetail"
-             mc:Ignorable="d" Width="762" Height="548">
+             mc:Ignorable="d" Width="762" Height="501">
 	<Abstract:AnimatableControl.Resources>
 		<ControlTemplate x:Key="ButtonBlankControlTemplate" TargetType="{x:Type Button}">
 			<ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
@@ -60,9 +60,9 @@
     						<DockPanel x:Name="grdCategory" d:LayoutOverrides="HorizontalAlignment" >
     							<Image x:Name="imgEvent"  Stretch="Fill"  Height="300" Width="280" d:LayoutOverrides="HorizontalAlignment" Margin="20,0,0,0"  />
     							<DockPanel x:Name="dockPanel" Margin="15,30,20,0">
-    								<TextBlock Text="Las Vegas Wranglers" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}"  DockPanel.Dock="Top"/>
-    								<TextBlock  x:Name="txbFooter" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15" TextWrapping="Wrap" Width="401" VerticalAlignment="Bottom" DockPanel.Dock="Bottom"/>
-    								<TextBlock  x:Name="txbDescription" Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,16" DockPanel.Dock="Bottom" Width="401" TextWrapping="Wrap" TextAlignment="Justify" HorizontalAlignment="Left"/>
+    								<TextBlock Text="Las Vegas Wranglers" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}"  DockPanel.Dock="Top" Foreground="White"/>
+    								<TextBlock  x:Name="txbFooter" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15" TextWrapping="Wrap" Width="401" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Foreground="White"/>
+    								<TextBlock  x:Name="txbDescription" Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,16" DockPanel.Dock="Bottom" Width="401" TextWrapping="Wrap" TextAlignment="Justify" HorizontalAlignment="Left" Foreground="White"/>
     							</DockPanel>
     						</DockPanel>
     				</DockPanel>
