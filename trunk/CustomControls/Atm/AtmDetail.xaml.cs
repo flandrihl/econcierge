@@ -21,14 +21,14 @@ namespace CustomControls.Atm
         public string Address { get; set; }
         public string Telephone { get; set; }
         
-        public AtmDetail(DTOLandMark landMark)
+        public AtmDetail(DTOAtm atm)
         {
             InitializeComponent();
-            Picture = WpfUtil.BytesToImageSource(landMark.Picture);
-            Title = landMark.Title;
-            Description = landMark.Description;
-            Address = landMark.Address;
-            Telephone = landMark.Telephone;
+            Picture = WpfUtil.BytesToImageSource(atm.Picture);
+            Title = atm.Title;
+            Description = atm.Description;
+            Address = atm.Address;
+            Telephone = atm.Telephone;
             closeButton.Click += CloseButtonClick;
             DataContext = this;
         }

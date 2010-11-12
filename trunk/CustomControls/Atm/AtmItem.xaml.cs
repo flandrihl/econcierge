@@ -12,12 +12,12 @@ namespace CustomControls.Atm
     /// </summary>
     public partial class AtmItem : UserControl, IMTouchControl
     {
-        public DTOLandMark Atm { get; set; }
+        public DTOAtm Atm { get; set; }
         public IMTContainer Container { get; set; }
         public BitmapImage Picture { get; set; }
         public string Title { get; set; }
         public event EventHandler Click;
-        public AtmItem(DTOLandMark atm)
+        public AtmItem(DTOAtm atm)
         {
             Atm = atm;
             InitializeComponent();

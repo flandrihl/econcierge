@@ -12,12 +12,12 @@ namespace CustomControls.Mall
     /// </summary>
     public partial class MallItem : UserControl, IMTouchControl
     {
-        public DTOLandMark Mall { get; set; }
+        public DTOMall Mall { get; set; }
         public IMTContainer Container { get; set; }
         public BitmapImage Picture { get; set; }
         public string Title { get; set; }
         public event EventHandler Click;
-        public MallItem(DTOLandMark mall)
+        public MallItem(DTOMall mall)
         {
             Mall = mall;
             InitializeComponent();

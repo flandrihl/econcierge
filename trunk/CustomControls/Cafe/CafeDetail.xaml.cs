@@ -21,14 +21,14 @@ namespace CustomControls.Cafe
         public string Address { get; set; }
         public string Telephone { get; set; }
         
-        public CafeDetail(DTOLandMark landMark)
+        public CafeDetail(DTOCafe cafe)
         {
             InitializeComponent();
-            Picture = WpfUtil.BytesToImageSource(landMark.Picture);
-            Title = landMark.Title;
-            Description = landMark.Description;
-            Address = landMark.Address;
-            Telephone = landMark.Telephone;
+            Picture = WpfUtil.BytesToImageSource(cafe.Picture);
+            Title = cafe.Title;
+            Description = cafe.Description;
+            Address = cafe.Address;
+            Telephone = cafe.Telephone;
             closeButton.Click += CloseButtonClick;
             DataContext = this;
         }

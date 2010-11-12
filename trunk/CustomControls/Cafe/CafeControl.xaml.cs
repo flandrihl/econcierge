@@ -88,7 +88,7 @@ namespace CustomControls.Cafe
         private void PopulatePointOfInterests()
         {
             _atmItems = new List<CafeItem>();
-            var atms = LandMarkDAL.GetInstance().GetLandMarks();
+            var atms = CafeDAL.GetInstance().GetCafes();
             int col = -1, row = 0;
 
             foreach (var atm in atms)
@@ -117,7 +117,7 @@ namespace CustomControls.Cafe
         void AtmButtonClick(object sender, EventArgs eventArgs)
         {
             var atmItem = (CafeItem)sender;
-            var control = new CafeDetail(atmItem.Atm);
+            var control = new CafeDetail(atmItem.Cafe);
             _atmDetails.Add(control);
             var top = FrameworkManager.Canvas.ActualHeight / 2 - (control.Height / 2);
             var left = FrameworkManager.Canvas.ActualWidth / 2 - (control.Width / 2);

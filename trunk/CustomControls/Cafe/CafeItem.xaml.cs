@@ -12,18 +12,18 @@ namespace CustomControls.Cafe
     /// </summary>
     public partial class CafeItem : UserControl, IMTouchControl
     {
-        public DTOLandMark Atm { get; set; }
+        public DTOCafe Cafe { get; set; }
         public IMTContainer Container { get; set; }
         public BitmapImage Picture { get; set; }
         public string Title { get; set; }
         public event EventHandler Click;
-        public CafeItem(DTOLandMark atm)
+        public CafeItem(DTOCafe cafe)
         {
-            Atm = atm;
+            Cafe = cafe;
             InitializeComponent();
             DataContext = this;
-            Picture = WpfUtil.BytesToImageSource(Atm.Picture);
-            Title = Atm.Title;
+            Picture = WpfUtil.BytesToImageSource(Cafe.Picture);
+            Title = Cafe.Title;
         }
 
         public void Tapped()
