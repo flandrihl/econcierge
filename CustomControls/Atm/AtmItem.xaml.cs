@@ -12,18 +12,18 @@ namespace CustomControls.Atm
     /// </summary>
     public partial class AtmItem : UserControl, IMTouchControl
     {
-        public DTOLandMark LandMark { get; set; }
+        public DTOLandMark Atm { get; set; }
         public IMTContainer Container { get; set; }
         public BitmapImage Picture { get; set; }
         public string Title { get; set; }
         public event EventHandler Click;
-        public AtmItem(DTOLandMark landMark)
+        public AtmItem(DTOLandMark atm)
         {
-            LandMark = landMark;
+            Atm = atm;
             InitializeComponent();
             DataContext = this;
-            Picture = WpfUtil.BytesToImageSource(landMark.Picture);
-            Title = landMark.Title;
+            Picture = WpfUtil.BytesToImageSource(Atm.Picture);
+            Title = Atm.Title;
         }
 
         public void Tapped()

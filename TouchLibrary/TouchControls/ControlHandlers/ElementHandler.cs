@@ -32,6 +32,7 @@ using System.Windows.Media;
 using System.Windows.Controls;
 using _3dTile;
 using CustomControls;
+using CustomControls.Atm;
 using CustomControls.BasicVideoControl;
 using CustomControls.CalendarControl;
 using CustomControls.CircularButton;
@@ -69,7 +70,11 @@ namespace TouchControls.ControlHandlers
             ElementHandler handler = null;
             if (source is TextBox)
             {
-                handler = new TextBoxHandler() as ElementHandler;
+                handler = new TextBoxHandler();
+            }
+            else if (source is AtmItem)
+            {
+                handler = new AtmItemHandler();
             }
             else if (source is LandMarkItem)
             {
@@ -97,11 +102,11 @@ namespace TouchControls.ControlHandlers
             }
             else if (source is Button)
             {
-                handler = new ButtonHandler() as ElementHandler;
+                handler = new ButtonHandler();
             }
             else if (source is CheckBox)
             {
-                handler = new CheckBoxHandler() as ElementHandler;
+                handler = new CheckBoxHandler();
             }
             else if (source is TrackBar)
             {
@@ -109,35 +114,35 @@ namespace TouchControls.ControlHandlers
             }
             else if (source is Slider)
             {
-                handler = new SliderHandler() as ElementHandler;
+                handler = new SliderHandler();
             }
             else if (source is ListBox)
             {
-                handler = new ListBoxHandler() as ElementHandler;
+                handler = new ListBoxHandler();
             }
             else if (source is ComboBox)
             {
-                handler = new ComboBoxHandler() as ElementHandler;
+                handler = new ComboBoxHandler();
             }
             else if (source is RssList)
             {
-                handler = new RssListHandler() as ElementHandler;
+                handler = new RssListHandler();
             }
             else if (source is VideoControl)
             {
-                handler = new VideoControlHandler() as ElementHandler;
+                handler = new VideoControlHandler();
             }
             else if (source is FlipTile3D)
             {
-                handler = new FlipTile3DHandler() as ElementHandler;
+                handler = new FlipTile3DHandler();
             }
             else if (source is AppCategories)
             {
-                handler = new AppCategoriesHandler() as ElementHandler;
+                handler = new AppCategoriesHandler();
             }
             else if (source is AppData)
             {
-                handler = new AppDataHandler() as ElementHandler;
+                handler = new AppDataHandler();
             }
             else if(source is AccommPhoto)
             {
@@ -157,7 +162,7 @@ namespace TouchControls.ControlHandlers
             }
             else if (source is Book)
             {
-                handler = new BookHandler() as ElementHandler;
+                handler = new BookHandler();
             }
             else if (source is ChromBrowser)
             {
@@ -235,7 +240,7 @@ namespace TouchControls.ControlHandlers
             return false;
         }
 
-        IBookPage findSelectedPage(IBook c, System.Windows.Point relative)
+        IBookPage FindSelectedPage(IBook c, System.Windows.Point relative)
         {
             var findFrom = c.InputHitTest(relative);
             return (findFrom as Visual).FindParent<IBookPage>() as IBookPage;

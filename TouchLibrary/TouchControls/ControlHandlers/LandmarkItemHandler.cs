@@ -26,9 +26,6 @@ a commercial licence, please contact Mindstorm via www.mindstorm.com.
 */
 
 using System.Drawing;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using CustomControls.LandMark;
 
 namespace TouchControls.ControlHandlers
