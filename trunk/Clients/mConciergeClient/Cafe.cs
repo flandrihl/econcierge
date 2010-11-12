@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using CustomControls.LandMark;
+using CustomControls.Cafe;
 using Infrasturcture.TouchLibrary;
 
 namespace eConciergeClient
@@ -12,7 +12,7 @@ namespace eConciergeClient
         {
             if (!_skipCafeClose)
             {
-                LandMarkControl.GetInstance().Close();
+                CafeControl.GetInstance().Close();
                 _skipWeatherClose = false;
             }
         }
@@ -30,7 +30,7 @@ namespace eConciergeClient
 
         private void ShowCafe()
         {
-            var control = LandMarkControl.GetInstance();
+            var control = CafeControl.GetInstance();
             var top = canvas.ActualHeight / 2 - (control.Height / 2);
             var left = canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);

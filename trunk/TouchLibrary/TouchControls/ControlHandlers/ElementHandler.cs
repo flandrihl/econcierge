@@ -34,6 +34,7 @@ using _3dTile;
 using CustomControls;
 using CustomControls.Atm;
 using CustomControls.BasicVideoControl;
+using CustomControls.Cafe;
 using CustomControls.CalendarControl;
 using CustomControls.CircularButton;
 using CustomControls.HotelaccommodationControl;
@@ -76,6 +77,10 @@ namespace TouchControls.ControlHandlers
             else if (source is MallItem)
             {
                 handler = new MallItemHandler();
+            }
+            else if (source is CafeItem)
+            {
+                handler = new CafeItemHandler();
             }
             else if (source is AtmItem)
             {
