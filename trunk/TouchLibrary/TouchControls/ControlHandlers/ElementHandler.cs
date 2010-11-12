@@ -40,6 +40,7 @@ using CustomControls.HotelaccommodationControl;
 using CustomControls.HotelVideoControl;
 using CustomControls.InheritedFrameworkControls;
 using CustomControls.LandMark;
+using CustomControls.Mall;
 using CustomControls.MapControl;
 using CustomControls.MapLocation;
 using CustomControls.PictureControl;
@@ -71,6 +72,10 @@ namespace TouchControls.ControlHandlers
             if (source is TextBox)
             {
                 handler = new TextBoxHandler();
+            }
+            else if (source is MallItem)
+            {
+                handler = new MallItemHandler();
             }
             else if (source is AtmItem)
             {

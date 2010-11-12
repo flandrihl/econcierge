@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using CustomControls.Atm;
-using CustomControls.LandMark;
 using Infrasturcture.TouchLibrary;
 
 namespace eConciergeClient
