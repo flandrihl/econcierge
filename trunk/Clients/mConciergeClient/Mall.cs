@@ -3,7 +3,7 @@ using System.Windows;
 using Infrasturcture.TouchLibrary;
 using CustomControls.LandMark;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     public partial class MainWindow
     {

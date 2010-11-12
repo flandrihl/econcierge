@@ -7,11 +7,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CustomControls.PictureControl;
 using Infrasturcture.TouchLibrary;
+using mConciergeClient;
 using TouchControls;
 using TouchFramework.Events;
 using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

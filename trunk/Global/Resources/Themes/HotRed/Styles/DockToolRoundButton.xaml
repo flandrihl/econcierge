@@ -22,7 +22,7 @@
                         <!-- Reflection Layer -->
                         <!-- ContentPresenter -->
                         <ContentControl x:Name="ContentHolder" Margin="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image x:Name="Image" Width="Auto" Height="Auto" Source="../Images/mConciergeR.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" Margin="0">
+                            <Image x:Name="Image" Width="Auto" Height="Auto" Source="../Images/icon01.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" Margin="0">
                                 <Image.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -41,7 +41,7 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Tag" Value="mConcierge" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Image" Property="Source" Value="../images\mConciergeR.png" />
+                            <Setter TargetName="Image" Property="Source" Value="../images\icon01.png" />
                             <Setter Property="Fill" TargetName="BackgroundLayer">
                                 <Setter.Value>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -70,7 +70,7 @@
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="Tag" Value="mConcierge" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Image" Property="Source" Value="../images\mConciergeR.png" />
+                            <Setter TargetName="Image" Property="Source" Value="../images\icon01.png" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

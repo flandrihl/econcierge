@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Windows;
 using CustomControls.FiveButtonDiskControl;
-using CustomControls.MapLocation;
+using Infrasturcture.TouchLibrary;
 using TouchControls;
 using Application = System.Windows.Forms.Application;
-using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
 
-namespace mConciergeClient
+namespace eConciergeClient
 {
     public partial class MainWindow
     {
