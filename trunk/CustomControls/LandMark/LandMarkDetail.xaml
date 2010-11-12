@@ -28,10 +28,10 @@
 								</Image.Effect>-->
 							</Image>
 							<DockPanel x:Name="dockPanel" Margin="15,0,20,0">
-								<TextBlock Text="{Binding Title}" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}" DockPanel.Dock="Top" Margin="0,20,0,0"/>
-								<TextBlock Text="{Binding Telephone}"  x:Name="txbTelephone" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15" VerticalAlignment="Bottom" DockPanel.Dock="Bottom"/>
-								<TextBlock Text="{Binding Address}"  x:Name="txbAddress" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Bottom"/>
-								<TextBlock Text="{Binding Description}" x:Name="txtDescription"  Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,16" DockPanel.Dock="Bottom" Width="{Binding ActualWidth, ElementName=dockPanel, Mode=OneWay}" TextWrapping="Wrap" TextAlignment="Justify"/>
+								<TextBlock Text="{Binding Title}" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}" DockPanel.Dock="Top" Margin="0,20,0,0" Foreground="White"/>
+								<TextBlock Text="{Binding Telephone}"  x:Name="txbTelephone" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Foreground="White"/>
+								<TextBlock Text="{Binding Address}"  x:Name="txbAddress" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Foreground="White"/>
+								<TextBlock Text="{Binding Description}" x:Name="txtDescription"  Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,16" DockPanel.Dock="Bottom" Width="{Binding ActualWidth, ElementName=dockPanel, Mode=OneWay}" TextWrapping="Wrap" TextAlignment="Justify" Foreground="White"/>
 							</DockPanel>
 						</DockPanel>
 					</CustomControls_InheritedFrameworkControls:IPhoneScrollViewer>
