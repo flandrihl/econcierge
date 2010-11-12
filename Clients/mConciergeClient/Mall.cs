@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using CustomControls.Mall;
 using Infrasturcture.TouchLibrary;
 using CustomControls.LandMark;
 
@@ -12,7 +13,7 @@ namespace eConciergeClient
         {
             if (!_skipMallClose)
             {
-                LandMarkControl.GetInstance().Close();
+                MallControl.GetInstance().Close();
                 _skipWeatherClose = false;
             }
         }
@@ -30,7 +31,7 @@ namespace eConciergeClient
 
         private void ShowMall()
         {
-            var control = LandMarkControl.GetInstance();
+            var control = MallControl.GetInstance();
             var top = canvas.ActualHeight / 2 - (control.Height / 2);
             var left = canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
