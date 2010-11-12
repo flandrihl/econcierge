@@ -13,7 +13,7 @@ namespace mConciergeClient
             if (!_skipLandmarkClose)
             {
                 LandMarkControl.GetInstance().Close();
-                _skipWeatherClose = false;
+                _skipLandmarkClose = false;
             }
         }
         
@@ -34,10 +34,10 @@ namespace mConciergeClient
             var top = canvas.ActualHeight / 2 - (control.Height / 2);
             var left = canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
-            control.Closed += ControlClosed;
+            control.Closed += LandMarkControlClosed;
         }
 
-        void ControlClosed(object sender, EventArgs e)
+        void LandMarkControlClosed(object sender, EventArgs e)
         {
             _skipLandmarkClose = true;
             LandMarkTool.IsChecked = false;
