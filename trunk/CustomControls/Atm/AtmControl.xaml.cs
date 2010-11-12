@@ -117,7 +117,7 @@ namespace CustomControls.Atm
         void AtmButtonClick(object sender, EventArgs eventArgs)
         {
             var atmItem = (AtmItem)sender;
-            var control = new AtmDetail(atmItem.LandMark);
+            var control = new AtmDetail(atmItem.Atm);
             _atmDetails.Add(control);
             var top = FrameworkManager.Canvas.ActualHeight / 2 - (control.Height / 2);
             var left = FrameworkManager.Canvas.ActualWidth / 2 - (control.Width / 2);
