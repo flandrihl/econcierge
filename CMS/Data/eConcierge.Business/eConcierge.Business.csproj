@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarEventPresenter.cs" />
+    <Compile Include="DiningCategoryService.cs" />
     <Compile Include="EventCalendarCategoryPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

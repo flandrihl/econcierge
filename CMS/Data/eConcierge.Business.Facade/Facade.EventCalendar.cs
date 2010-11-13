@@ -6,7 +6,7 @@ using eConcierge.Common;
 using eConcierge.Model;
 using eConcierge.ServerDataHandler;
 
-namespace eConcierge.Business.Facade
+namespace eConcierge.Business
 {
     public partial class Facade
     {

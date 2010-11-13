@@ -35,6 +35,7 @@ namespace eConcierge.Common
             public static string Dining = "Dining";
             public static string DiningCategory = "DiningCategory";
             public static string DiningSubCategory = "DiningSubCategory";
+            public static string DiningDetail = "DiningDetail";
         }
     }
 }
