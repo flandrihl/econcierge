@@ -16,7 +16,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Title}" Header="Title" Width="150"  />
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Phone}" Header="Phone" Width="150"  />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Telephone}" Header="Phone" Width="150"  />
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Address}" Header="Address" Width="150"  />
             </DataGrid.Columns>
         </DataGrid>

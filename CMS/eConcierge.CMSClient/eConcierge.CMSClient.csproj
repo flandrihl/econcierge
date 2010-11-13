@@ -88,6 +88,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsWindow\wndDining.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsWindow\wndDiningCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +141,9 @@
     <Compile Include="CmsWindow\WindowBase.cs" />
     <Compile Include="CmsWindow\wndCalendarEvent.xaml.cs">
       <DependentUpon>wndCalendarEvent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsWindow\wndDining.xaml.cs">
+      <DependentUpon>wndDining.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsWindow\wndDiningCategory.xaml.cs">
       <DependentUpon>wndDiningCategory.xaml</DependentUpon>

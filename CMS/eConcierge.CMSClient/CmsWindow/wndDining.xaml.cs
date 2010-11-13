@@ -18,27 +18,27 @@ using eConcierge.Model;
 namespace eConcierge.CMSClient.CmsWindow
 {
     /// <summary>
-    /// Interaction logic for wndCalendarEvent.xaml
+    /// Interaction logic for wndDining.xaml
     /// </summary>
-    public partial class wndCalendarEvent : WindowBase
+    public partial class wndDining : WindowBase
     {
-        private CalendarEventService _service;
-        private DTOCalendarEvent _evnt;
+        private DiningService _service;
+        private DTODining _dining;
 
-        public wndCalendarEvent(CalendarEventService service, DTOCalendarEvent evnt, Action updateData)
+        public wndDining(DiningService service, DTODining dining, Action updateData)
         {
             _service = service;
             UpdateData = updateData;
             InitializeComponent();
             PopulateCategory();
-            PopulateControl(evnt);
+            PopulateControl(dining);
         }
 
         private void PopulateCategory()
         {
-            cmbCategory.SelectedValuePath = "Id";
-            cmbCategory.DisplayMemberPath = "Name";
-            cmbCategory.ItemsSource = new EventCalendarCategoryService().GetEventCalendarCategorys();
+            cmbSubCategory.SelectedValuePath = "Id";
+            cmbSubCategory.DisplayMemberPath = "Title";
+            cmbSubCategory.ItemsSource = new DiningSubCategoryService().GetDiningSubCategorys();
         }
 
 
@@ -46,9 +46,9 @@ namespace eConcierge.CMSClient.CmsWindow
         {
             if (!IsValid()) return;
             PopulateObject();
-            if (_service.Save(_evnt))
+            if (_service.Save(_dining))
             {
-                ShowCRUDSuccessMessage("Event saved successfully.");
+                ShowCRUDSuccessMessage("Dining saved successfully.");
             }
             else
             {
@@ -58,61 +58,60 @@ namespace eConcierge.CMSClient.CmsWindow
 
         private void PopulateObject()
         {
-            _evnt.Title = txtTitle.Text;
-            _evnt.Description = txtDescription.Text;
-            if (cmbCategory.SelectedIndex >= 0)
+            _dining.Title = txtTitle.Text;
+            _dining.Description = txtDescription.Text;
+            if (cmbSubCategory.SelectedIndex >= 0)
             {
-                _evnt.CategoryId = Convert.ToInt32(cmbCategory.SelectedValue);
+                _dining.SubCategoryId = Convert.ToInt32(cmbSubCategory.SelectedValue);
             }
-            _evnt.StartDate = dtpStartDate.SelectedDate;
-            _evnt.EndDate = dtpEndDate.SelectedDate;
-            _evnt.Location = txtLocation.Text;
+            _dining.Address = txtLocation.Text;
+            _dining.Telephone = txtPhone.Text;
             if(!string.IsNullOrWhiteSpace(photoUpload.FilePath))
             {
-                _evnt.Photo = ImageHelper.GetImage(photoUpload.FilePath);
+                _dining.Photo = ImageHelper.GetImage(photoUpload.FilePath);
             }
             if (!string.IsNullOrWhiteSpace(txtLatitude.Text))
             {
-                _evnt.Latitude = Convert.ToDouble(txtLatitude.Text);
+                _dining.Latitude = Convert.ToDouble(txtLatitude.Text);
             }
             if (!string.IsNullOrWhiteSpace(txtLongitude.Text))
             {
-                _evnt.Longitude = Convert.ToDouble(txtLongitude.Text);
+                _dining.Longitude = Convert.ToDouble(txtLongitude.Text);
             }
 
         }
 
-        private void PopulateControl(DTOCalendarEvent evnt)
+        private void PopulateControl(DTODining dining)
         {
-            _evnt = evnt;
-            if (_evnt != null)
+            _dining = dining;
+            if (_dining != null)
             {
-                txtTitle.Text = _evnt.Title;
-                txtDescription.Text = _evnt.Description;
-                if (_evnt.CategoryId > 0)
+                txtTitle.Text = _dining.Title;
+                txtDescription.Text = _dining.Description;
+                if (_dining.SubCategoryId > 0)
                 {
-                    cmbCategory.SelectedValue = _evnt.CategoryId;
+                    cmbSubCategory.SelectedValue = _dining.SubCategoryId;
                 }
-                dtpStartDate.SelectedDate = _evnt.StartDate;
-                dtpEndDate.SelectedDate = _evnt.EndDate;
-                txtLocation.Text = _evnt.Location;
-                txtLatitude.Text = _evnt.Latitude.ToString();
-                txtLongitude.Text = _evnt.Longitude.ToString();
-                if(_evnt.Photo != null)
+               
+                txtLocation.Text = _dining.Address;
+                txtPhone.Text = _dining.Telephone;
+                txtLatitude.Text = _dining.Latitude.ToString();
+                txtLongitude.Text = _dining.Longitude.ToString();
+                if(_dining.Photo != null)
                 {
                     photoUpload.IsSeeVisible = System.Windows.Visibility.Visible;
-                    photoUpload.ImageData = _evnt.Photo;
+                    photoUpload.ImageData = _dining.Photo;
                 }
                 else
                 {
                     photoUpload.IsSeeVisible = System.Windows.Visibility.Collapsed;
                 }
-                _evnt.IsNew = false;
+                _dining.IsNew = false;
             }
             else
             {
-                _evnt = new DTOCalendarEvent();
-                _evnt.IsNew = true;
+                _dining = new DTODining();
+                _dining.IsNew = true;
             }
              
         }
