@@ -72,8 +72,8 @@ namespace eConcierge.CMSClient.CmsUserControl
         }
         private void Save(DTODining item = null)
         {
-            //wndCalendarEvent wnd = new wndCalendarEvent(Service, item, PrepareView);
-            //wnd.ShowDialog();
+            wndDining wnd = new wndDining(Service, item, PrepareView);
+            wnd.ShowDialog();
         }
     }
 }
