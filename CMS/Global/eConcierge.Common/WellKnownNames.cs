@@ -32,6 +32,9 @@ namespace eConcierge.Common
             public static string EventCalendar = "EventCalendar";
             public static string ECCategory = "Category";
             public static string ECEvent = "Event";
+            public static string Dining = "Dining";
+            public static string DiningCategory = "DiningCategory";
+            public static string DiningSubCategory = "DiningSubCategory";
         }
     }
 }
