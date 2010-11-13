@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOCalendarEvent.cs" />
+    <Compile Include="DTODining.cs" />
     <Compile Include="DTODiningCategory.cs" />
     <Compile Include="DTODiningSubCategory.cs" />
     <Compile Include="DTOEventCalendarCategory.cs" />

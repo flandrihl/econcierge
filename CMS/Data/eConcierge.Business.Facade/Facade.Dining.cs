@@ -20,5 +20,10 @@ namespace eConcierge.Business
             return new ServerDatabaseHandler().GetDiningSubCategorys(queryParamList, ref error);
         }
 
+        public static List<DTODining> GetDining(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetDinings(queryParamList, ref error);
+        }
+
     }
 }
