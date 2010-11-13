@@ -32,7 +32,7 @@ namespace eConcierge.Business
             }
             return dining;
         }
-        public bool Save(DTODining oDining)
+        public bool Save(DTODining oDining, List<DTODiningMenu> menuList)
         {
             QueryParamList param = new QueryParamList();
             if (!oDining.IsNew)
@@ -47,7 +47,7 @@ namespace eConcierge.Business
             param.Add(new QueryParamObj() { ParamName = "Longitude", DBType = DbType.Double, ParamValue = oDining.Longitude });
             string error = string.Empty;
             string spName = oDining.IsNew ? "INSERTDining " : "UPDATEDining";
-            bool isSuccess = Facade.SetData(param, spName, ref error);
+            bool isSuccess = Facade.SaveDining(param, spName, ref error, menuList);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
         public bool Delete(int Id)

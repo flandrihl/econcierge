@@ -11,9 +11,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using eConcierge.Business;
+using eConcierge.CMSClient.CmsUserControl;
 using eConcierge.CMSClient.Common;
 using eConcierge.Common;
 using eConcierge.Model;
+using Microsoft.Win32;
 
 namespace eConcierge.CMSClient.CmsWindow
 {
@@ -24,6 +26,7 @@ namespace eConcierge.CMSClient.CmsWindow
     {
         private DiningService _service;
         private DTODining _dining;
+        private List<string> _menuList = new List<string>();
 
         public wndDining(DiningService service, DTODining dining, Action updateData)
         {
@@ -46,7 +49,8 @@ namespace eConcierge.CMSClient.CmsWindow
         {
             if (!IsValid()) return;
             PopulateObject();
-            if (_service.Save(_dining))
+            List<DTODiningMenu> menuList = GetMenuList();
+            if (_service.Save(_dining, menuList))
             {
                 ShowCRUDSuccessMessage("Dining saved successfully.");
             }
@@ -54,6 +58,26 @@ namespace eConcierge.CMSClient.CmsWindow
             {
                 ShowCRUDErrorMessage();
             }
+        }
+
+        private List<DTODiningMenu> GetMenuList()
+        {
+            List<DTODiningMenu> list = new List<DTODiningMenu>();
+            foreach (string path in _menuList)
+            {
+                if(path.Contains('\\'))
+                {
+                    DTODiningMenu menu = new DTODiningMenu();
+                    menu.Photo = ImageHelper.GetImage(path);
+                    menu.FileName = GetFileName(path);
+                    if(!_dining.IsNew)
+                    {
+                        menu.DiningId = _dining.Id;
+                    }
+                    list.Add(menu);
+                }
+            }
+            return list;
         }
 
         private void PopulateObject()
@@ -107,6 +131,11 @@ namespace eConcierge.CMSClient.CmsWindow
                     photoUpload.IsSeeVisible = System.Windows.Visibility.Collapsed;
                 }
                 _dining.IsNew = false;
+                List<DTODiningMenu>  menuList = new DiningMenuService().GetDiningMenusByDining(_dining.Id);
+                foreach (var menu in menuList)
+                {
+                    AddMenuToStackPanel(menu.FileName, menu.Id);
+                }
             }
             else
             {
@@ -146,6 +175,46 @@ namespace eConcierge.CMSClient.CmsWindow
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "JPEG files|*.jpg|png files|*.png";
+            if (dialog.ShowDialog().Value)
+            {
+                string fileName = dialog.FileName;
+                _menuList.Add(fileName);
+                AddMenuToStackPanel(fileName);
+            }
+        }
+
+        private void AddMenuToStackPanel(string fileName, int menuId = -1)
+        {
+            DiningMenuPhotoItem item = new DiningMenuPhotoItem();
+            item.RemovedMenuItem += new EventHandler(item_RemovedMenuItem);
+            item.PhotoPath = fileName;
+            item.Tag = menuId;
+            stkMenu.Children.Add(item);
+        }
+
+        void item_RemovedMenuItem(object sender, EventArgs e)
+        {
+            DiningMenuPhotoItem item = (DiningMenuPhotoItem)sender;
+            int id = Convert.ToInt32(item.Tag);
+            if(id > 0)
+            {
+                if(MessageBox.Show("Are you sure, you want to remove this item from database?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    new DiningMenuService().Delete(id);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            _menuList.Remove(item.PhotoPath);
+            stkMenu.Children.Remove(item);
         }
     }
 }
