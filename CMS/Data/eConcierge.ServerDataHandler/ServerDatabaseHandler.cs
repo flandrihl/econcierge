@@ -208,5 +208,28 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Dining Sub Category
+        public List<DTODiningSubCategory> GetDiningSubCategorys(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, CategoryId, Title, Description FROM DiningSubCategory";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateDiningSubCategorys);
+        }
+        private List<DTODiningSubCategory> PopulateDiningSubCategorys(DbDataReader oDbDataReader)
+        {
+            List<DTODiningSubCategory> lst = new List<DTODiningSubCategory>();
+            while (oDbDataReader.Read())
+            {
+                DTODiningSubCategory oDTODiningSubCategory = new DTODiningSubCategory();
+                oDTODiningSubCategory.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTODiningSubCategory.Id;
+                oDTODiningSubCategory.CategoryId = oDbDataReader["CategoryId"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["CategoryId"]) : oDTODiningSubCategory.CategoryId;
+                oDTODiningSubCategory.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTODiningSubCategory.Title;
+                oDTODiningSubCategory.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTODiningSubCategory.Description;
+                lst.Add(oDTODiningSubCategory);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
