@@ -231,5 +231,33 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Dining
+        public List<DTODining> GetDinings(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, SubCategoryId, Title, Description, Photo, Address, Telephone, Latitude, Longitude FROM Dining";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateDinings);
+        }
+        private List<DTODining> PopulateDinings(DbDataReader oDbDataReader)
+        {
+            List<DTODining> lst = new List<DTODining>();
+            while (oDbDataReader.Read())
+            {
+                DTODining oDTODining = new DTODining();
+                oDTODining.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTODining.Id;
+                oDTODining.SubCategoryId = oDbDataReader["SubCategoryId"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["SubCategoryId"]) : oDTODining.SubCategoryId;
+                oDTODining.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTODining.Title;
+                oDTODining.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTODining.Description;
+                oDTODining.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTODining.Photo;
+                oDTODining.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : oDTODining.Address;
+                oDTODining.Telephone = oDbDataReader["Telephone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Telephone"]) : oDTODining.Telephone;
+                oDTODining.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTODining.Latitude;
+                oDTODining.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTODining.Longitude;
+                lst.Add(oDTODining);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
