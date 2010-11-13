@@ -15,6 +15,7 @@
 		<Helpers_Converters:HalfValueConverter x:Key="HalfValueConverter"/>
 		<Helpers_Converters:HalfMinusOffsetValueConverter x:Key="HalfMinusOffsetValueConverter"/>		
 		<Helpers_Converters:CenterPointConverter x:Key="CenterPointConverter"/>		
+		<Helpers_Converters:SubtractValueConverter x:Key="SubtractValueConverter" />
 		<Style x:Key="MapToolTouchButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
 			<Setter Property="Template">
 				<Setter.Value>
@@ -22,7 +23,7 @@
 						<Grid>							
 							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 							<Ellipse Fill="#FF858585" Stroke="#FF474747" StrokeThickness="0.5"/>
-							<Image HorizontalAlignment="Center" Height="55" Source="images/setsSurceButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="3,0,0,0">
+							<Image HorizontalAlignment="Center" Height="55" Source="images/setsSurceButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="3,10,0,0">
 								<Image.RenderTransform>
 									<TransformGroup>
 										<ScaleTransform/>
@@ -88,7 +89,7 @@
 						<Grid>							
 							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 							<Ellipse Fill="#FF858585" Stroke="#FF474747" StrokeThickness="0.5"/>
-							<Image HorizontalAlignment="Center" Height="55" Source="images/searchButton.png" Stretch="None" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="-25,0,0,0">
+							<Image HorizontalAlignment="Center" Height="55" Source="images/searchButton.png" Stretch="None" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="-25,12,0,0">
 								<Image.RenderTransform>
 									<TransformGroup>
 										<ScaleTransform/>
@@ -120,21 +121,13 @@
 			</LinearGradientBrush>
 		</Grid.OpacityMask>
 		<Grid RenderTransformOrigin="0.5,0.5">
-			<Grid.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="-45"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</Grid.RenderTransform>
-			<Grid x:Name="SetSourceControl" HorizontalAlignment="Center" Height="110" Margin="0,-51,0,0" VerticalAlignment="Top" Width="300">
+			<Grid x:Name="SetSourceControl" HorizontalAlignment="Center" Height="110" Margin="0,-68,0,0" VerticalAlignment="Top" Width="300">
 				<Grid HorizontalAlignment="Left" Width="110">
 					<Path Data="M67.406773,11.625392 C313.37332,-24.113833 274.9999,26.999591 265.50014,79.499709 L55.5,76.499964" Fill="#FF858585" HorizontalAlignment="Right" Margin="0,-0.292,-164.411,29.5" Stretch="Fill" Stroke="#FF494949" StrokeThickness="1" Width="218.911"/>
 					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="setSourceButton" Content="" Height="110" Margin="0" Style="{DynamicResource MapToolTouchButtonStyle}" VerticalAlignment="Center" Width="110"/>
 				</Grid>
 				<Grid x:Name="grid" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="{Binding SourceButtonText}" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,10" HorizontalAlignment="Left" FontWeight="Bold">
+					<TextBlock TextWrapping="Wrap" Text="{Binding SourceButtonText}" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,5" HorizontalAlignment="Left" FontWeight="Bold">
 						<TextBlock.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform/>
@@ -146,7 +139,7 @@
 					</TextBlock>
 				</Grid>
 			</Grid>
-			<Grid x:Name="SetDestinationControl" HorizontalAlignment="Right" Height="110" Margin="0,0,-150,0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5">
+			<Grid x:Name="SetDestinationControl" HorizontalAlignment="Right" Height="110" Margin="0,0,-164,0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5">
 				<Grid.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform/>
@@ -172,7 +165,7 @@
 					</TextBlock>
 				</Grid>
 			</Grid>
-			<Grid x:Name="GetDirectionControl" HorizontalAlignment="Center" Height="110" Margin="0,0,0,-50" VerticalAlignment="Bottom" Width="300" RenderTransformOrigin="0.5,0.5">
+			<Grid x:Name="GetDirectionControl" HorizontalAlignment="Center" Height="110" Margin="0,0,0,-68" VerticalAlignment="Bottom" Width="300" RenderTransformOrigin="0.5,0.5">
 				<Grid.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform/>
@@ -186,7 +179,7 @@
 					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="getDirectionsButton" Height="110" Margin="0" Style="{DynamicResource getDirectionTouchButtonStyle}" VerticalAlignment="Center" Width="110"/>
 				</Grid>
 				<Grid x:Name="grid2" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="Get Directions" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,10" HorizontalAlignment="Left" FontWeight="Bold">
+					<TextBlock TextWrapping="Wrap" Text="Get Directions" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,-1" HorizontalAlignment="Left" FontWeight="Bold">
 						<TextBlock.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform/>
@@ -198,7 +191,7 @@
 					</TextBlock>
 				</Grid>
 			</Grid>
-			<Grid x:Name="SearchLocationControl" HorizontalAlignment="Left" Height="110" Margin="-150,0,0,0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5">
+			<Grid x:Name="SearchLocationControl" HorizontalAlignment="Left" Height="110" Margin="-165,0,0,0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5">
 				<Grid.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform/>
@@ -212,7 +205,7 @@
 					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="searchLocationButton" Height="110" Margin="0" Style="{DynamicResource searchLocationTouchButtonStyle}" VerticalAlignment="Center" Width="110"/>
 				</Grid>
 				<Grid x:Name="grid3" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="Search" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,10" HorizontalAlignment="Left" FontWeight="Bold">
+					<TextBlock TextWrapping="Wrap" Text="Search" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,4" HorizontalAlignment="Left" FontWeight="Bold">
 						<TextBlock.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform/>
@@ -225,44 +218,25 @@
 				</Grid>
 			</Grid>
 		</Grid>
-		<Border CornerRadius="{Binding ActualWidth, ConverterParameter=0, Converter={StaticResource HalfMinusOffsetValueConverter}, ElementName=mapBrowser, Mode=OneWay}" d:LayoutOverrides="Height" BorderBrush="#FF555555" BorderThickness="0">
-			<!--<Border.Effect >
-				<DropShadowEffect
-					Direction="0" BlurRadius="12" ShadowDepth="0"/>
-			</Border.Effect>-->
-			<Border.Background>
-				<RadialGradientBrush RadiusY="0.511" RadiusX="0.524">
-					<GradientStop Color="#FF453C3C" Offset="1"/>
-					<GradientStop Color="#FF837B7B" Offset="0.582"/>
-				</RadialGradientBrush>
-			</Border.Background>
+		<Border CornerRadius="0" d:LayoutOverrides="Height" BorderBrush="#FF555555" BorderThickness="0">
 			<Grid>
 				<Canvas
-					x:Name="BrowserContainer" Margin="0">
+					x:Name="BrowserContainer" Margin="0" Background="Black" ClipToBounds="True"
+					Width="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=18, ElementName=mapBrowser, Mode=OneWay}"
+					Height="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=18, ElementName=mapBrowser, Mode=OneWay}"
+					>
 					<Canvas.Clip>
-						<EllipseGeometry Center="{Binding ActualWidth, Converter={StaticResource CenterPointConverter}, ElementName=mapBrowser, Mode=OneWay}" RadiusX="{Binding ActualWidth, ConverterParameter=15, Converter={StaticResource HalfMinusOffsetValueConverter}, ElementName=mapBrowser, Mode=OneWay}" RadiusY="{Binding ActualWidth, ConverterParameter=15, Converter={StaticResource HalfMinusOffsetValueConverter}, ElementName=mapBrowser, Mode=OneWay}"/>
+						<EllipseGeometry Center="{Binding ActualWidth, Converter={StaticResource CenterPointConverter}, ElementName=mapBrowser, Mode=OneWay}" RadiusX="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=9, ElementName=mapBrowser, Mode=OneWay}" RadiusY="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=9, ElementName=mapBrowser, Mode=OneWay}"/>
 					</Canvas.Clip>
 					<!--<cjc:WebBrowser HorizontalAlignment="Center" VerticalAlignment="Center" />-->
 				</Canvas>
-				<TextBlock x:Name="loadingBlock" 
-				TextWrapping="Wrap" Text="Loading Map ..." HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" FontSize="18.667">
-					<TextBlock.Foreground>
-						<LinearGradientBrush
-							EndPoint="0.5,1" StartPoint="0.5,0">
-							<GradientStop
-								Color="#FFB6B6B6" Offset="0"/>
-							<GradientStop
-								Color="#FFCECECE" Offset="1"/>
-						</LinearGradientBrush>
-					</TextBlock.Foreground>
-				</TextBlock>
 			</Grid>
 		</Border>
-		<Border d:LayoutOverrides="Height" BorderThickness="1" CornerRadius="{Binding ActualWidth, ConverterParameter=0, Converter={StaticResource HalfMinusOffsetValueConverter}, ElementName=mapBrowser, Mode=OneWay}" BorderBrush="#FF474747">
+		<Border d:LayoutOverrides="Height" BorderThickness="1" CornerRadius="13.5" BorderBrush="#FF474747">
 			<!--<Border.Effect>
 				<DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="17"/>
 			</Border.Effect>-->
-			<Border BorderThickness="10" CornerRadius="{Binding ActualWidth, ConverterParameter=2, Converter={StaticResource HalfMinusOffsetValueConverter}, ElementName=mapBrowser, Mode=OneWay}">
+			<Border BorderThickness="10" CornerRadius="8">
 				<Border.BorderBrush>
 					<RadialGradientBrush RadiusY="0.526" RadiusX="0.526">
 						<GradientStop Color="#FFC8C0C0" Offset="1"/>
@@ -276,12 +250,12 @@
 			</Border>
 		</Border>
 		
+	<CircularButton:CircularToggleButton x:Name="lockButton" HorizontalAlignment="Right"  Margin="-27.5" VerticalAlignment="Center" />
+    <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,-12,0" Height="58" Width="58" />
+	
+		<!-- 
     <CircularButton:CircularToggleButton x:Name="lockButton" HorizontalAlignment="Right"  Margin="-27.5" VerticalAlignment="Center" CheckedImage="images/lockButtonLocked.png" UncheckedImage="images/lockButtonImage.png" />
-    <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-35,0,0,0" Height="70" Width="70"/>
-
-        <!-- 
-    <CircularButton:CircularToggleButton x:Name="lockButton" HorizontalAlignment="Right"  Margin="-27.5" VerticalAlignment="Center"/>
-		<CircularButton:CircularToggleButton x:Name="menuButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-27.5" /> 
+    <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-35,0,0,0" Height="70" Width="70"/>  
     -->
     
 	</Grid>
