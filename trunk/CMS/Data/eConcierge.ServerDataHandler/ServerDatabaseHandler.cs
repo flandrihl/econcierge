@@ -186,5 +186,27 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Dining Category
+        public List<DTODiningCategory> GetDiningCategorys(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Title, Description FROM DiningCategory";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateDiningCategorys);
+        }
+        private List<DTODiningCategory> PopulateDiningCategorys(DbDataReader oDbDataReader)
+        {
+            List<DTODiningCategory> lst = new List<DTODiningCategory>();
+            while (oDbDataReader.Read())
+            {
+                DTODiningCategory oDTODiningCategory = new DTODiningCategory();
+                oDTODiningCategory.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTODiningCategory.Id;
+                oDTODiningCategory.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTODiningCategory.Title;
+                oDTODiningCategory.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTODiningCategory.Description;
+                lst.Add(oDTODiningCategory);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
