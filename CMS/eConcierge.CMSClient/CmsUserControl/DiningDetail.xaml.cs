@@ -39,7 +39,7 @@ namespace eConcierge.CMSClient.CmsUserControl
         {
             get
             {
-                return _service = (_service = new DiningService());
+                return _service ?? (_service = new DiningService());
             }
         }
 

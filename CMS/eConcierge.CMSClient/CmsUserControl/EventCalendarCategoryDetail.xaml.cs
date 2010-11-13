@@ -31,7 +31,7 @@ namespace eConcierge.CMSClient.CmsUserControl
         {
             get
             {
-                return _service = (_service = new EventCalendarCategoryService());
+                return _service ?? (_service = new EventCalendarCategoryService());
             }
         }
 
