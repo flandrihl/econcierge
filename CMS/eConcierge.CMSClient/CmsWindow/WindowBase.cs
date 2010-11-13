@@ -32,5 +32,15 @@ namespace eConcierge.CMSClient.CmsWindow
             UpdateData();
             this.Close();
         }
+        protected bool IsNumeric(string value)
+        {
+            if(string.IsNullOrEmpty(value))
+            {
+                return true;
+            }
+            Double result;
+            return Double.TryParse(value, out result);
+
+        }
     }
 }

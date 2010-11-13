@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using eConcierge.CMSClient.Common;
 using Microsoft.Win32;
 
 namespace eConcierge.CMSClient.CmsUserControl
@@ -28,13 +29,15 @@ namespace eConcierge.CMSClient.CmsUserControl
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "jpg|jpeg|png";
+            dialog.Filter = "JPEG files|*.jpg|png files|*.png";
             if(dialog.ShowDialog().Value)
             {
                 txtPhotoPath.Text = dialog.FileName;
             }
 
         }
+
+        public byte[] ImageData { get; set; }
         public string FilePath
         {
             get
@@ -52,7 +55,8 @@ namespace eConcierge.CMSClient.CmsUserControl
 
         private void btnSee_Click(object sender, RoutedEventArgs e)
         {
-
+            img.Source = ImageHelper.GetImage(ImageData);
+            ImageViewer.IsOpen = true;
         }
     }
 }

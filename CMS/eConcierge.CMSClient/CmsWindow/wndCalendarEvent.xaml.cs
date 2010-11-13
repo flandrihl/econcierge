@@ -98,6 +98,15 @@ namespace eConcierge.CMSClient.CmsWindow
                 txtLocation.Text = _evnt.Location;
                 txtLatitude.Text = _evnt.Latitude.ToString();
                 txtLongitude.Text = _evnt.Longitude.ToString();
+                if(_evnt.Photo != null)
+                {
+                    photoUpload.IsSeeVisible = System.Windows.Visibility.Visible;
+                    photoUpload.ImageData = _evnt.Photo;
+                }
+                else
+                {
+                    photoUpload.IsSeeVisible = System.Windows.Visibility.Collapsed;
+                }
                 _evnt.IsNew = false;
             }
             else
@@ -116,8 +125,24 @@ namespace eConcierge.CMSClient.CmsWindow
                 txtTitle.Focus();
                 return false;
             }
+
+            if (!IsNumeric(txtLatitude.Text))
+            {
+                MessageBox.Show("Latitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+                txtLatitude.Focus();
+                return false;
+            }
+
+            if (!IsNumeric(txtLongitude.Text))
+            {
+                MessageBox.Show("Longitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+                txtLongitude.Focus();
+                return false;
+            }
+            
             return true;
         }
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

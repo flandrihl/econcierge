@@ -23,11 +23,11 @@ namespace eConcierge.CMSClient.Common
         {
             BitmapImage bitImg = new BitmapImage();
             bitImg.BeginInit();
-            using (MemoryStream ms = new MemoryStream(imageData))
-            {
-                bitImg.StreamSource = ms;
-                bitImg.EndInit();
-            }
+            MemoryStream ms = new MemoryStream(imageData);
+
+            bitImg.StreamSource = ms;
+            bitImg.EndInit();
+
             return bitImg;
         }
     }
