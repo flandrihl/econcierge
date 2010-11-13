@@ -64,6 +64,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\DiningSubCategoryDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\EventCalendarCategoryDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,6 +85,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CmsWindow\wndDiningCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CmsWindow\wndDiningSubCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,6 +114,9 @@
     <Compile Include="CmsUserControl\DiningCategoryDetail.xaml.cs">
       <DependentUpon>DiningCategoryDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmsUserControl\DiningSubCategoryDetail.xaml.cs">
+      <DependentUpon>DiningSubCategoryDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\EventCalendarCategoryDetail.xaml.cs">
       <DependentUpon>EventCalendarCategoryDetail.xaml</DependentUpon>
     </Compile>
@@ -122,6 +133,9 @@
     </Compile>
     <Compile Include="CmsWindow\wndDiningCategory.xaml.cs">
       <DependentUpon>wndDiningCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsWindow\wndDiningSubCategory.xaml.cs">
+      <DependentUpon>wndDiningSubCategory.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsWindow\wndECCategory.xaml.cs">
       <DependentUpon>wndECCategory.xaml</DependentUpon>

@@ -53,6 +53,10 @@ namespace eConcierge.CMSClient
             {
                 SetMiddleContent<DiningCategoryDetail>();
             }
+            else if (name.Equals(WellKnownNames.ToolbarString.DiningSubCategory))
+            {
+                SetMiddleContent<DiningSubCategoryDetail>();
+            }
             
         }
         private void SetMiddleContent<T>() where T:class, new() 

@@ -1,0 +1,26 @@
+﻿<CmsUserControl:UserControlBase x:Class="eConcierge.CMSClient.CmsUserControl.DiningSubCategoryDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+              xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl">
+    <UserControl.Resources>
+
+    </UserControl.Resources>
+    <StackPanel HorizontalAlignment="Left">
+        <Button Content="Add" Width="60" x:Name="btnAdd" Click="btnAdd_Click" HorizontalAlignment="Left" Margin="0,0,0,5" />
+        <DataGrid   x:Name="grd" Width="300" AutoGenerateColumns="False" 
+                  DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="24">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Tag="{Binding Id}" MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="/Image/delete.jpg"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Title}" Header="Title" Width="260">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</CmsUserControl:UserControlBase>
