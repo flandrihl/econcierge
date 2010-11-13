@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DTOCalendarEvent.cs" />
     <Compile Include="DTODiningCategory.cs" />
+    <Compile Include="DTODiningSubCategory.cs" />
     <Compile Include="DTOEventCalendarCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
