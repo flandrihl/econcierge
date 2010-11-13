@@ -1,8 +1,8 @@
-﻿<CmsUserControl:UserControlBase x:Class="eConcierge.CMSClient.CmsUserControl.EventCalendarCategoryDetail"
+﻿<CmsUserControl:UserControlBase x:Class="eConcierge.CMSClient.CmsUserControl.DiningCategoryDetail"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl">
     <UserControl.Resources>
 
@@ -19,7 +19,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Name" Width="260">
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Title}" Header="Title" Width="260">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

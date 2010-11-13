@@ -49,6 +49,10 @@ namespace eConcierge.CMSClient
             {
                 SetMiddleContent<CalendarEventDetail>();
             }
+            else if (name.Equals(WellKnownNames.ToolbarString.DiningCategory))
+            {
+                SetMiddleContent<DiningCategoryDetail>();
+            }
             
         }
         private void SetMiddleContent<T>() where T:class, new() 
