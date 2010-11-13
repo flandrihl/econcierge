@@ -44,6 +44,7 @@
     <Compile Include="DTOCalendarEvent.cs" />
     <Compile Include="DTODining.cs" />
     <Compile Include="DTODiningCategory.cs" />
+    <Compile Include="DTODiningMenu.cs" />
     <Compile Include="DTODiningSubCategory.cs" />
     <Compile Include="DTOEventCalendarCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
