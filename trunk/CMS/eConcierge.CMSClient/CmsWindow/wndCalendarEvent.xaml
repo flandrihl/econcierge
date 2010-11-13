@@ -57,7 +57,7 @@
             <TextBlock Text="Longitude"/>
             <TextBox x:Name="txtLongitude"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
             <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
             <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
         </StackPanel>
