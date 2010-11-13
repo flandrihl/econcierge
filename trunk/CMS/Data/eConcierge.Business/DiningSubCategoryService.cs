@@ -8,7 +8,7 @@ using eConcierge.Model;
 
 namespace eConcierge.Business
 {
-    public class DiningSubCategory
+    public class DiningSubCategoryService
     {
         public List<DTODiningSubCategory> GetDiningSubCategorys()
         {
