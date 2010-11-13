@@ -42,5 +42,17 @@ namespace eConcierge.CMSClient.CmsWindow
             return Double.TryParse(value, out result);
 
         }
+
+        protected string GetFileName(string fileName)
+        {
+            if (fileName.LastIndexOf('\\') > -1)
+            {
+                return fileName.Substring(fileName.LastIndexOf('\\') + 1, fileName.Length - fileName.LastIndexOf('\\') - 1);
+            }
+            else
+            {
+                return fileName;
+            }
+        }
     }
 }

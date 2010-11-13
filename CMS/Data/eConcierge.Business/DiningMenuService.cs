@@ -32,6 +32,19 @@ namespace eConcierge.Business
             }
             return diningmenu;
         }
+
+        public List<DTODiningMenu> GetDiningMenusByDining(int diningId)
+        {
+            string error = string.Empty;
+            QueryParamList param = new QueryParamList();
+            param.Add(new QueryParamObj() { ParamName = "DiningId", DBType = DbType.Int32, ParamValue = diningId });
+            List<DTODiningMenu> diningmenu = Facade.GetDiningMenu(param, ref error);
+            if (!string.IsNullOrEmpty(error))
+            {
+
+            }
+            return diningmenu;
+        }
         public bool Save(DTODiningMenu oDiningMenu)
         {
             QueryParamList param = new QueryParamList();

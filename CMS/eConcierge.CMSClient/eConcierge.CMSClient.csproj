@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\DiningMenuPhotoItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\DiningSubCategoryDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +128,9 @@
     </Compile>
     <Compile Include="CmsUserControl\DiningDetail.xaml.cs">
       <DependentUpon>DiningDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsUserControl\DiningMenuPhotoItem.xaml.cs">
+      <DependentUpon>DiningMenuPhotoItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsUserControl\DiningSubCategoryDetail.xaml.cs">
       <DependentUpon>DiningSubCategoryDetail.xaml</DependentUpon>

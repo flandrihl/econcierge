@@ -10,7 +10,7 @@ namespace eConcierge.ServerDataHandler
 {
     public class ServerDatabaseHandler : BaseDatabaseHandler
     {
-      
+
         public DataSet GetData(string tableName, QueryParamList pParams, ref string pErrString)
         {
             string query = "SELECT * FROM " + tableName;
@@ -39,7 +39,7 @@ namespace eConcierge.ServerDataHandler
         public bool SetData(QueryParamList pParam, string spName, ref string pErrString)
         {
             DBExecStoredProc(spName, pParam, ref pErrString);
-            return string.IsNullOrEmpty(pErrString); 
+            return string.IsNullOrEmpty(pErrString);
         }
 
         public bool SetData(List<QueryParamList> paramList, string spName, ref string pErrString)
@@ -64,7 +64,7 @@ namespace eConcierge.ServerDataHandler
                 transaction.Rollback();
                 pErrString = exp.Message;
                 LoggingUtility.WriteLog(exp);
-                return string.IsNullOrEmpty(pErrString); 
+                return string.IsNullOrEmpty(pErrString);
             }
             finally
             {
@@ -81,8 +81,8 @@ namespace eConcierge.ServerDataHandler
         //    return ExecuteDBQuery(query, pParam, PopulateClients);
         //}
 
-        
-        
+
+
         //private List<DTOClient> PopulateClients(DbDataReader oDbDataReader)
         //{
         //    List<DTOClient> lst = new List<DTOClient>();
@@ -133,7 +133,7 @@ namespace eConcierge.ServerDataHandler
         //    }
         //}
 
-       
+
         #endregion
 
         #region Event Calendar Category
@@ -282,5 +282,51 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        public bool SaveDining(QueryParamList pParam, string spName, ref string pErrString, List<DTODiningMenu> menuList)
+        {
+            Database db = GetSQLDatabase();
+            DbConnection connection = db.CreateConnection();
+            DbTransaction transaction = null;
+            try
+            {
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand cmd = db.GetStoredProcCommand(spName);
+
+                int id = DBExecStoredProcInTranReturnsIdentity(db, cmd, pParam, transaction);
+                if(id > 0)
+                {
+                    foreach (DTODiningMenu menu in menuList)
+                    {
+                        menu.DiningId = id;
+                    }
+                }
+                foreach (DTODiningMenu menu in menuList)
+                {
+                    QueryParamList param = new QueryParamList();
+                    param.Add(new QueryParamObj() { ParamName = "DiningId", DBType = DbType.Int32, ParamValue = menu.DiningId });
+                    param.Add(new QueryParamObj() { ParamName = "Photo", DBType = DbType.Binary, ParamValue = menu.Photo });
+                    param.Add(new QueryParamObj() { ParamName = "FileName", DBType = DbType.String, ParamValue = menu.FileName });
+                    cmd = db.GetStoredProcCommand("INSERTDiningMenu");
+                    DBExecStoredProcInTranReturnsIdentity(db, cmd, param, transaction);    
+                }
+
+                transaction.Commit();
+            }
+            catch (Exception exp)
+            {
+                transaction.Rollback();
+                pErrString = exp.Message;
+                LoggingUtility.WriteLog(exp);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
     }
 }
