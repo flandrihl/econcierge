@@ -1,0 +1,24 @@
+﻿<CmsUserControl:UserControlBase x:Class="eConcierge.CMSClient.CmsUserControl.DiningDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              
+             xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" >
+    <StackPanel HorizontalAlignment="Left">
+        <Button Content="Add" Width="60" HorizontalAlignment="Left" Margin="0,0,0,5" Click="btnAdd_Click" />
+        <DataGrid ItemsSource="{Binding Events}"  x:Name="grd" Width="490" AutoGenerateColumns="False" 
+                  DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="24">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Tag="{Binding Id}" MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="/Image/delete.jpg"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Title}" Header="Title" Width="150"  />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Phone}" Header="Phone" Width="150"  />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Address}" Header="Address" Width="150"  />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</CmsUserControl:UserControlBase>
