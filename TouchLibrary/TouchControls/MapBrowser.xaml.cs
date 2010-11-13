@@ -103,7 +103,7 @@ namespace TouchControls
                                };
             ChromBrowser.Navigate(_url);
             Loaded += ChromBrowser_Loaded;
-            ChromBrowser.Ready += ChromBrowser_Ready;
+            ChromBrowser.Ready += ChromBrowserReady;
             BrowserContainer.Children.Add(ChromBrowser);
             LockButton.Tag = "Lock";
 
@@ -236,10 +236,8 @@ namespace TouchControls
 
         
 
-        void ChromBrowser_Ready(object sender, EventArgs e)
+        void ChromBrowserReady(object sender, EventArgs e)
         {
-            loadingBlock.Visibility = Visibility.Collapsed;
-            loadingBlock.Width = loadingBlock.Height = 0;
             Container.Reset();
             Container.StartX = _left.ToInt();
             Container.StartY = _top.ToInt();
