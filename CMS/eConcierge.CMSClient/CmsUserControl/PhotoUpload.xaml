@@ -6,7 +6,8 @@
     <StackPanel Orientation="Horizontal">
         <TextBox x:Name="txtPhotoPath" Width="268" />
         <Button Content="..." x:Name="btnBrowse" Height="{Binding ElementName=txtPhotoPath, Path=Height}" Width="20" Click="btnBrowse_Click" />
-        <Button Content="See" x:Name="btnSee" Height="{Binding ElementName=txtPhotoPath, Path=Height}" Width="30" Margin="5,0,0,0" Click="btnSee_Click" />
+        <Button Content="See" x:Name="btnSee" Height="{Binding ElementName=txtPhotoPath, Path=Height}" Width="30" Margin="5,0,0,0" Visibility="Collapsed" 
+                Click="btnSee_Click" />
         <Popup x:Name="ImageViewer" StaysOpen="False" Placement="Right">
             <Image Width="300" Height="300" x:Name="img"/>
         </Popup>
