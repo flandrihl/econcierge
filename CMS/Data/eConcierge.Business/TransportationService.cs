@@ -32,6 +32,18 @@ namespace eConcierge.Business
 			}
 			return transportation;
 		}
+        public System.Collections.IEnumerable GetTransportations(TransportationType transportationType)
+        {
+            string error = string.Empty;
+            QueryParamList param = new QueryParamList();
+            param.Add(new QueryParamObj() { ParamName = "TransportationType", DBType = DbType.Int32, ParamValue = (int)transportationType });
+            List<DTOTransportation> transportation = Facade.GetTransportation(param, ref error);
+            if (!string.IsNullOrEmpty(error))
+            {
+
+            }
+            return transportation;
+        }
 		public bool Save(DTOTransportation oTransportation)
 		{
 			QueryParamList param = new QueryParamList();
@@ -53,5 +65,7 @@ namespace eConcierge.Business
 			bool isSuccess = Facade.SetData(param, "DELETETransportation",  ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
-	}
+
+        
+    }
 }

@@ -43,7 +43,8 @@ namespace eConcierge.Common
             public static string DiningDetail = "DiningDetail";
             public static string Transportation = "Transportation";
             public static string TransportationCategory = "TransportationCategory";
-            public static string TransportationDetail = "TransportationDetail";
+            public static string TransportationMonorailDetail = "TransportationMonorailDetail";
+            public static string TransportationTaxiDetail = "TransportationTaxiDetail";
         }
     }
 }
