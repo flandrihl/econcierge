@@ -35,7 +35,7 @@
         </StackPanel>
         <StackPanel>
             <TextBlock Text="Photo"/>
-            <CmsUserControl:PhotoUpload x:Name="photoUpload" IsSeeVisible="Visible"/>                 
+            <CmsUserControl:PhotoUpload x:Name="photoUpload" />                 
         </StackPanel>
         <StackPanel>
             <TextBlock Text="Start Date"/>
