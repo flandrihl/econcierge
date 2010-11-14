@@ -33,6 +33,10 @@ namespace eConcierge.Common
             public static string ECCategory = "Category";
             public static string ECEvent = "Event";
             public static string Dining = "Dining";
+            public static string Facility = "Facility";
+            public static string PointOfInterest = "PointOfInterest";
+            public static string ATM = "ATM";
+            public static string Cafe = "Cafe";
             public static string DiningCategory = "DiningCategory";
             public static string DiningSubCategory = "DiningSubCategory";
             public static string DiningDetail = "DiningDetail";

@@ -88,6 +88,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\PointOfInterestDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsWindow\wndCalendarEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CmsWindow\wndECCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CmsWindow\wndPointOfInterest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +152,9 @@
     <Compile Include="CmsUserControl\PhotoUpload.xaml.cs">
       <DependentUpon>PhotoUpload.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmsUserControl\PointOfInterestDetail.xaml.cs">
+      <DependentUpon>PointOfInterestDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\UserControlBase.cs" />
     <Compile Include="CmsWindow\WindowBase.cs" />
     <Compile Include="CmsWindow\wndCalendarEvent.xaml.cs">
@@ -160,6 +171,9 @@
     </Compile>
     <Compile Include="CmsWindow\wndECCategory.xaml.cs">
       <DependentUpon>wndECCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsWindow\wndPointOfInterest.xaml.cs">
+      <DependentUpon>wndPointOfInterest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Code\ANotifyPropertyChanged.cs" />
     <Compile Include="Code\MainMenuItem.cs" />
