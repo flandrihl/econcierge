@@ -74,6 +74,10 @@ namespace eConcierge.CMSClient
             {
                 SetMiddleContent<ATMDetail>();
             }
+            else if (name.Equals(WellKnownNames.ToolbarString.Cafe))
+            {
+                SetMiddleContent<CafeDetail>();
+            }
             
         }
         private void SetMiddleContent<T>() where T:class, new() 
