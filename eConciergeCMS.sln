@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConcierge.Business", "CMS\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConcierge.CMSClient", "CMS\eConcierge.CMSClient\eConcierge.CMSClient.csproj", "{D3D7ED9D-E80D-47CC-B338-79993B810421}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9242725A-5641-4214-A77D-FCDEF4BB6017}"
+	ProjectSection(SolutionItems) = preProject
+		CMS\Database\EConcierge.bak = CMS\Database\EConcierge.bak
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
