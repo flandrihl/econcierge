@@ -11,252 +11,327 @@
              x:Name="mapBrowser"                            
              Background="Transparent"    
 			 mc:Ignorable="d" MinHeight="400" MinWidth="400">
-	<UserControl.Resources>
-		<Helpers_Converters:HalfValueConverter x:Key="HalfValueConverter"/>
-		<Helpers_Converters:HalfMinusOffsetValueConverter x:Key="HalfMinusOffsetValueConverter"/>		
-		<Helpers_Converters:CenterPointConverter x:Key="CenterPointConverter"/>		
-		<Helpers_Converters:SubtractValueConverter x:Key="SubtractValueConverter" />
-		<Style x:Key="MapToolTouchButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-						<Grid>							
-							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-							<Ellipse Fill="#FF858585" Stroke="#FF474747" StrokeThickness="0.5"/>
-							<Image HorizontalAlignment="Center" Height="55" Source="images/setsSurceButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="3,10,0,0">
-								<Image.RenderTransform>
-									<TransformGroup>
-										<ScaleTransform/>
-										<SkewTransform/>
-										<RotateTransform Angle="49"/>
-										<TranslateTransform/>
-									</TransformGroup>
-								</Image.RenderTransform>
-							</Image>
-						</Grid>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-		<Style x:Key="setDestinationButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-						<Grid>							
-							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-							<Ellipse Fill="#FF858585" Stroke="#FF474747" StrokeThickness="0.5"/>
-							<Image HorizontalAlignment="Center" Height="55" Source="images/setDestinationButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="0,11,-1,0">
-								<Image.RenderTransform>
-									<TransformGroup>
-										<ScaleTransform/>
-										<SkewTransform/>
-										<RotateTransform Angle="-50"/>
-										<TranslateTransform/>
-									</TransformGroup>
-								</Image.RenderTransform>
-							</Image>
-						</Grid>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-		<Style x:Key="getDirectionTouchButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-						<Grid>							
-							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-							<Ellipse Fill="#FF858585" Stroke="#FF474747" StrokeThickness="0.5"/>
-							<Image HorizontalAlignment="Center" Height="75" Source="images/getDirectionButton.png" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.5,0.5" Margin="-9,0,0,0" Stretch="UniformToFill">
-								<Image.RenderTransform>
-									<TransformGroup>
-										<ScaleTransform/>
-										<SkewTransform/>
-										<RotateTransform Angle="49"/>
-										<TranslateTransform/>
-									</TransformGroup>
-								</Image.RenderTransform>
-							</Image>
-						</Grid>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-		<Style x:Key="searchLocationTouchButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
-						<Grid>							
-							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-							<Ellipse Fill="#FF858585" Stroke="#FF474747" StrokeThickness="0.5"/>
-							<Image HorizontalAlignment="Center" Height="55" Source="images/searchButton.png" Stretch="None" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="-25,12,0,0">
-								<Image.RenderTransform>
-									<TransformGroup>
-										<ScaleTransform/>
-										<SkewTransform/>
-										<RotateTransform Angle="136"/>
-										<TranslateTransform/>
-									</TransformGroup>
-								</Image.RenderTransform>
-							</Image>
-						</Grid>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>		
-	</UserControl.Resources>
-	<UserControl.RenderTransform>
-		<TransformGroup>
-			<ScaleTransform/>
-			<SkewTransform/>
-			<RotateTransform/>
-			<TranslateTransform/>
-		</TransformGroup>
-	</UserControl.RenderTransform>
-	<Grid Background="Transparent">
-		<Grid.OpacityMask>
-			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-				<GradientStop Color="Black" Offset="0"/>
-				<GradientStop Color="White" Offset="1"/>
-			</LinearGradientBrush>
-		</Grid.OpacityMask>
-		<Grid RenderTransformOrigin="0.5,0.5">
-			<Grid x:Name="SetSourceControl" HorizontalAlignment="Center" Height="110" Margin="0,-68,0,0" VerticalAlignment="Top" Width="300">
-				<Grid HorizontalAlignment="Left" Width="110">
-					<Path Data="M67.406773,11.625392 C313.37332,-24.113833 274.9999,26.999591 265.50014,79.499709 L55.5,76.499964" Fill="#FF858585" HorizontalAlignment="Right" Margin="0,-0.292,-164.411,29.5" Stretch="Fill" Stroke="#FF494949" StrokeThickness="1" Width="218.911"/>
-					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="setSourceButton" Content="" Height="110" Margin="0" Style="{DynamicResource MapToolTouchButtonStyle}" VerticalAlignment="Center" Width="110"/>
-				</Grid>
-				<Grid x:Name="grid" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="{Binding SourceButtonText}" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,5" HorizontalAlignment="Left" FontWeight="Bold">
-						<TextBlock.RenderTransform>
-							<TransformGroup>
-								<ScaleTransform/>
-								<SkewTransform/>
-								<RotateTransform/>
-								<TranslateTransform/>
-							</TransformGroup>
-						</TextBlock.RenderTransform>
-					</TextBlock>
-				</Grid>
-			</Grid>
-			<Grid x:Name="SetDestinationControl" HorizontalAlignment="Right" Height="110" Margin="0,0,-164,0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5">
-				<Grid.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform/>
-						<SkewTransform/>
-						<RotateTransform Angle="90"/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Grid.RenderTransform>
-				<Grid HorizontalAlignment="Left" Width="110">
-					<Path Data="M67.406773,11.625392 C313.37332,-24.113833 274.9999,26.999591 265.50014,79.499709 L55.5,76.499964" Fill="#FF858585" HorizontalAlignment="Right" Margin="0,-0.292,-164.411,29.5" Stretch="Fill" Stroke="#FF494949" StrokeThickness="1" Width="218.911"/>
-					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="setDestinationButton" Height="110" Margin="0" Style="{DynamicResource setDestinationButtonStyle}" VerticalAlignment="Center" Width="110"/>
-				</Grid>
-				<Grid x:Name="grid1" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="{Binding DestinationButtonText}" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,10" HorizontalAlignment="Left" FontWeight="Bold">
-						<TextBlock.RenderTransform>
-							<TransformGroup>
-								<ScaleTransform/>
-								<SkewTransform/>
-								<RotateTransform/>
-								<TranslateTransform/>
-							</TransformGroup>
-						</TextBlock.RenderTransform>
-					</TextBlock>
-				</Grid>
-			</Grid>
-			<Grid x:Name="GetDirectionControl" HorizontalAlignment="Center" Height="110" Margin="0,0,0,-68" VerticalAlignment="Bottom" Width="300" RenderTransformOrigin="0.5,0.5">
-				<Grid.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform/>
-						<SkewTransform/>
-						<RotateTransform Angle="180"/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Grid.RenderTransform>
-				<Grid HorizontalAlignment="Left" Width="110">
-					<Path Data="M67.406773,11.625392 C313.37332,-24.113833 274.9999,26.999591 265.50014,79.499709 L55.5,76.499964" Fill="#FF858585" HorizontalAlignment="Right" Margin="0,-0.292,-164.411,29.5" Stretch="Fill" Stroke="#FF494949" StrokeThickness="1" Width="218.911"/>
-					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="getDirectionsButton" Height="110" Margin="0" Style="{DynamicResource getDirectionTouchButtonStyle}" VerticalAlignment="Center" Width="110"/>
-				</Grid>
-				<Grid x:Name="grid2" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="Get Directions" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,-1" HorizontalAlignment="Left" FontWeight="Bold">
-						<TextBlock.RenderTransform>
-							<TransformGroup>
-								<ScaleTransform/>
-								<SkewTransform/>
-								<RotateTransform/>
-								<TranslateTransform/>
-							</TransformGroup>
-						</TextBlock.RenderTransform>
-					</TextBlock>
-				</Grid>
-			</Grid>
-			<Grid x:Name="SearchLocationControl" HorizontalAlignment="Left" Height="110" Margin="-165,0,0,0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5">
-				<Grid.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform/>
-						<SkewTransform/>
-						<RotateTransform Angle="270"/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Grid.RenderTransform>
-				<Grid HorizontalAlignment="Left" Width="110">
-					<Path Data="M67.406773,11.625392 C313.37332,-24.113833 274.9999,26.999591 265.50014,79.499709 L55.5,76.499964" Fill="#FF858585" HorizontalAlignment="Right" Margin="0,-0.292,-164.411,29.5" Stretch="Fill" Stroke="#FF494949" StrokeThickness="1" Width="218.911"/>
-					<CustomControls_InheritedFrameworkControls:TouchButton x:Name="searchLocationButton" Height="110" Margin="0" Style="{DynamicResource searchLocationTouchButtonStyle}" VerticalAlignment="Center" Width="110"/>
-				</Grid>
-				<Grid x:Name="grid3" Margin="0,15,0,50" Width="300" d:LayoutOverrides="Height">
-					<TextBlock TextWrapping="Wrap" Text="Search" RenderTransformOrigin="0.5,0.5" Height="35" Foreground="#FF2B2B2B" TextAlignment="Center" FontSize="16" VerticalAlignment="Bottom" Margin="119,0,0,4" HorizontalAlignment="Left" FontWeight="Bold">
-						<TextBlock.RenderTransform>
-							<TransformGroup>
-								<ScaleTransform/>
-								<SkewTransform/>
-								<RotateTransform/>
-								<TranslateTransform/>
-							</TransformGroup>
-						</TextBlock.RenderTransform>
-					</TextBlock>
-				</Grid>
-			</Grid>
-		</Grid>
-		<Border CornerRadius="0" d:LayoutOverrides="Height" BorderBrush="#FF555555" BorderThickness="0">
-			<Grid>
-				<Canvas
+    <UserControl.Resources>
+        <Helpers_Converters:HalfValueConverter x:Key="HalfValueConverter"/>
+        <Helpers_Converters:HalfMinusOffsetValueConverter x:Key="HalfMinusOffsetValueConverter"/>
+        <Helpers_Converters:CenterPointConverter x:Key="CenterPointConverter"/>
+        <Helpers_Converters:SubtractValueConverter x:Key="SubtractValueConverter" />
+        <Style x:Key="setOriginButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Center" d:LayoutOverrides="Height" CornerRadius="0,4,0,0" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8C0C0" Offset="0"/>
+                                    <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Width="200">
+                                <Image HorizontalAlignment="Center" Height="55" Source="images/setsSurceButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="8,0,0,0">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="90"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+                                <ContentPresenter RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="setDestinationButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center" d:LayoutOverrides="Height" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8C0C0" Offset="0"/>
+                                    <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                                <Image HorizontalAlignment="Center" Height="55" Source="images/setDestinationButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="8,0,-1,0">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+                                <ContentPresenter RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="getDirectionTouchButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center" d:LayoutOverrides="Height" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8C0C0" Offset="0"/>
+                                    <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                                <Image HorizontalAlignment="Center" Height="55" Source="images/getDirectionButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="8,0,-1,0">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="61"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="Get Direction" Margin="0,0,10,0"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="searchLocationTouchButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchButton}">
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center" d:LayoutOverrides="Height" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8C0C0" Offset="0"/>
+                                    <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                                <Image HorizontalAlignment="Center" Height="55" Source="images/searchButton.png" Stretch="UniformToFill" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Margin="8,0,0,0">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="-175"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+                                <ContentPresenter RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="Search Location" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="lockMapButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchToggleButton}">
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Stretch" d:LayoutOverrides="Height" CornerRadius="0,0,4,0" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8C0C0" Offset="0"/>
+                                    <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                                <Image x:Name="lockButton" HorizontalAlignment="Center" Height="45" Source="images/lockButtonImage.png" Stretch="Fill" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" Margin="17,0,0,0">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+                                <ContentPresenter x:Name="content" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="Pan Map" Margin="4,0,10,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Source" TargetName="lockButton" Value="images/lockButtonLocked.png"  />
+                                <Setter Property="Content" TargetName="content" Value="Move Control"  />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ShutterTouchToggleButtonStyle" TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CustomControls_InheritedFrameworkControls:TouchToggleButton}">
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="0,0,4,0" Background="{x:Null}" >
+                            <Path x:Name="pathIcon" Data="M27.092373,22.669298 L42.332642,28.212121 27.134037,33.052555" Fill="#FF3D3D3D" Stretch="Fill" Stroke="#FF3D3D3D" Height="23.333" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="15.751" RenderTransformOrigin="0.5,0.5">
+                            </Path>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="OnShutterChecked">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.7" Value="0,0,-208,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border1">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,0,-39,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.7" Value="0,0,-39,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="shutterButton">
+                <EasingPointKeyFrame KeyTime="0:0:0.7" Value="0.5,0.5"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="shutterButton">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="border">
+                <EasingColorKeyFrame KeyTime="0" Value="#00000000"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="#5E979797"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="border">
+                <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="#5EA9A9A9"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnShutterUnchecked">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+                <SplineThicknessKeyFrame KeyTime="0" Value="0,0,-208,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.7" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="shutterButton">
+                <SplinePointKeyFrame KeyTime="0" Value="0.5,0.5"/>
+                <SplinePointKeyFrame KeyTime="0:0:0.7" Value="0,0"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="shutterButton">
+                <SplineDoubleKeyFrame KeyTime="0" Value="-1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.7" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="border">
+                <EasingColorKeyFrame KeyTime="0" Value="#5EA3A3A3"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="Transparent"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="border">
+                <EasingColorKeyFrame KeyTime="0" Value="#5E9D9D9D"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="shutterButton">
+            <BeginStoryboard x:Name="OnShutterChecked_BeginStoryboard" Storyboard="{StaticResource OnShutterChecked}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="shutterButton">
+            <BeginStoryboard x:Name="OnShutterUnchecked_BeginStoryboard" Storyboard="{StaticResource OnShutterUnchecked}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+    <Grid Background="Transparent">
+        <Grid.OpacityMask>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
+
+        <Border x:Name="border" HorizontalAlignment="Right" Margin="0,0,2,0" VerticalAlignment="Center" CornerRadius="0,8,8,0" BorderThickness="0,8,8,8">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#00000000" Offset="0"/>
+                    <GradientStop Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid x:Name="controlPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border x:Name="border1" CornerRadius="0,8,8,0" BorderThickness="0,2,2,2" HorizontalAlignment="Right" Width="31" VerticalAlignment="Center" Margin="0,0,-39,0" Height="59">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Transparent" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#5EC8C0C0" Offset="0"/>
+                            <GradientStop Color="#5EC8C0C0" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <CustomControls_InheritedFrameworkControls:TouchToggleButton x:Name="shutterButton" Style="{DynamicResource ShutterTouchToggleButtonStyle}" Foreground="#FF505050" FontWeight="Bold" FontSize="14.667" >
+                        <CustomControls_InheritedFrameworkControls:TouchToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </CustomControls_InheritedFrameworkControls:TouchToggleButton.RenderTransform>
+                    </CustomControls_InheritedFrameworkControls:TouchToggleButton>
+                </Border>
+                <StackPanel Orientation="Vertical" d:LayoutOverrides="Height">
+                    <CustomControls_InheritedFrameworkControls:TouchButton x:Name="setSourceButton" Content="{Binding SourceButtonText}" Style="{DynamicResource setOriginButtonStyle}" HorizontalAlignment="Center" Foreground="#FF505050" FontSize="14.667" FontWeight="Bold"/>
+                    <CustomControls_InheritedFrameworkControls:TouchButton x:Name="setDestinationButton" Content="{Binding DestinationButtonText}" Margin="0" Style="{DynamicResource setDestinationButtonStyle}" VerticalAlignment="Center" Foreground="#FF505050" FontSize="14.667" FontWeight="Bold"/>
+                    <CustomControls_InheritedFrameworkControls:TouchButton x:Name="getDirectionsButton" Margin="0" Style="{DynamicResource getDirectionTouchButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF505050" FontSize="14.667" FontWeight="Bold"/>
+                    <CustomControls_InheritedFrameworkControls:TouchButton x:Name="searchLocationButton" Margin="0" Style="{DynamicResource searchLocationTouchButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF505050" FontSize="14.667" FontWeight="Bold"/>
+                    <CustomControls_InheritedFrameworkControls:TouchToggleButton x:Name="lockButton" Style="{DynamicResource lockMapButtonStyle}" HorizontalAlignment="Left" Foreground="#FF505050" FontWeight="Bold" FontSize="14.667" Height="55" />
+                </StackPanel>
+            </Grid>
+
+        </Border>
+        <Border CornerRadius="0" d:LayoutOverrides="Height" BorderBrush="#FF555555" BorderThickness="0">
+            <Grid>
+                <Canvas
 					x:Name="BrowserContainer" Margin="0" Background="Black" ClipToBounds="True"
-					Width="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=18, ElementName=mapBrowser, Mode=OneWay}"
-					Height="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=18, ElementName=mapBrowser, Mode=OneWay}"
+					Width="{Binding ActualWidth, ConverterParameter=18, Converter={StaticResource SubtractValueConverter}, ElementName=mapBrowser, Mode=OneWay}"
+					Height="{Binding ActualWidth, ConverterParameter=18, Converter={StaticResource SubtractValueConverter}, ElementName=mapBrowser, Mode=OneWay}"
 					>
-					<Canvas.Clip>
-						<EllipseGeometry Center="{Binding ActualWidth, Converter={StaticResource CenterPointConverter}, ElementName=mapBrowser, Mode=OneWay}" RadiusX="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=9, ElementName=mapBrowser, Mode=OneWay}" RadiusY="{Binding ActualWidth,Converter={StaticResource SubtractValueConverter},ConverterParameter=9, ElementName=mapBrowser, Mode=OneWay}"/>
-					</Canvas.Clip>
-					<!--<cjc:WebBrowser HorizontalAlignment="Center" VerticalAlignment="Center" />-->
-				</Canvas>
-			</Grid>
-		</Border>
-		<Border d:LayoutOverrides="Height" BorderThickness="1" CornerRadius="13.5" BorderBrush="#FF474747">
-			<!--<Border.Effect>
+                    <Canvas.Clip>
+                        <EllipseGeometry Center="{Binding ActualWidth, Converter={StaticResource CenterPointConverter}, ElementName=mapBrowser, Mode=OneWay}" RadiusX="{Binding ActualWidth, ConverterParameter=9, Converter={StaticResource SubtractValueConverter}, ElementName=mapBrowser, Mode=OneWay}" RadiusY="{Binding ActualWidth, ConverterParameter=9, Converter={StaticResource SubtractValueConverter}, ElementName=mapBrowser, Mode=OneWay}"/>
+                    </Canvas.Clip>
+                    <!--<cjc:WebBrowser HorizontalAlignment="Center" VerticalAlignment="Center" />-->
+
+                </Canvas>
+            </Grid>
+        </Border>
+        <Border d:LayoutOverrides="Height" BorderThickness="0" CornerRadius="13.5" BorderBrush="#FF474747">
+            <!--<Border.Effect>
 				<DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="17"/>
 			</Border.Effect>-->
-			<Border BorderThickness="10" CornerRadius="8">
-				<Border.BorderBrush>
-					<RadialGradientBrush RadiusY="0.526" RadiusX="0.526">
-						<GradientStop Color="#FFC8C0C0" Offset="1"/>
-						<GradientStop Color="#FF434242" Offset="0.888"/>
-						<GradientStop Color="#FFC0BDBD"/>
-					</RadialGradientBrush>
-				</Border.BorderBrush>
-				<!--<Border.Effect>
+            <Border BorderThickness="10" CornerRadius="8">
+                <Border.BorderBrush>
+                    <RadialGradientBrush RadiusY="0.526" RadiusX="0.526">
+                        <GradientStop Color="#5EC8C0C0" Offset="1"/>
+                        <GradientStop Color="#5E434242" Offset="0.888"/>
+                        <GradientStop Color="#5DC0BDBD"/>
+                    </RadialGradientBrush>
+                </Border.BorderBrush>
+                <!--<Border.Effect>
 					<DropShadowEffect Direction="0" BlurRadius="6" ShadowDepth="0"/>
 				</Border.Effect>-->
-			</Border>
-		</Border>
-		
-	<CircularButton:CircularToggleButton x:Name="lockButton" HorizontalAlignment="Right"  Margin="-27.5" VerticalAlignment="Center" />
-    <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,-12,0" Height="58" Width="58" />
-	
-		<!-- 
+
+            </Border>
+        </Border>
+        <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,-12,0" Height="58" Width="58" />
+
+        <!-- 
     <CircularButton:CircularToggleButton x:Name="lockButton" HorizontalAlignment="Right"  Margin="-27.5" VerticalAlignment="Center" CheckedImage="images/lockButtonLocked.png" UncheckedImage="images/lockButtonImage.png" />
     <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-35,0,0,0" Height="70" Width="70"/>  
     -->
-    
-	</Grid>
+
+    </Grid>
 </UserControl>
