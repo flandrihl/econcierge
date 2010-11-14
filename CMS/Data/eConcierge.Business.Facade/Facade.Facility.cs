@@ -19,5 +19,10 @@ namespace eConcierge.Business
         {
             return new ServerDatabaseHandler().GetATMs(queryParamList, ref error);
         }
+
+        public static List<DTOCafe> GetCafe(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetCafes(queryParamList, ref error);
+        }
     }
 }

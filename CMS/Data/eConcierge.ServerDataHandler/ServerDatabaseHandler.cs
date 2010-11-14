@@ -381,5 +381,32 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Cafe
+        public List<DTOCafe> GetCafes(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Title, Description, Photo, Address, Phone, Latitude, Longitude FROM Cafe";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateCafes);
+        }
+        private List<DTOCafe> PopulateCafes(DbDataReader oDbDataReader)
+        {
+            List<DTOCafe> lst = new List<DTOCafe>();
+            while (oDbDataReader.Read())
+            {
+                DTOCafe oDTOCafe = new DTOCafe();
+                oDTOCafe.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOCafe.Id;
+                oDTOCafe.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOCafe.Title;
+                oDTOCafe.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOCafe.Description;
+                oDTOCafe.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTOCafe.Photo;
+                oDTOCafe.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : oDTOCafe.Address;
+                oDTOCafe.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : oDTOCafe.Phone;
+                oDTOCafe.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOCafe.Latitude;
+                oDTOCafe.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOCafe.Longitude;
+                lst.Add(oDTOCafe);
+            }
+            return lst;
+        }
+        #endregion
     }
 }

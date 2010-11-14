@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATMService.cs" />
+    <Compile Include="CafeService.cs" />
     <Compile Include="CalendarEventPresenter.cs" />
     <Compile Include="DiningCategoryService.cs" />
     <Compile Include="DiningMenuService.cs" />
