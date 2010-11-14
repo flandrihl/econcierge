@@ -46,7 +46,8 @@ namespace eConcierge.CMSClient
 
             mnu.AddMainMenu(WellKnownNames.ToolbarString.Transportation, "Transportation");
             mnu.AddsubMenu(WellKnownNames.ToolbarString.Transportation, WellKnownNames.ToolbarString.TransportationCategory, "Category", ShowItem, true);
-            mnu.AddsubMenu(WellKnownNames.ToolbarString.Transportation, WellKnownNames.ToolbarString.TransportationDetail, "Detail", ShowItem);
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.Transportation, WellKnownNames.ToolbarString.TransportationMonorailDetail, "Monorail", ShowItem);
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.Transportation, WellKnownNames.ToolbarString.TransportationTaxiDetail, "Taxi", ShowItem);
         }
        
         private void ShowItem(string name)
@@ -90,6 +91,10 @@ namespace eConcierge.CMSClient
             else if (name.Equals(WellKnownNames.ToolbarString.TransportationCategory))
             {
                 SetMiddleContent<TransportationDetail>();
+            }
+            else if (name.Equals(WellKnownNames.ToolbarString.TransportationMonorailDetail))
+            {
+                SetMiddleContent<TransportationMonorailDetail>();
             }
             
         }
