@@ -431,5 +431,32 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Mall
+        public List<DTOMall> GetMalls(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Title, Description, Photo, Address, Phone, Latitude, Longitude FROM Mall";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateMalls);
+        }
+        private List<DTOMall> PopulateMalls(DbDataReader oDbDataReader)
+        {
+            List<DTOMall> lst = new List<DTOMall>();
+            while (oDbDataReader.Read())
+            {
+                DTOMall oDTOMall = new DTOMall();
+                oDTOMall.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOMall.Id;
+                oDTOMall.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOMall.Title;
+                oDTOMall.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOMall.Description;
+                oDTOMall.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTOMall.Photo;
+                oDTOMall.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : oDTOMall.Address;
+                oDTOMall.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : oDTOMall.Phone;
+                oDTOMall.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOMall.Latitude;
+                oDTOMall.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOMall.Longitude;
+                lst.Add(oDTOMall);
+            }
+            return lst;
+        }
+        #endregion
     }
 }

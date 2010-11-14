@@ -85,7 +85,7 @@ namespace eConcierge.CMSClient
             }
             else if (name.Equals(WellKnownNames.ToolbarString.Mall))
             {
-                SetMiddleContent<CafeDetail>();
+                SetMiddleContent<MallDetail>();
             }
             else if (name.Equals(WellKnownNames.ToolbarString.TransportationCategory))
             {

@@ -52,6 +52,7 @@
     <Compile Include="DiningService.cs" />
     <Compile Include="DiningSubCategoryService.cs" />
     <Compile Include="EventCalendarCategoryPresenter.cs" />
+    <Compile Include="MallService.cs" />
     <Compile Include="PointOfInterestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportationService.cs" />
