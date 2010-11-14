@@ -26,14 +26,12 @@ namespace eConciergeClient
 
         #endregion
 
-        public MainWindow()
-        {
+        public MainWindow(){
             InitializeComponent();
             FrameworkManager = new FrameworkManger(MainCanvas, FeatureToolPanel);
             Closing += OnClosing;
             InitializeTheme();
             Mouse.OverrideCursor=Cursors.None;
-            //hotred/images/atm.png
         }
 
         void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
