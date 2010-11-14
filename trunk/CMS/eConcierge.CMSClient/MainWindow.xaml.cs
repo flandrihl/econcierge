@@ -70,6 +70,10 @@ namespace eConcierge.CMSClient
             {
                 SetMiddleContent<PointOfInterestDetail>();
             }
+            else if (name.Equals(WellKnownNames.ToolbarString.ATM))
+            {
+                SetMiddleContent<ATMDetail>();
+            }
             
         }
         private void SetMiddleContent<T>() where T:class, new() 
