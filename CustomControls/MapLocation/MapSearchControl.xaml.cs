@@ -124,7 +124,7 @@ namespace CustomControls.MapLocation
             searchBox.Tag = FrameworkManager.RegisterElement(searchBox, false, new[] { TouchAction.Tap });
             FrameworkManager.RegisterElement((IMTouchControl)SetSouceButton, false, new[] { TouchAction.Tap });
             FrameworkManager.RegisterElement((IMTouchControl)SetDestinationButton, false, new[] { TouchAction.Tap }); 
-            FrameworkManager.RegisterElement((IMTouchControl)menuButton, false, new[] { TouchAction.Tap });
+            //FrameworkManager.RegisterElement((IMTouchControl)menuButton, false, new[] { TouchAction.Tap });
             scrollViewer.Tag = FrameworkManager.RegisterElement(scrollViewer, false, new[] { TouchAction.ScrollY });
             SetSouceButton.Click += SetSouceButtonClick;
             SetDestinationButton.Click += SetDestinationButtonClick;
@@ -168,7 +168,7 @@ namespace CustomControls.MapLocation
             SelectedLocation = locationRadio.Location;
         }
 
-        private void SearchBox_KeyDown(object sender, KeyEventArgs e)
+        private void SearchBoxKeyDown(object sender, KeyEventArgs e)
         {
             var tb = sender as TextBox;
             if (e.Key == Key.Enter && !string.IsNullOrEmpty(tb.Text))
