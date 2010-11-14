@@ -11,6 +11,7 @@ using System.Windows.Media;
 using CjcAwesomiumWrapper;
 using CustomControls.Abstract;
 using CustomControls.CircularButton;
+using CustomControls.InheritedFrameworkControls;
 using CustomControls.MapLocation;
 using Helpers;
 using Helpers.Extensions;
@@ -46,7 +47,7 @@ namespace TouchControls
         public event EventHandler Closed;
         private MapDirectionStepsView _directionsControl;
         private MapSearchControl _mapSearchControl;
-        public CircularToggleButton LockButton
+        public TouchToggleButton LockButton
         {
             get
             {
@@ -108,7 +109,7 @@ namespace TouchControls
             LockButton.Tag = "Lock";
 
             LockButton.Checked += LockButtonChecked;
-            LockButton.UnChecked += LockButtonChecked;
+            LockButton.Unchecked += LockButtonChecked;
 
             closeButton.Click += CloseButtonClick;
 
@@ -142,7 +143,7 @@ namespace TouchControls
             if (SourceButtonText.Equals("Set Origin"))
             {
                 SetSource(null);
-                SourceButtonText = "Remove Origin";
+                SourceButtonText = "Remove";
             }
             else
             {
@@ -157,7 +158,7 @@ namespace TouchControls
             if (DestinationButtonText.Equals("Set Destination"))
             {
                 SetDestination(null);
-                DestinationButtonText = "Remove Destination";
+                DestinationButtonText = "Remove";
             }
             else
             {
@@ -245,7 +246,7 @@ namespace TouchControls
 
         private void LockButtonChecked(object sender, EventArgs eventArgs)
         {
-            var button = sender as CircularToggleButton;
+            var button = sender as TouchToggleButton;
             switch (button.Tag.ToString())
             {
                 case "Lock":
@@ -266,6 +267,7 @@ namespace TouchControls
             FrameworkManager.RegisterElement((IMTouchControl)setDestinationButton, false, new[] { TouchAction.Tap });
             FrameworkManager.RegisterElement((IMTouchControl)getDirectionsButton, false, new[] { TouchAction.Tap });
             FrameworkManager.RegisterElement((IMTouchControl)searchLocationButton, false, new[] { TouchAction.Tap });
+            FrameworkManager.RegisterElement((IMTouchControl)shutterButton, false, new[] { TouchAction.Tap });
             FrameworkManager.AddControlWithAllGestures(this, left, top);
         }
 
@@ -277,6 +279,7 @@ namespace TouchControls
             FrameworkManager.UnRegisterElement(getDirectionsButton);
             FrameworkManager.UnRegisterElement(searchLocationButton);
             FrameworkManager.UnRegisterElement(LockButton);
+            FrameworkManager.UnRegisterElement(shutterButton);
             FrameworkManager.UnRegisterElement(closeButton);
             FrameworkManager.RemoveControl(this);
             InvokeClosed(new EventArgs());
