@@ -33,6 +33,7 @@ namespace eConciergeClient
             Closing += OnClosing;
             InitializeTheme();
             Mouse.OverrideCursor=Cursors.None;
+            //hotred/images/atm.png
         }
 
         void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)

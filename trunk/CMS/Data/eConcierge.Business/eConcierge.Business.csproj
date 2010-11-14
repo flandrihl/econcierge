@@ -50,6 +50,7 @@
     <Compile Include="DiningService.cs" />
     <Compile Include="DiningSubCategoryService.cs" />
     <Compile Include="EventCalendarCategoryPresenter.cs" />
+    <Compile Include="PointOfInterestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

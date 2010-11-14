@@ -281,8 +281,6 @@ namespace eConcierge.ServerDataHandler
             }
             return lst;
         }
-        #endregion
-
         public bool SaveDining(QueryParamList pParam, string spName, ref string pErrString, List<DTODiningMenu> menuList)
         {
             Database db = GetSQLDatabase();
@@ -296,7 +294,7 @@ namespace eConcierge.ServerDataHandler
                 DbCommand cmd = db.GetStoredProcCommand(spName);
 
                 int id = DBExecStoredProcInTranReturnsIdentity(db, cmd, pParam, transaction);
-                if(id > 0)
+                if (id > 0)
                 {
                     foreach (DTODiningMenu menu in menuList)
                     {
@@ -310,7 +308,7 @@ namespace eConcierge.ServerDataHandler
                     param.Add(new QueryParamObj() { ParamName = "Photo", DBType = DbType.Binary, ParamValue = menu.Photo });
                     param.Add(new QueryParamObj() { ParamName = "FileName", DBType = DbType.String, ParamValue = menu.FileName });
                     cmd = db.GetStoredProcCommand("INSERTDiningMenu");
-                    DBExecStoredProcInTranReturnsIdentity(db, cmd, param, transaction);    
+                    DBExecStoredProcInTranReturnsIdentity(db, cmd, param, transaction);
                 }
 
                 transaction.Commit();
@@ -328,5 +326,33 @@ namespace eConcierge.ServerDataHandler
             }
             return true;
         }
+        #endregion
+
+        #region Point Of Interest
+        public List<DTOPointOfInterest> GetPointOfInterests(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Title, Description, Photo, Address, Phone, Latitude, Longitude FROM PointOfInterest";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulatePointOfInterests);
+        }
+        private List<DTOPointOfInterest> PopulatePointOfInterests(DbDataReader oDbDataReader)
+        {
+            List<DTOPointOfInterest> lst = new List<DTOPointOfInterest>();
+            while (oDbDataReader.Read())
+            {
+                DTOPointOfInterest oDTOPointOfInterest = new DTOPointOfInterest();
+                oDTOPointOfInterest.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOPointOfInterest.Id;
+                oDTOPointOfInterest.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOPointOfInterest.Title;
+                oDTOPointOfInterest.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOPointOfInterest.Description;
+                oDTOPointOfInterest.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTOPointOfInterest.Photo;
+                oDTOPointOfInterest.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : oDTOPointOfInterest.Address;
+                oDTOPointOfInterest.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : oDTOPointOfInterest.Phone;
+                oDTOPointOfInterest.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOPointOfInterest.Latitude;
+                oDTOPointOfInterest.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOPointOfInterest.Longitude;
+                lst.Add(oDTOPointOfInterest);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
