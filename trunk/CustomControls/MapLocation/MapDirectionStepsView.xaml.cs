@@ -98,7 +98,7 @@ namespace CustomControls.MapLocation
         public void InitializeControl(IFrameworkManger frameworkManager, double left, double top)
         {
             FrameworkManager = frameworkManager;
-            FrameworkManager.RegisterElement((IMTouchControl)menuButton, false, new[] { TouchAction.Tap });
+            //FrameworkManager.RegisterElement((IMTouchControl)menuButton, false, new[] { TouchAction.Tap });
             scrollViewer.Tag = FrameworkManager.RegisterElement(scrollViewer, false, new[] { TouchAction.Slide });
             FrameworkManager.AddControlWithAllNoGestures(this, left, top);
         }

@@ -171,7 +171,7 @@
     							<TextBox x:Name="searchBox" 
     								Height="30" FontSize="17" VerticalContentAlignment="Center"
     								Margin="0,0,3,0" Width="200" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="LightGray"
-    								KeyDown="SearchBox_KeyDown" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"/>
+    								KeyDown="SearchBoxKeyDown" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"/>
 						
     						</StackPanel>
     					</Border>
