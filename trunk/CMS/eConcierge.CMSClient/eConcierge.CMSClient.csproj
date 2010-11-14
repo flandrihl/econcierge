@@ -60,6 +60,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\CafeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\CalendarEventDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CmsWindow\wndATM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CmsWindow\wndCafe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +147,9 @@
     <Compile Include="CmsUserControl\ATMDetail.xaml.cs">
       <DependentUpon>ATMDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmsUserControl\CafeDetail.xaml.cs">
+      <DependentUpon>CafeDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\CalendarEventDetail.xaml.cs">
       <DependentUpon>CalendarEventDetail.xaml</DependentUpon>
     </Compile>
@@ -170,6 +181,9 @@
     <Compile Include="CmsWindow\WindowBase.cs" />
     <Compile Include="CmsWindow\wndATM.xaml.cs">
       <DependentUpon>wndATM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsWindow\wndCafe.xaml.cs">
+      <DependentUpon>wndCafe.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsWindow\wndCalendarEvent.xaml.cs">
       <DependentUpon>wndCalendarEvent.xaml</DependentUpon>
