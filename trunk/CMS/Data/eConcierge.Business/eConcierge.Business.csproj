@@ -55,6 +55,7 @@
     <Compile Include="MallService.cs" />
     <Compile Include="PointOfInterestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransportationMonorailService.cs" />
     <Compile Include="TransportationService.cs" />
   </ItemGroup>
   <ItemGroup>
