@@ -354,5 +354,32 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region ATM
+        public List<DTOATM> GetATMs(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Title, Description, Photo, Address, Phone, Latitude, Longitude FROM ATM";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateATMs);
+        }
+        private List<DTOATM> PopulateATMs(DbDataReader oDbDataReader)
+        {
+            List<DTOATM> lst = new List<DTOATM>();
+            while (oDbDataReader.Read())
+            {
+                DTOATM oDTOATM = new DTOATM();
+                oDTOATM.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOATM.Id;
+                oDTOATM.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOATM.Title;
+                oDTOATM.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOATM.Description;
+                oDTOATM.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTOATM.Photo;
+                oDTOATM.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : oDTOATM.Address;
+                oDTOATM.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : oDTOATM.Phone;
+                oDTOATM.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOATM.Latitude;
+                oDTOATM.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOATM.Longitude;
+                lst.Add(oDTOATM);
+            }
+            return lst;
+        }
+        #endregion
     }
 }

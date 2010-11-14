@@ -14,5 +14,10 @@ namespace eConcierge.Business
         {
             return new ServerDatabaseHandler().GetPointOfInterests(queryParamList, ref error);
         }
+
+        public static List<DTOATM> GetATM(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetATMs(queryParamList, ref error);
+        }
     }
 }

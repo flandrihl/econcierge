@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOATM.cs" />
     <Compile Include="DTOCalendarEvent.cs" />
     <Compile Include="DTODining.cs" />
     <Compile Include="DTODiningCategory.cs" />
