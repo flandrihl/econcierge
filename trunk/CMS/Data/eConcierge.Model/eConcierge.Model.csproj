@@ -50,6 +50,7 @@
     <Compile Include="DTODiningSubCategory.cs" />
     <Compile Include="DTOEventCalendarCategory.cs" />
     <Compile Include="DTOPointOfInterest.cs" />
+    <Compile Include="DTOTransportation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
