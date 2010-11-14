@@ -92,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CmsUserControl\MallDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\PhotoUpload.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CmsWindow\wndECCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CmsWindow\wndMall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +187,9 @@
     <Compile Include="CmsUserControl\HeaderView.xaml.cs">
       <DependentUpon>HeaderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmsUserControl\MallDetail.xaml.cs">
+      <DependentUpon>MallDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\PhotoUpload.xaml.cs">
       <DependentUpon>PhotoUpload.xaml</DependentUpon>
     </Compile>
@@ -210,6 +221,9 @@
     </Compile>
     <Compile Include="CmsWindow\wndECCategory.xaml.cs">
       <DependentUpon>wndECCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsWindow\wndMall.xaml.cs">
+      <DependentUpon>wndMall.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsWindow\wndPointOfInterest.xaml.cs">
       <DependentUpon>wndPointOfInterest.xaml</DependentUpon>

@@ -24,5 +24,9 @@ namespace eConcierge.Business
         {
             return new ServerDatabaseHandler().GetCafes(queryParamList, ref error);
         }
+        public static List<DTOMall> GetMall(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetMalls(queryParamList, ref error);
+        }
     }
 }
