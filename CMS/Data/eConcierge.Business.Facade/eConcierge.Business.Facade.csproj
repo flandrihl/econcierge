@@ -46,6 +46,7 @@
     <Compile Include="Facade.Dining.cs" />
     <Compile Include="Facade.EventCalendar.cs" />
     <Compile Include="Facade.Facility.cs" />
+    <Compile Include="Facade.Transportation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

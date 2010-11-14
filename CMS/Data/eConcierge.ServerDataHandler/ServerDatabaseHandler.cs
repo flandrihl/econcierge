@@ -408,5 +408,28 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Transportation
+        public List<DTOTransportation> GetTransportations(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, Title, Description, TransportationType FROM Transportation";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateTransportations);
+        }
+        private List<DTOTransportation> PopulateTransportations(DbDataReader oDbDataReader)
+        {
+            List<DTOTransportation> lst = new List<DTOTransportation>();
+            while (oDbDataReader.Read())
+            {
+                DTOTransportation oDTOTransportation = new DTOTransportation();
+                oDTOTransportation.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOTransportation.Id;
+                oDTOTransportation.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOTransportation.Title;
+                oDTOTransportation.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOTransportation.Description;
+                oDTOTransportation.TransportationType = oDbDataReader["TransportationType"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["TransportationType"]) : oDTOTransportation.TransportationType;
+                lst.Add(oDTOTransportation);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
