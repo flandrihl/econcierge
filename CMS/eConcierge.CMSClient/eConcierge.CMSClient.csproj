@@ -100,6 +100,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\TransportationDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsWindow\wndATM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CmsWindow\wndPointOfInterest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CmsWindow\wndTransportation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +185,9 @@
     <Compile Include="CmsUserControl\PointOfInterestDetail.xaml.cs">
       <DependentUpon>PointOfInterestDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmsUserControl\TransportationDetail.xaml.cs">
+      <DependentUpon>TransportationDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\UserControlBase.cs" />
     <Compile Include="CmsWindow\WindowBase.cs" />
     <Compile Include="CmsWindow\wndATM.xaml.cs">
@@ -202,6 +213,9 @@
     </Compile>
     <Compile Include="CmsWindow\wndPointOfInterest.xaml.cs">
       <DependentUpon>wndPointOfInterest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsWindow\wndTransportation.xaml.cs">
+      <DependentUpon>wndTransportation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Code\ANotifyPropertyChanged.cs" />
     <Compile Include="Code\MainMenuItem.cs" />
