@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CmsUserControl\ATMDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\CalendarEventDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CmsUserControl\PointOfInterestDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CmsWindow\wndATM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,6 +136,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CmsUserControl\ATMDetail.xaml.cs">
+      <DependentUpon>ATMDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsUserControl\CalendarEventDetail.xaml.cs">
       <DependentUpon>CalendarEventDetail.xaml</DependentUpon>
     </Compile>
@@ -157,6 +168,9 @@
     </Compile>
     <Compile Include="CmsUserControl\UserControlBase.cs" />
     <Compile Include="CmsWindow\WindowBase.cs" />
+    <Compile Include="CmsWindow\wndATM.xaml.cs">
+      <DependentUpon>wndATM.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmsWindow\wndCalendarEvent.xaml.cs">
       <DependentUpon>wndCalendarEvent.xaml</DependentUpon>
     </Compile>
