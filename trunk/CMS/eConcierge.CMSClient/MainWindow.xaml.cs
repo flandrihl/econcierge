@@ -37,6 +37,11 @@ namespace eConcierge.CMSClient
             mnu.AddsubMenu(WellKnownNames.ToolbarString.Dining, WellKnownNames.ToolbarString.DiningCategory, "Category", ShowItem, true);
             mnu.AddsubMenu(WellKnownNames.ToolbarString.Dining, WellKnownNames.ToolbarString.DiningSubCategory, "Sub Category", ShowItem);
             mnu.AddsubMenu(WellKnownNames.ToolbarString.Dining, WellKnownNames.ToolbarString.DiningDetail, "Dining Detail", ShowItem);
+
+            mnu.AddMainMenu(WellKnownNames.ToolbarString.Facility, "Facility");
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.Facility, WellKnownNames.ToolbarString.PointOfInterest, "Point Of Interest", ShowItem, true);
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.Facility, WellKnownNames.ToolbarString.ATM, "ATM", ShowItem);
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.Facility, WellKnownNames.ToolbarString.Cafe, "Cafe", ShowItem);
         }
        
         private void ShowItem(string name)
