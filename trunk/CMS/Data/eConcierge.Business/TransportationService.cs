@@ -5,9 +5,9 @@ using eConcierge.Model;
 
 namespace eConcierge.Business
 {
-	public class TransportationPresenter
+	public class TransportationService
 	{
-		public TransportationPresenter()
+		public TransportationService()
 		{
 		}
 		public List<DTOTransportation> GetTransportations()

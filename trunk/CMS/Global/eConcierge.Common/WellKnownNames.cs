@@ -37,9 +37,13 @@ namespace eConcierge.Common
             public static string PointOfInterest = "PointOfInterest";
             public static string ATM = "ATM";
             public static string Cafe = "Cafe";
+            public static string Mall = "Mall";
             public static string DiningCategory = "DiningCategory";
             public static string DiningSubCategory = "DiningSubCategory";
             public static string DiningDetail = "DiningDetail";
+            public static string Transportation = "Transportation";
+            public static string TransportationCategory = "TransportationCategory";
+            public static string TransportationDetail = "TransportationDetail";
         }
     }
 }
