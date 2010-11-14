@@ -52,6 +52,7 @@
     <Compile Include="DTOMall.cs" />
     <Compile Include="DTOPointOfInterest.cs" />
     <Compile Include="DTOTransportation.cs" />
+    <Compile Include="DTOTransportationMonorail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

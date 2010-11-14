@@ -458,5 +458,33 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Transportation Detail
+        public List<DTOTransportationMonorail> GetTransportationMonorails(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, TranportationId, Title, Description, Photo, Address, Phone, Latitude, Longitude FROM TransportationMonorail";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateTransportationMonorails);
+        }
+        private List<DTOTransportationMonorail> PopulateTransportationMonorails(DbDataReader oDbDataReader)
+        {
+            List<DTOTransportationMonorail> lst = new List<DTOTransportationMonorail>();
+            while (oDbDataReader.Read())
+            {
+                DTOTransportationMonorail oDTOTransportationMonorail = new DTOTransportationMonorail();
+                oDTOTransportationMonorail.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOTransportationMonorail.Id;
+                oDTOTransportationMonorail.TranportationId = oDbDataReader["TranportationId"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["TranportationId"]) : oDTOTransportationMonorail.TranportationId;
+                oDTOTransportationMonorail.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOTransportationMonorail.Title;
+                oDTOTransportationMonorail.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : oDTOTransportationMonorail.Description;
+                oDTOTransportationMonorail.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTOTransportationMonorail.Photo;
+                oDTOTransportationMonorail.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : oDTOTransportationMonorail.Address;
+                oDTOTransportationMonorail.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : oDTOTransportationMonorail.Phone;
+                oDTOTransportationMonorail.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOTransportationMonorail.Latitude;
+                oDTOTransportationMonorail.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOTransportationMonorail.Longitude;
+                lst.Add(oDTOTransportationMonorail);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
