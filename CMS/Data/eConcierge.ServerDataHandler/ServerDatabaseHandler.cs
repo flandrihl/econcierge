@@ -486,5 +486,28 @@ namespace eConcierge.ServerDataHandler
             return lst;
         }
         #endregion
+
+        #region Transportation Taxi
+        public List<DTOTransportationTaxi> GetTransportationTaxis(QueryParamList pParam, ref string pErrString)
+        {
+            string query = "SELECT Id, TranspotationId, Title, Phone FROM TransportationTaxi";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateTransportationTaxis);
+        }
+        private List<DTOTransportationTaxi> PopulateTransportationTaxis(DbDataReader oDbDataReader)
+        {
+            List<DTOTransportationTaxi> lst = new List<DTOTransportationTaxi>();
+            while (oDbDataReader.Read())
+            {
+                DTOTransportationTaxi oDTOTransportationTaxi = new DTOTransportationTaxi();
+                oDTOTransportationTaxi.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTOTransportationTaxi.Id;
+                oDTOTransportationTaxi.TranspotationId = oDbDataReader["TranspotationId"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["TranspotationId"]) : oDTOTransportationTaxi.TranspotationId;
+                oDTOTransportationTaxi.Title = oDbDataReader["Title"] != DBNull.Value ? Convert.ToString(oDbDataReader["Title"]) : oDTOTransportationTaxi.Title;
+                oDTOTransportationTaxi.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : oDTOTransportationTaxi.Phone;
+                lst.Add(oDTOTransportationTaxi);
+            }
+            return lst;
+        }
+        #endregion
     }
 }
