@@ -96,6 +96,10 @@ namespace eConcierge.CMSClient
             {
                 SetMiddleContent<TransportationMonorailDetail>();
             }
+            else if (name.Equals(WellKnownNames.ToolbarString.TransportationTaxiDetail))
+            {
+                SetMiddleContent<TransportationTaxiDetail>();
+            }
             
         }
         private void SetMiddleContent<T>() where T:class, new() 
