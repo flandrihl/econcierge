@@ -1,0 +1,40 @@
+﻿<CmsWindow:WindowBase x:Class="eConcierge.CMSClient.CmsWindow.wndTransportationTaxi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:CmsWindow="clr-namespace:eConcierge.CMSClient.CmsWindow" 
+        xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" Title="Transportation Taxi" >
+    <Window.Resources>
+        <Thickness x:Key="tn">0,0,0,10</Thickness>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical" Width="400">
+        <StackPanel.Resources>
+            <Style TargetType="StackPanel">
+                <Setter Property="Margin" Value="{StaticResource tn}"/>
+                <Setter Property="Orientation" Value="Horizontal"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="0,0,10,0"/>
+                <Setter Property="Width" Value="60"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Width" Value="300"/>
+            </Style>
+        </StackPanel.Resources>
+        <StackPanel>
+            <TextBlock Text="Title"/>
+            <TextBox x:Name="txtTitle"  />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Category"/>
+            <ComboBox x:Name="cmbCategory" Width="300"/>
+        </StackPanel>       
+        <StackPanel>
+            <TextBlock Text="Phone"/>
+            <TextBox x:Name="txtPhone"/>
+        </StackPanel>       
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
+            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+        </StackPanel>
+    </StackPanel>
+</CmsWindow:WindowBase>
