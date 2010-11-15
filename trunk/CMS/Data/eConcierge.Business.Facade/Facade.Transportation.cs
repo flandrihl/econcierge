@@ -18,5 +18,9 @@ namespace eConcierge.Business
         {
             return new ServerDatabaseHandler().GetTransportationMonorails(queryParamList, ref error);
         }
+        public static List<DTOTransportationTaxi> GetTransportationTaxi(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetTransportationTaxis(queryParamList, ref error);
+        }
     }
 }
