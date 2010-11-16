@@ -32,6 +32,18 @@ namespace eConcierge.Business
 			}
 			return transportationtaxi;
 		}
+        public List<DTOTransportationTaxi> GetTransportationTaxisByTransporation(int Id)
+        {
+            string error = string.Empty;
+            QueryParamList param = new QueryParamList();
+            param.Add(new QueryParamObj() { ParamName = "TranspotationId", DBType = DbType.Int32, ParamValue = Id });
+            List<DTOTransportationTaxi> transportationtaxi = Facade.GetTransportationTaxi(param, ref error);
+            if (!string.IsNullOrEmpty(error))
+            {
+
+            }
+            return transportationtaxi;
+        }
 		public bool Save(DTOTransportationTaxi oTransportationTaxi)
 		{
 			QueryParamList param = new QueryParamList();
