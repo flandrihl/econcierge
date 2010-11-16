@@ -1,13 +1,8 @@
 ﻿<Window x:Class="eConcierge.CMSClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="MainResourceDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" 
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="{DynamicResource WindowBackgroundBrush}">
+   
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Grid>
