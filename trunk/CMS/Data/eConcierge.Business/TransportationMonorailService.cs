@@ -32,6 +32,18 @@ namespace eConcierge.Business
 			}
 			return transportationmonorail;
 		}
+        public List<DTOTransportationMonorail> GetTransportationMonorailsByTransportation(int Id)
+        {
+            string error = string.Empty;
+            QueryParamList param = new QueryParamList();
+            param.Add(new QueryParamObj() { ParamName = "TranportationId", DBType = DbType.Int32, ParamValue = Id });
+            List<DTOTransportationMonorail> transportationmonorail = Facade.GetTransportationMonorail(param, ref error);
+            if (!string.IsNullOrEmpty(error))
+            {
+
+            }
+            return transportationmonorail;
+        }
 		public bool Save(DTOTransportationMonorail oTransportationMonorail)
 		{
 			QueryParamList param = new QueryParamList();

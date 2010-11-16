@@ -74,12 +74,25 @@ namespace eConcierge.CMSClient.CmsWindow
                 {
                     rdoTaxi.IsChecked = true;
                 }
+                if(HasChild())
+                {
+                    rdoMonorail.Visibility = rdoTaxi.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {
                 _category = new DTOTransportation();
                 _category.IsNew = true;
             }
+        }
+
+        private bool HasChild()
+        {
+            if (new TransportationTaxiService().GetTransportationTaxisByTransporation(_category.Id).Count > 0)
+                return true;
+            if (new TransportationMonorailService().GetTransportationMonorailsByTransportation(_category.Id).Count > 0)
+                return true;
+            return false;
         }
 
         public bool IsValid()
