@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 
 namespace eConcierge.CMSClient.CmsWindow
 {
@@ -15,6 +16,7 @@ namespace eConcierge.CMSClient.CmsWindow
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             WindowStyle = WindowStyle.ToolWindow;
             SizeToContent = SizeToContent.WidthAndHeight;
+            this.SetResourceReference(Window.BackgroundProperty, "ButtonNormalBackground");
           
         }
 
