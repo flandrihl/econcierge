@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:CmsWindow="clr-namespace:eConcierge.CMSClient.CmsWindow"
         xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" 
-        Title="Calendar Event" >
+        Title="Calendar Event"  >
     <Window.Resources>
         <Thickness x:Key="tn">0,0,0,10</Thickness>
     </Window.Resources>
