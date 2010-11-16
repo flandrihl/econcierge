@@ -5,7 +5,7 @@
         xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" 
         Title="Calendar Event"  >
     <Window.Resources>
-        <Thickness x:Key="tn">0,0,0,10</Thickness>
+        <Thickness x:Key="tn">0,0,0,10</Thickness>        
     </Window.Resources>
     <StackPanel Orientation="Vertical" Width="400">
         <StackPanel.Resources>
@@ -14,47 +14,49 @@
                 <Setter Property="Orientation" Value="Horizontal"/>
             </Style>
             <Style TargetType="TextBlock">
-                <Setter Property="Margin" Value="0,0,10,0"/>
-                <Setter Property="Width" Value="60"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>               
             </Style>
             <Style TargetType="TextBox">
                 <Setter Property="Width" Value="300"/>
             </Style>
+           
         </StackPanel.Resources>
         <StackPanel>
-            <TextBlock Text="Title"/>
+            <TextBlock Text="Title" Width="60" />
             <TextBox x:Name="txtTitle"  />
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Category"/>
+            <TextBlock Text="Category" Width="60"/>
             <ComboBox x:Name="cmbCategory" Width="300"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Description"/>
+            <TextBlock Text="Description" Width="60"/>
             <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Photo"/>
+            <TextBlock Text="Photo" Width="60"/>
             <CmsUserControl:PhotoUpload x:Name="photoUpload" />                 
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Start Date"/>
-            <DatePicker x:Name="dtpStartDate" Width="300"/>
+            <TextBlock Text="Start Date" Width="60"/>
+            <DatePicker x:Name="dtpStartDate" Width="150"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="End Date"/>
-            <DatePicker x:Name="dtpEndDate" Width="300"/>
+            <TextBlock Text="End Date" Width="60"/>
+            <DatePicker x:Name="dtpEndDate" Width="150" >
+                    
+            </DatePicker>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Location"/>
+            <TextBlock Text="Location" Width="60"/>
             <TextBox x:Name="txtLocation"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Latitude"/>
+            <TextBlock Text="Latitude" Width="60"/>
             <TextBox x:Name="txtLatitude"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Longitude"/>
+            <TextBlock Text="Longitude" Width="60"/>
             <TextBox x:Name="txtLongitude"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
