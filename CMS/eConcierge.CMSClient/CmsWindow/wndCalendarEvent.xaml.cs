@@ -31,7 +31,7 @@ namespace eConcierge.CMSClient.CmsWindow
             UpdateData = updateData;
             InitializeComponent();
             PopulateCategory();
-            PopulateControl(evnt);
+            PopulateControl(evnt); 
         }
 
         private void PopulateCategory()

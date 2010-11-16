@@ -263,6 +263,11 @@
         </Setter>
     </Style>
 
+    <Style x:Key="calendar" TargetType="Calendar">
+        <Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>        
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>        
+    </Style>
     <Style TargetType="{x:Type Button}" BasedOn="{x:Null}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource NuclearButtonFocusVisual}"/>
         <Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
