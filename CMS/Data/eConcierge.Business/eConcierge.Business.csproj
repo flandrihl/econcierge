@@ -58,6 +58,7 @@
     <Compile Include="TransportationMonorailService.cs" />
     <Compile Include="TransportationService.cs" />
     <Compile Include="TransportationTaxiService.cs" />
+    <Compile Include="WarmUpService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Global\eConcierge.Common\eConcierge.Common.csproj">

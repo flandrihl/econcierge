@@ -16,6 +16,11 @@ namespace eConcierge.Business
             return new ServerDatabaseHandler().SetData(pParamList, spName, ref pErrString);
         }
 
+        public static bool CanConnectToDatabase()
+        {
+            return new ServerDatabaseHandler().CanConnectToDatabase();
+        }
+
         //public static List<DTOUser> GetUsers(QueryParamList queryParamList, ref string error)
         //{
         //    return new ServerDatabaseHandler().GetUsers(queryParamList, ref error);

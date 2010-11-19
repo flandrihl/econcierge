@@ -18,7 +18,7 @@ namespace eConcierge.ServerDataHandler
         {
             CONNECTIONSTRING = ConfigurationManager.ConnectionStrings["eConciergeDB"].ConnectionString;
         }
-       
+
 
         protected Database GetSQLDatabase()
         {
@@ -325,7 +325,7 @@ namespace eConcierge.ServerDataHandler
                 {
                     LoggingUtility.WriteLog(ex);
                 }
-                
+
             }
             return result;
         }
@@ -349,7 +349,7 @@ namespace eConcierge.ServerDataHandler
             return result;
         }
 
-        
+
         /// <summary>
         /// Runs a query on DB with parameters and returns a dbDataReader. must close the reader after done with reader.
         /// </summary>
@@ -359,7 +359,7 @@ namespace eConcierge.ServerDataHandler
         public DbDataReader GetDBQueryReader(string query, QueryParamList queryParams)
         {
             Database db = GetSQLDatabase();
-            DbCommand  command = db.GetSqlStringCommand(query);
+            DbCommand command = db.GetSqlStringCommand(query);
             if (command.Connection == null)
                 command.Connection = db.CreateConnection();
             if (queryParams != null)
@@ -463,5 +463,28 @@ namespace eConcierge.ServerDataHandler
                 command.Connection.Close();
             }
         }
+        public bool CanConnectToDatabase()
+        {
+            DbConnection connection = null;
+            try
+            {
+                Database db = GetSQLDatabase();
+                connection = db.CreateConnection();
+                connection.Open();
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+               if(connection != null && connection.State == ConnectionState.Open)
+               {
+                   connection.Close();
+               }
+            }
+            return true;
+        }
+
     }
 }
