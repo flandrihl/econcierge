@@ -7,7 +7,7 @@
              xmlns:IFC="clr-namespace:CustomControls.InheritedFrameworkControls" 
              xmlns:CircularButton="clr-namespace:CustomControls.CircularButton" 
              xmlns:TouchCombo="clr-namespace:CustomControls.TouchCombo" mc:Ignorable="d" 
-             Width="762" Height="548">
+             Width="762" Height="516">
     <UserControl.Resources>
         <ControlTemplate x:Key="ButtonBlankControlTemplate" TargetType="{x:Type Button}">
             <ContentPresenter/>
@@ -37,13 +37,20 @@
 						<IFC:TrackBar x:Name="pager" Minimum="0" Maximum="1" Margin="0,0,0,8" Style="{DynamicResource BlueTouchSliderStyle}" VerticalAlignment="Center" Width="541" />
 					</DockPanel>
 					<DockPanel x:Name="contentDock" DockPanel.Dock="Top" Style="{DynamicResource DialogContentDockStyle}">
+						<DockPanel.Background>
+							<RadialGradientBrush>
+    							<GradientStop Color="#3FC0BFBF" Offset="1"/>
+    							<GradientStop Color="#3FFFFFFF" Offset="0"/>
+    						</RadialGradientBrush>
+						</DockPanel.Background>
 						<IFC:IPhoneScrollViewer x:Name="contentScroller" Width="{Binding ActualWidth, ElementName=contentDock, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=contentDock, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CanContentScroll="True">
 							<DockPanel x:Name="grdCategory" >
 								<Image x:Name="imgEvent"  Stretch="Fill"  Height="300" Width="280" d:LayoutOverrides="HorizontalAlignment" Margin="20,0,0,0"  />
 								<DockPanel x:Name="dockPanel" Margin="15,15,20,15">
-									<TextBlock Text="Las Vegas Wranglers" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}"  DockPanel.Dock="Top" HorizontalAlignment="Left"/>
-									<TextBlock  x:Name="txbFooter"  Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" TextWrapping="Wrap" TextAlignment="Justify"/>
-									<TextBlock  x:Name="txbDescription"  Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,16" DockPanel.Dock="Bottom" TextWrapping="Wrap" TextAlignment="Justify"/>
+									<TextBlock Text="Las Vegas Wranglers" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}"  DockPanel.Dock="Top" HorizontalAlignment="Left" Foreground="White"/>
+									<TextBlock  x:Name="txtPhone"  Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" TextWrapping="Wrap" TextAlignment="Justify" Foreground="White"/>
+									<TextBlock  x:Name="txtAddress"  Style="{DynamicResource DialogFooterTextStyle}" Margin="0,15,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" TextWrapping="Wrap" TextAlignment="Justify" Foreground="White"/>
+									<TextBlock  x:Name="txbDescription"  Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,16" DockPanel.Dock="Bottom" TextWrapping="Wrap" TextAlignment="Justify" Foreground="White"/>
 								</DockPanel>
 							</DockPanel>
 						</IFC:IPhoneScrollViewer>
