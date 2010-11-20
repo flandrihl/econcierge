@@ -73,12 +73,15 @@
   <ItemGroup>
     <Compile Include="Atm\AtmControl.xaml.cs">
       <DependentUpon>AtmControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Atm\AtmDetail.xaml.cs">
       <DependentUpon>AtmDetail.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Atm\AtmItem.xaml.cs">
       <DependentUpon>AtmItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cafe\CafeControl.xaml.cs">
       <DependentUpon>CafeControl.xaml</DependentUpon>
@@ -88,6 +91,15 @@
     </Compile>
     <Compile Include="Cafe\CafeItem.xaml.cs">
       <DependentUpon>CafeItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mall\MallControl.xaml.cs">
+      <DependentUpon>MallControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mall\MallDetail.xaml.cs">
+      <DependentUpon>MallDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mall\MallItem.xaml.cs">
+      <DependentUpon>MallItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="InheritedFrameworkControls\TouchToggleButton.cs" />
     <Compile Include="InheritedFrameworkControls\iPhoneScrollViewer.cs" />
@@ -99,15 +111,6 @@
     </Compile>
     <Compile Include="LandMark\LandMarkControl.xaml.cs">
       <DependentUpon>LandMarkControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Mall\MallControl.xaml.cs">
-      <DependentUpon>MallControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Mall\MallDetail.xaml.cs">
-      <DependentUpon>MallDetail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Mall\MallItem.xaml.cs">
-      <DependentUpon>MallItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="TouchCombo\TouchComboBox.xaml.cs">
       <DependentUpon>TouchComboBox.xaml</DependentUpon>
@@ -133,30 +136,18 @@
     </Compile>
     <Compile Include="Weather\WeatherElement.cs" />
     <Page Include="Atm\AtmControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Atm\AtmDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Atm\AtmItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BasicVideoControl\VideoControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Cafe\CafeControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Cafe\CafeDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Cafe\CafeItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -175,6 +166,18 @@
     <Page Include="CalendarControl\CalendarEventDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cafe\CafeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cafe\CafeDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cafe\CafeItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Mall\MallControl.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -470,6 +473,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Atm\Images\landmarkO.png" />
     <Resource Include="CalendarControl\MOUSE DECO.TTF" />
     <Resource Include="CalendarControl\GILSANUB.TTF" />
     <None Include="Properties\Settings.settings">
@@ -547,7 +551,7 @@
     <Resource Include="FiveButtonDiskControl\Images\textToPhone.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Atm\Images\landmarkO.png" />
+    <Resource Include="Mall\Images\landmarkO.png" />
     <Resource Include="Cafe\Images\landmarkO.png" />
     <Content Include="Images\CircularMenuCheckedToggleButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -556,7 +560,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\SeeMap.png" />
-    <Resource Include="Mall\Images\landmarkO.png" />
     <Content Include="MapControl\blueMarker.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
