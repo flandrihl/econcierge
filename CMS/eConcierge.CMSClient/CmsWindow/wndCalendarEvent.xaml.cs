@@ -31,7 +31,7 @@ namespace eConcierge.CMSClient.CmsWindow
             UpdateData = updateData;
             InitializeComponent();
             PopulateCategory();
-            PopulateControl(evnt); 
+            PopulateControl(evnt);
         }
 
         private void PopulateCategory()
@@ -67,18 +67,15 @@ namespace eConcierge.CMSClient.CmsWindow
             _evnt.StartDate = dtpStartDate.SelectedDate;
             _evnt.EndDate = dtpEndDate.SelectedDate;
             _evnt.Location = txtLocation.Text;
-            if(!string.IsNullOrWhiteSpace(photoUpload.FilePath))
+            if (!string.IsNullOrWhiteSpace(photoUpload.FilePath))
             {
                 _evnt.Photo = ImageHelper.GetImage(photoUpload.FilePath);
             }
-            if (!string.IsNullOrWhiteSpace(txtLatitude.Text))
-            {
-                _evnt.Latitude = Convert.ToDouble(txtLatitude.Text);
-            }
-            if (!string.IsNullOrWhiteSpace(txtLongitude.Text))
-            {
-                _evnt.Longitude = Convert.ToDouble(txtLongitude.Text);
-            }
+
+            _evnt.Latitude = latLong.Latitude;
+
+            _evnt.Longitude = latLong.Longitude;
+
 
         }
 
@@ -96,16 +93,16 @@ namespace eConcierge.CMSClient.CmsWindow
                 dtpStartDate.SelectedDate = _evnt.StartDate;
                 dtpEndDate.SelectedDate = _evnt.EndDate;
                 txtLocation.Text = _evnt.Location;
-                txtLatitude.Text = _evnt.Latitude.ToString();
-                txtLongitude.Text = _evnt.Longitude.ToString();
-                if(_evnt.Photo != null)
+                latLong.txtLatitude.Text = _evnt.Latitude.ToString();
+                latLong.txtLongitude.Text = _evnt.Longitude.ToString();
+                if (_evnt.Photo != null)
                 {
-                    photoUpload.IsSeeVisible = System.Windows.Visibility.Visible;
+                    photoUpload.IsSeeVisible = Visibility.Visible;
                     photoUpload.ImageData = _evnt.Photo;
                 }
                 else
                 {
-                    photoUpload.IsSeeVisible = System.Windows.Visibility.Collapsed;
+                    photoUpload.IsSeeVisible = Visibility.Collapsed;
                 }
                 _evnt.IsNew = false;
             }
@@ -114,7 +111,7 @@ namespace eConcierge.CMSClient.CmsWindow
                 _evnt = new DTOCalendarEvent();
                 _evnt.IsNew = true;
             }
-             
+
         }
 
         public bool IsValid()
@@ -126,20 +123,11 @@ namespace eConcierge.CMSClient.CmsWindow
                 return false;
             }
 
-            if (!IsNumeric(txtLatitude.Text))
+            if(!latLong.IsValid())
             {
-                MessageBox.Show("Latitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtLatitude.Focus();
                 return false;
             }
 
-            if (!IsNumeric(txtLongitude.Text))
-            {
-                MessageBox.Show("Longitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtLongitude.Focus();
-                return false;
-            }
-            
             return true;
         }
 
