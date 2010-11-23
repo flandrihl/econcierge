@@ -78,9 +78,9 @@ namespace eConcierge.Model
 			set { _Latitude = value; }
 		}
 
-		private double _Longitude;
+		private double? _Longitude;
 
-		public double Longitude
+		public double? Longitude
 		{
 			get { return _Longitude; }
 			set { _Longitude = value; }

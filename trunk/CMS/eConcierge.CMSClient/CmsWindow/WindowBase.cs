@@ -16,6 +16,7 @@ namespace eConcierge.CMSClient.CmsWindow
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             WindowStyle = WindowStyle.ToolWindow;
             SizeToContent = SizeToContent.WidthAndHeight;
+            ResizeMode = System.Windows.ResizeMode.NoResize;
             this.SetResourceReference(Window.BackgroundProperty, "ButtonNormalBackground");
           
         }

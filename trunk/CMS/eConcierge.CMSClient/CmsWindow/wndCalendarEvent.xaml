@@ -51,14 +51,7 @@
             <TextBlock Text="Location" Width="60"/>
             <TextBox x:Name="txtLocation"/>
         </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Latitude" Width="60"/>
-            <TextBox x:Name="txtLatitude"/>
-        </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Longitude" Width="60"/>
-            <TextBox x:Name="txtLongitude"/>
-        </StackPanel>
+        <CmsUserControl:LatitudeLongitude x:Name="latLong" />
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
             <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
             <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />

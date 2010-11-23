@@ -92,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CmsUserControl\LatitudeLongitude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CmsUserControl\MallDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +206,9 @@
     </Compile>
     <Compile Include="CmsUserControl\HeaderView.xaml.cs">
       <DependentUpon>HeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsUserControl\LatitudeLongitude.xaml.cs">
+      <DependentUpon>LatitudeLongitude.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsUserControl\MallDetail.xaml.cs">
       <DependentUpon>MallDetail.xaml</DependentUpon>
