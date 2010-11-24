@@ -13,7 +13,7 @@
                 <TextBox x:Name="txtLongitude" Width="200"/>
             </StackPanel>           
         </StackPanel>
-        <Button  Width="90" Margin="10,0,0,0" Height="50" VerticalAlignment="Top" >
+        <Button  Width="90" Margin="10,0,0,0" Height="50" VerticalAlignment="Top" Click="Button_Click">
             <TextBlock TextAlignment="Center" Margin="0"> Fetch <LineBreak/> Coordinate</TextBlock>
         </Button>
     </StackPanel>

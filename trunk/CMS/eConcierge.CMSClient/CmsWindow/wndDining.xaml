@@ -43,14 +43,7 @@
             <TextBlock Text="Address"/>
             <TextBox x:Name="txtLocation"/>
         </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Latitude"/>
-            <TextBox x:Name="txtLatitude"/>
-        </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Longitude"/>
-            <TextBox x:Name="txtLongitude"/>
-        </StackPanel>
+        <CmsUserControl:LatitudeLongitude x:Name="latLong" />
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
             <TextBlock Text="Menu Pic"/>
             <StackPanel x:Name="stkMenu" Width="260" Orientation="Vertical" Margin="0"  />

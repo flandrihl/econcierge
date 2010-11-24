@@ -65,12 +65,12 @@ namespace eConcierge.CMSClient.CmsWindow
             List<DTODiningMenu> list = new List<DTODiningMenu>();
             foreach (string path in _menuList)
             {
-                if(path.Contains('\\'))
+                if (path.Contains('\\'))
                 {
                     DTODiningMenu menu = new DTODiningMenu();
                     menu.Photo = ImageHelper.GetImage(path);
                     menu.FileName = GetFileName(path);
-                    if(!_dining.IsNew)
+                    if (!_dining.IsNew)
                     {
                         menu.DiningId = _dining.Id;
                     }
@@ -90,18 +90,14 @@ namespace eConcierge.CMSClient.CmsWindow
             }
             _dining.Address = txtLocation.Text;
             _dining.Telephone = txtPhone.Text;
-            if(!string.IsNullOrWhiteSpace(photoUpload.FilePath))
+            if (!string.IsNullOrWhiteSpace(photoUpload.FilePath))
             {
                 _dining.Photo = ImageHelper.GetImage(photoUpload.FilePath);
             }
-            if (!string.IsNullOrWhiteSpace(txtLatitude.Text))
-            {
-                _dining.Latitude = Convert.ToDouble(txtLatitude.Text);
-            }
-            if (!string.IsNullOrWhiteSpace(txtLongitude.Text))
-            {
-                _dining.Longitude = Convert.ToDouble(txtLongitude.Text);
-            }
+
+            _dining.Latitude = latLong.Latitude;
+            _dining.Longitude = latLong.Longitude;
+
 
         }
 
@@ -116,12 +112,12 @@ namespace eConcierge.CMSClient.CmsWindow
                 {
                     cmbSubCategory.SelectedValue = _dining.SubCategoryId;
                 }
-               
+
                 txtLocation.Text = _dining.Address;
                 txtPhone.Text = _dining.Telephone;
-                txtLatitude.Text = _dining.Latitude.ToString();
-                txtLongitude.Text = _dining.Longitude.ToString();
-                if(_dining.Photo != null)
+                latLong.txtLatitude.Text = _dining.Latitude.ToString();
+                latLong.txtLongitude.Text = _dining.Longitude.ToString();
+                if (_dining.Photo != null)
                 {
                     photoUpload.IsSeeVisible = System.Windows.Visibility.Visible;
                     photoUpload.ImageData = _dining.Photo;
@@ -131,7 +127,7 @@ namespace eConcierge.CMSClient.CmsWindow
                     photoUpload.IsSeeVisible = System.Windows.Visibility.Collapsed;
                 }
                 _dining.IsNew = false;
-                List<DTODiningMenu>  menuList = new DiningMenuService().GetDiningMenusByDining(_dining.Id);
+                List<DTODiningMenu> menuList = new DiningMenuService().GetDiningMenusByDining(_dining.Id);
                 foreach (var menu in menuList)
                 {
                     AddMenuToStackPanel(menu.FileName, menu.Id);
@@ -142,7 +138,7 @@ namespace eConcierge.CMSClient.CmsWindow
                 _dining = new DTODining();
                 _dining.IsNew = true;
             }
-             
+
         }
 
         public bool IsValid()
@@ -154,20 +150,11 @@ namespace eConcierge.CMSClient.CmsWindow
                 return false;
             }
 
-            if (!IsNumeric(txtLatitude.Text))
+            if (!latLong.IsValid())
             {
-                MessageBox.Show("Latitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtLatitude.Focus();
                 return false;
             }
 
-            if (!IsNumeric(txtLongitude.Text))
-            {
-                MessageBox.Show("Longitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtLongitude.Focus();
-                return false;
-            }
-            
             return true;
         }
 
@@ -202,9 +189,9 @@ namespace eConcierge.CMSClient.CmsWindow
         {
             DiningMenuPhotoItem item = (DiningMenuPhotoItem)sender;
             int id = Convert.ToInt32(item.Tag);
-            if(id > 0)
+            if (id > 0)
             {
-                if(MessageBox.Show("Are you sure, you want to remove this item from database?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure, you want to remove this item from database?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     new DiningMenuService().Delete(id);
                 }

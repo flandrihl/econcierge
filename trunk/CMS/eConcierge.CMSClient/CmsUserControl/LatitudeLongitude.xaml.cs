@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using eConcierge.CMSClient.CmsWindow;
 using eConcierge.Common;
 
 namespace eConcierge.CMSClient.CmsUserControl
@@ -66,6 +67,16 @@ namespace eConcierge.CMSClient.CmsUserControl
                 return false;
             }
             return true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            wndGmap map = new wndGmap();
+            if(map.ShowDialog().Value)
+            {
+                txtLatitude.Text = map.Latitude.ToString();
+                txtLongitude.Text = map.Longitude.ToString();
+            }
         }
     }
 }

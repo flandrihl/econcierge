@@ -59,13 +59,13 @@ namespace eConcierge.CMSClient.CmsWindow
             {
                 _poi.Photo = ImageHelper.GetImage(photoUpload.FilePath);
             }
-            if (!string.IsNullOrWhiteSpace(txtLatitude.Text))
+            if (!string.IsNullOrWhiteSpace(latLong.txtLatitude.Text))
             {
-                _poi.Latitude = Convert.ToDouble(txtLatitude.Text);
+                _poi.Latitude = Convert.ToDouble(latLong.txtLatitude.Text);
             }
-            if (!string.IsNullOrWhiteSpace(txtLongitude.Text))
+            if (!string.IsNullOrWhiteSpace(latLong.txtLongitude.Text))
             {
-                _poi.Longitude = Convert.ToDouble(txtLongitude.Text);
+                _poi.Longitude = Convert.ToDouble(latLong.txtLongitude.Text);
             }
 
         }
@@ -79,8 +79,8 @@ namespace eConcierge.CMSClient.CmsWindow
                 txtDescription.Text = _poi.Description;
                 txtAddress.Text = _poi.Address;
                 txtPhone.Text = _poi.Phone;
-                txtLatitude.Text = _poi.Latitude.ToString();
-                txtLongitude.Text = _poi.Longitude.ToString();
+                latLong.txtLatitude.Text = _poi.Latitude.ToString();
+                latLong.txtLongitude.Text = _poi.Longitude.ToString();
                 if (_poi.Photo != null)
                 {
                     photoUpload.IsSeeVisible = System.Windows.Visibility.Visible;
@@ -109,17 +109,8 @@ namespace eConcierge.CMSClient.CmsWindow
                 return false;
             }
 
-            if (!IsNumeric(txtLatitude.Text))
+            if (!latLong.IsValid())
             {
-                MessageBox.Show("Latitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtLatitude.Focus();
-                return false;
-            }
-
-            if (!IsNumeric(txtLongitude.Text))
-            {
-                MessageBox.Show("Longitude can only be numeric value.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtLongitude.Focus();
                 return false;
             }
 
