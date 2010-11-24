@@ -19,12 +19,29 @@ namespace eConcierge.CMSClient.CmsWindow
     /// </summary>
     public partial class wndGmap : Window
     {
+        private Point oldPosition;
         public wndGmap()
         {
             InitializeComponent();
             // config map
            
             MainMap.MouseLeftButtonDown += new MouseButtonEventHandler(MainMap_MouseLeftButtonDown);
+            MainMap.MouseMove += new MouseEventHandler(MainMap_MouseMove);
+            
+        }
+
+        void MainMap_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            {
+               if(oldPosition != null)
+               {
+                   var newPosition = e.GetPosition(MainMap);
+                   MainMap.Offset((int)(oldPosition.X - newPosition.X), (int)(oldPosition.Y - newPosition.Y));
+               }
+            }
+            var p = e.GetPosition(MainMap);
+            oldPosition = p;
         }
 
         public double Latitude
