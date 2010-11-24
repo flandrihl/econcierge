@@ -23,11 +23,7 @@ namespace eConcierge.CMSClient.CmsWindow
         {
             InitializeComponent();
             // config map
-            double lat = 54.6961334816182;
-            double lng = 25.2985095977783;
-            MainMap.Position = new PointLatLng(lat, lng);
-            Latitude = lat;
-            Longitude = lng;
+           
             MainMap.MouseLeftButtonDown += new MouseButtonEventHandler(MainMap_MouseLeftButtonDown);
         }
 
@@ -64,6 +60,13 @@ namespace eConcierge.CMSClient.CmsWindow
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+        }
+
+        public void InitializeLatLng(double lat = 54.6961334816182, double lng = 25.2985095977783)
+        {
+            MainMap.Position = new PointLatLng(lat, lng);
+            Latitude = lat;
+            Longitude = lng;
         }
     }
 }

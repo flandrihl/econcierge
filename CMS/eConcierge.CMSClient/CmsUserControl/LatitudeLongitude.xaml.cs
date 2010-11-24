@@ -72,6 +72,14 @@ namespace eConcierge.CMSClient.CmsUserControl
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             wndGmap map = new wndGmap();
+            if(Latitude != null && Longitude != null)
+            {
+                map.InitializeLatLng(Latitude.Value, Longitude.Value);
+            }
+            else
+            {
+                map.InitializeLatLng();
+            }
             if(map.ShowDialog().Value)
             {
                 txtLatitude.Text = map.Latitude.ToString();
