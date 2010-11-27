@@ -33,6 +33,8 @@ namespace TouchControls
     {
         #region Properties
         private readonly string _url;
+        private readonly double? _latitude;
+        private readonly double? _longitude;
         private readonly Timer _timer;
         private bool _skip;
 
@@ -83,15 +85,17 @@ namespace TouchControls
 
         #endregion
 
-        public MapBrowser(string url, double width, double height)
+        public MapBrowser(string url, double width, double height, double? latitude=null, double? longitude=null)
         {
             Width = width;
             Height = height;
             _timer = new Timer { Interval = 300 };
             _timer.Tick += TimerTick;
             _url = url;
+            _latitude = latitude;
+            _longitude = longitude;
             InitializeComponent();
-            Loaded += MapBrowser_Loaded;
+            Loaded += MapBrowserLoaded;
             ChromBrowser = new WebBrowser
                                {
                                    Clip = BrowserContainer.Clip,
@@ -103,7 +107,8 @@ namespace TouchControls
                                    Cursor=Cursors.None
                                };
             ChromBrowser.Navigate(_url);
-            Loaded += ChromBrowser_Loaded;
+            ChromBrowser.FinishLoading+= FinishLoading;
+            Loaded += ChromBrowserLoaded;
             ChromBrowser.Ready += ChromBrowserReady;
             BrowserContainer.Children.Add(ChromBrowser);
             LockButton.Tag = "Lock";
@@ -120,7 +125,17 @@ namespace TouchControls
             DataContext = this;
         }
 
-        public void InvokeClosed(EventArgs e)
+        private void FinishLoading(object sender, EventArgs e)
+        {
+            if(_latitude!=null && _longitude!=null)
+            {
+                ChromBrowser.ExecuteJavascript(string.Format("SetSource({0},{1})", _latitude, _longitude), "");
+                ChromBrowser.ExecuteJavascript(string.Format("SetDestination({0},{1})", 41.8395, -87.7129), "");
+                GetDirections();
+            }
+        }
+
+        private void InvokeClosed(EventArgs e)
         {
             EventHandler handler = Closed;
             if (handler != null) handler(this, e);
@@ -131,7 +146,7 @@ namespace TouchControls
             Close();
         }
 
-        void MapBrowser_Loaded(object sender, RoutedEventArgs e)
+        void MapBrowserLoaded(object sender, RoutedEventArgs e)
         {
             Container.Reset();
             Container.StartX = _left.ToInt();
@@ -171,6 +186,11 @@ namespace TouchControls
         {
             var origin = GetOrigin();
             var destination = GetDestination();
+            BuildDirections(origin, destination);
+        }
+
+        private void BuildDirections(string origin, string destination)
+        {
             var directionSteps = GMapUtil.GetDirections(origin, destination);
             if (directionSteps != null && directionSteps.Steps.Count > 0)
             {
@@ -296,7 +316,7 @@ namespace TouchControls
             _timer.Stop();
         }
 
-        void ChromBrowser_Loaded(object sender, RoutedEventArgs e)
+        void ChromBrowserLoaded(object sender, RoutedEventArgs e)
         {
             Container.OnApplyingTransforms += OnApplyingTransforms;
             Container.Reset();

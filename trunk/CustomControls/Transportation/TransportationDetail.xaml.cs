@@ -126,7 +126,7 @@ namespace CustomControls.Transportation
                 TaxiDetail.PopulateTaxiDetail();
                 _currentPagerIndex = 0;
                 stkBody.Children.Add(TaxiDetail);
-                btnSeeMap.Visibility = Visibility.Collapsed;
+                mapDirectionsButton.Visibility = Visibility.Collapsed;
             }
             else if (IsMonorail(id))
             {
@@ -134,7 +134,7 @@ namespace CustomControls.Transportation
                 MonorailDetail.Background = Brushes.SkyBlue;
                 _currentPagerIndex = 0;
                 stkBody.Children.Add(MonorailDetail);
-                btnSeeMap.Visibility = Visibility.Visible;
+                mapDirectionsButton.Visibility = Visibility.Visible;
             }
 
         }

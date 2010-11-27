@@ -490,6 +490,14 @@
     <Resource Include="HotelExploreControl\Images\HotelExterior.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CMS\Data\eConcierge.Business\eConcierge.Business.csproj">
+      <Project>{557F1763-0C5E-4376-963A-A16E06C18BCF}</Project>
+      <Name>eConcierge.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMS\Data\eConcierge.Model\eConcierge.Model.csproj">
+      <Project>{3265E3CC-5EA9-4240-A2BF-9DEB4B905DED}</Project>
+      <Name>eConcierge.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{C954F554-399B-4BAB-9103-5EDBA2A3E241}</Project>
       <Name>DataAccessLayer</Name>

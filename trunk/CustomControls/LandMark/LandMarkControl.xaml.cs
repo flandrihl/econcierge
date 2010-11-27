@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
-using CustomControls.CategoryControl;
-using CustomControls.Dining;
-using CustomControls.InheritedFrameworkControls;
-using DataAccessLayer;
-using Helpers;
-using Infrasturcture.DTO;
+using eConcierge.Business;
+using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.LandMark
@@ -22,10 +17,17 @@ namespace CustomControls.LandMark
         private static LandMarkControl _dining;
         private List<LandMarkItem> _landMarkItems;
         private readonly List<LandMarkDetail> _landMarkDetails=new List<LandMarkDetail>();
-        private const int NO_OF_ITEMS_PER_COLUMN = 2;
+        private const int NoOfItemsPerColumn = 2;
         public IFrameworkManger FrameworkManager { get; set; }
         public event EventHandler Closed;
         public IMTContainer Container { get; set; }
+        public event EventHandler<DataEventArgs> ShowDirections;
+
+        public void InvokeShowDirections(DataEventArgs e)
+        {
+            EventHandler<DataEventArgs> handler = ShowDirections;
+            if (handler != null) handler(this, e);
+        }
 
         public static LandMarkControl GetInstance()
         {
@@ -41,17 +43,17 @@ namespace CustomControls.LandMark
             InitializeComponent();
             closeButton.Click += CloseButtonClick;
             PopulatePointOfInterests();
-            Slider.ValueChanged += Slider_ValueChanged;
-            Loaded += LandMarkControl_Loaded;
+            Slider.ValueChanged += SliderValueChanged;
+            Loaded += LandMarkControlLoaded;
         }
 
-        void LandMarkControl_Loaded(object sender, RoutedEventArgs e)
+        void LandMarkControlLoaded(object sender, RoutedEventArgs e)
         {
             Slider.Minimum = 0;
             Slider.Maximum = contentScroller.ExtentWidth-contentScroller.ActualWidth;
         }
 
-        void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        void SliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             contentScroller.ScrollToHorizontalOffset(e.NewValue);
         }
@@ -85,6 +87,8 @@ namespace CustomControls.LandMark
             FrameworkManager.RemoveControl(this);
             foreach (var landMarkDetail in _landMarkDetails.ToArray())
             {
+                landMarkDetail.Closed -= LandMarkDetailClosed;
+                landMarkDetail.ShowDirections -= LandMarkShowDirections;
                 landMarkDetail.Close();
             }
             if (Closed != null)
@@ -94,12 +98,13 @@ namespace CustomControls.LandMark
         private void PopulatePointOfInterests()
         {
             _landMarkItems = new List<LandMarkItem>();
-            var landMarks = LandMarkDAL.GetInstance().GetLandMarks();
+            var service = new PointOfInterestService();
+            var landMarks = service.GetPointOfInterests();
             int col = -1, row = 0;
 
             foreach (var landmark in landMarks)
             {
-                if (grdCategory.RowDefinitions.Count < NO_OF_ITEMS_PER_COLUMN)
+                if (grdCategory.RowDefinitions.Count < NoOfItemsPerColumn)
                 {
                     grdCategory.RowDefinitions.Add(new RowDefinition());
                 }
@@ -116,7 +121,7 @@ namespace CustomControls.LandMark
                 _landMarkItems.Add(item);
                 item.Click += LandMarkButtonClick;
                 row++;
-                if (row == NO_OF_ITEMS_PER_COLUMN) row = 0;
+                if (row == NoOfItemsPerColumn) row = 0;
             }
         }
 
@@ -128,7 +133,13 @@ namespace CustomControls.LandMark
             var top = FrameworkManager.Canvas.ActualHeight / 2 - (control.Height / 2);
             var left = FrameworkManager.Canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
-            control.Closed += LandMarkDetailClosed;   
+            control.Closed += LandMarkDetailClosed;
+            control.ShowDirections += LandMarkShowDirections;
+        }
+
+        void LandMarkShowDirections(object sender, DataEventArgs e)
+        {
+            InvokeShowDirections(e);
         }
 
         private void LandMarkDetailClosed(object sender, EventArgs e)
