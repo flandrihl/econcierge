@@ -12,6 +12,29 @@
         <ControlTemplate x:Key="ButtonBlankControlTemplate" TargetType="{x:Type Button}">
             <ContentPresenter/>
         </ControlTemplate>
+        <ControlTemplate x:Key="MenuButtonControlTemplate2" TargetType="{x:Type Button}">
+        	<Border HorizontalAlignment="Center" Height="{TemplateBinding Height}" VerticalAlignment="Center" Width="{TemplateBinding Width}" CornerRadius="8" >
+        		<Border.Background>
+        			<LinearGradientBrush EndPoint="0.712,1.247" StartPoint="0.148,0.098">
+        				<GradientStop Color="#AC340137" Offset="0"/>
+        				<GradientStop Color="#80040400" Offset="1"/>
+        				<GradientStop Color="#FF9C00A5" Offset="0.422"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        		<Border CornerRadius="8" BorderBrush="{x:Null}" Margin="2">
+					<!--<Border.Effect>
+						<DropShadowEffect ShadowDepth="0" BlurRadius="12"/>
+					</Border.Effect>-->
+        			<Border.Background>
+        				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        					<GradientStop Color="#FF4F005C" Offset="0"/>
+        					<GradientStop Color="#FF9C00A5" Offset="1"/>
+        				</LinearGradientBrush>
+        			</Border.Background>
+        			<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12"/>
+        		</Border>
+        	</Border>
+        </ControlTemplate>
 
     </UserControl.Resources>
     <Grid>
@@ -34,7 +57,13 @@
 						<CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Right" Width="58" d:LayoutOverrides="Height" VerticalAlignment="Top" Margin="0,6.5,17,0" />
 					</Grid>
 					<DockPanel x:Name="controlsDock" DockPanel.Dock="Bottom" Height="86" VerticalAlignment="Top">
-						<IFC:TrackBar x:Name="pager" Minimum="0" Maximum="1" Margin="0,0,0,8" Style="{DynamicResource BlueTouchSliderStyle}" VerticalAlignment="Center" Width="541" />
+						<IFC:TouchButton 
+							x:Name="mapDirectionsButton" Content="Show Route" 
+							Template="{DynamicResource MenuButtonControlTemplate2}" 
+							HorizontalAlignment="Left" VerticalAlignment="Center" 
+							Foreground="White" DockPanel.Dock="Left" 
+							Margin="24,0,0,0" FontSize="16" FontFamily="Verdana"/>
+						<IFC:TrackBar x:Name="pager" Minimum="0" Maximum="1" Margin="12,0,0,8" Style="{DynamicResource BlueTouchSliderStyle}" VerticalAlignment="Center" Width="534" />
 					</DockPanel>
 					<DockPanel x:Name="contentDock" DockPanel.Dock="Top" Style="{DynamicResource DialogContentDockStyle}">
 						<DockPanel.Background>

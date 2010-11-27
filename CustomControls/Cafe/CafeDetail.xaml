@@ -8,6 +8,31 @@
              xmlns:CustomControls_InheritedFrameworkControls="clr-namespace:CustomControls.InheritedFrameworkControls" 
              x:Class="CustomControls.Cafe.CafeDetail"
              mc:Ignorable="d" Width="762" Height="548">
+	<Abstract:AnimatableControl.Resources>
+		<ControlTemplate x:Key="MenuButtonControlTemplate2" TargetType="{x:Type Button}">
+			<Border HorizontalAlignment="Center" Height="{TemplateBinding Height}" VerticalAlignment="Center" Width="{TemplateBinding Width}" CornerRadius="8" >
+				<Border.Background>
+					<LinearGradientBrush EndPoint="0.712,1.247" StartPoint="0.148,0.098">
+						<GradientStop Color="#AC340137" Offset="0"/>
+						<GradientStop Color="#80040400" Offset="1"/>
+						<GradientStop Color="#FF9C00A5" Offset="0.422"/>
+					</LinearGradientBrush>
+				</Border.Background>
+				<Border CornerRadius="8" BorderBrush="{x:Null}" Margin="2">
+					<!--<Border.Effect>
+						<DropShadowEffect ShadowDepth="0" BlurRadius="12"/>
+					</Border.Effect>-->
+					<Border.Background>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FF4F005C" Offset="0"/>
+							<GradientStop Color="#FF9C00A5" Offset="1"/>
+						</LinearGradientBrush>
+					</Border.Background>
+					<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12"/>
+				</Border>
+			</Border>
+		</ControlTemplate>
+	</Abstract:AnimatableControl.Resources>
     
     <Grid>
     
@@ -15,10 +40,17 @@
         
     		<DockPanel>
 				<DockPanel x:Name="titleDock" DockPanel.Dock="Top" Height="71" VerticalAlignment="Top">
-					<TextBlock Margin="46,21,0,8" TextWrapping="Wrap" Text="NEAREST ATM BOOTH'S" Style="{DynamicResource DialogTitleTextStyle}" />
+					<TextBlock Margin="46,21,0,8" TextWrapping="Wrap" Text="NEAREST CAFE'S" Style="{DynamicResource DialogTitleTextStyle}" />
 					<CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Right" Width="58" Margin="0,6.5,17,0" DockPanel.Dock="Right" />
 				</DockPanel>
-				<DockPanel x:Name="controlsDock" DockPanel.Dock="Bottom" Height="65" VerticalAlignment="Top"/>
+				<DockPanel x:Name="controlsDock" DockPanel.Dock="Bottom" Height="65" VerticalAlignment="Top">
+					<CustomControls_InheritedFrameworkControls:TouchButton 
+						x:Name="mapDirectionsButton" Content="Show Route" 
+						Template="{DynamicResource MenuButtonControlTemplate2}" 
+						HorizontalAlignment="Left" VerticalAlignment="Center" 
+						Foreground="White" DockPanel.Dock="Left" 
+						Margin="35,0,0,0" FontSize="16" FontFamily="Verdana"/>
+				</DockPanel>
 				<DockPanel x:Name="contentDock" DockPanel.Dock="Top" Style="{DynamicResource DialogContentDockStyle}">
 					<CustomControls_InheritedFrameworkControls:IPhoneScrollViewer x:Name="contentScroller" Width="{Binding ActualWidth, ElementName=contentDock, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=contentDock, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CanContentScroll="True">
 						<DockPanel x:Name="content" d:LayoutOverrides="HorizontalAlignment" >

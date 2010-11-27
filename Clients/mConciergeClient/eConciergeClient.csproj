@@ -366,6 +366,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CMS\Data\eConcierge.Model\eConcierge.Model.csproj">
+      <Project>{3265E3CC-5EA9-4240-A2BF-9DEB4B905DED}</Project>
+      <Name>eConcierge.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CustomControls\CustomControls.csproj">
       <Project>{BBACA5C4-D30A-4115-8160-345DFA99791F}</Project>
       <Name>CustomControls</Name>

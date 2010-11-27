@@ -165,7 +165,7 @@ namespace CustomControls.Dining
             imgEvent.Source = WpfUtil.BytesToImageSource(dining.Photo);
             txbTitle.Text = dining.Title;
             txbDescription.Text = dining.Description;
-            txbFooter.Text = dining.Location;
+            txbAddress.Text = dining.Location;
         }
     }
 }
