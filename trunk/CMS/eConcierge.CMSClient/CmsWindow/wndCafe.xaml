@@ -28,9 +28,9 @@
             <TextBlock Text="Description"/>
             <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
         </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Photo"/>
-            <CmsUserControl:PhotoUpload x:Name="photoUpload" />
+        <StackPanel Margin="0,0,0,10" HorizontalAlignment="Left">
+            <TextBlock Text="Photo" Margin="0" Width="70"/>
+            <CmsUserControl:PhotoUpload x:Name="photoUpload" Width="300" />
         </StackPanel>
         <StackPanel>
             <TextBlock Text="Phone"/>
@@ -40,10 +40,10 @@
             <TextBlock Text="Address"/>
             <TextBox x:Name="txtAddress"/>
         </StackPanel>
-        <CmsUserControl:LatitudeLongitude x:Name="latLong" />
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+        <CmsUserControl:LatitudeLongitude x:Name="latLong" Height="66.42" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,10" Height="40">
+            <Button Content="Save" Width="74.308" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
+            <Button Content="Cancel" Width="74.308" x:Name="btnCancel" Margin="0" Click="btnCancel_Click" />
         </StackPanel>
     </StackPanel>
 </CmsWindow:WindowBase>

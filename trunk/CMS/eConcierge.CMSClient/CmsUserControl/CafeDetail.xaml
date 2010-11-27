@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" >
     <StackPanel HorizontalAlignment="Left">
-        <Button Content="Add" Width="60" HorizontalAlignment="Left" Margin="0,0,0,5" Click="btnAdd_Click" />
-        <DataGrid ItemsSource="{Binding Events}"  x:Name="grd" Width="490" AutoGenerateColumns="False" 
-                  DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False">
+        <Button Content="Add New" HorizontalAlignment="Left" Margin="0,0,0,5" Click="btnAdd_Click" Height="27.333" Width="78" />
+        <DataGrid ItemsSource="{Binding Events}"  x:Name="grd" Width="490" AutoGenerateColumns="False" DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False"
+		Background="White" BorderBrush="#FFCDCFD2" HorizontalGridLinesBrush="#FF959595" VerticalGridLinesBrush="#FF646464" SelectionMode="Single" FontFamily="Verdana" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="24">
                     <DataGridTemplateColumn.CellTemplate>

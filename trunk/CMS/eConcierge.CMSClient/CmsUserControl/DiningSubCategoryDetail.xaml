@@ -7,9 +7,9 @@
 
     </UserControl.Resources>
     <StackPanel HorizontalAlignment="Left">
-        <Button Content="Add" Width="60" x:Name="btnAdd" Click="btnAdd_Click" HorizontalAlignment="Left" Margin="0,0,0,5" />
-        <DataGrid   x:Name="grd" Width="300" AutoGenerateColumns="False" 
-                  DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False">
+        <Button Content="Add New" HorizontalAlignment="Left" Margin="0,0,0,5" Click="btnAdd_Click" Height="27.333" Width="78" />
+        <DataGrid   x:Name="grd" Width="300" AutoGenerateColumns="False" DataGridRow.MouseDoubleClick="DataGrid_MouseDoubleClick" CanUserAddRows="False"
+		Background="White" BorderBrush="#FFCDCFD2" HorizontalGridLinesBrush="#FF959595" VerticalGridLinesBrush="#FF646464" SelectionMode="Single" FontFamily="Verdana" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="24">
                     <DataGridTemplateColumn.CellTemplate>

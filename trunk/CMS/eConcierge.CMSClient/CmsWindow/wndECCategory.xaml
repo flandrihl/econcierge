@@ -6,12 +6,12 @@
         <Thickness x:Key="tn">0,0,0,10</Thickness>
 
         </Window.Resources>
-        <Grid>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="80"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" Margin="0,0,-9,0">
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock">
                         <Setter Property="Margin" Value="{StaticResource tn}"/>
@@ -29,9 +29,9 @@
 
                 <TextBox x:Name="txtName"  />
                 <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-                    <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-                    <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" Height="40" />
+                    <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" Height="40" />
                 </StackPanel>
             </StackPanel>
         </Grid>

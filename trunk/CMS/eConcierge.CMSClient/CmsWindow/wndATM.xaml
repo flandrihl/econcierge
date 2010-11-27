@@ -5,7 +5,7 @@
     <Window.Resources>
         <Thickness x:Key="tn">0,0,0,10</Thickness>
     </Window.Resources>
-    <StackPanel Orientation="Vertical" Width="400">
+    <StackPanel Orientation="Vertical" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel.Resources>
             <Style TargetType="StackPanel">
                 <Setter Property="Margin" Value="{StaticResource tn}"/>
@@ -19,30 +19,30 @@
                 <Setter Property="Width" Value="300"/>
             </Style>
         </StackPanel.Resources>
-        <StackPanel>
+        <StackPanel Margin="15,9,15,10">
             <TextBlock Text="Title"/>
             <TextBox x:Name="txtTitle"  />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Description"/>
             <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Photo"/>
-            <CmsUserControl:PhotoUpload x:Name="photoUpload" />
+            <CmsUserControl:PhotoUpload x:Name="photoUpload" Width="300.5" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Phone"/>
             <TextBox x:Name="txtPhone"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Address"/>
             <TextBox x:Name="txtAddress"/>
         </StackPanel>
-        <CmsUserControl:LatitudeLongitude x:Name="latLong" />
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+        <CmsUserControl:LatitudeLongitude x:Name="latLong" Margin="15,0" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="15,0,15,34">
+            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" Height="40" HorizontalAlignment="Left" />
+            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" Height="40" HorizontalAlignment="Left" />
         </StackPanel>
     </StackPanel>
 </CmsWindow:WindowBase>

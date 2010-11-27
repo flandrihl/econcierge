@@ -20,21 +20,21 @@
                 <Setter Property="Width" Value="300"/>
             </Style>
         </StackPanel.Resources>
-        <StackPanel>
+        <StackPanel Margin="0,10">
             <TextBlock Text="Title"/>
             <TextBox x:Name="txtTitle"  />
         </StackPanel>
         <StackPanel>
             <TextBlock Text="Category"/>
-            <ComboBox x:Name="cmbCategory" Width="300"/>
+            <ComboBox x:Name="cmbCategory" Width="300" Height="35"/>
         </StackPanel>       
         <StackPanel>
             <TextBlock Text="Phone"/>
             <TextBox x:Name="txtPhone"/>
         </StackPanel>       
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" Height="40" />
+            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0" Click="btnCancel_Click" Height="40" />
         </StackPanel>
     </StackPanel>
 </CmsWindow:WindowBase>

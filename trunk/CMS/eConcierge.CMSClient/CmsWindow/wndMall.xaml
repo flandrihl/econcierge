@@ -6,7 +6,7 @@
     <Window.Resources>
         <Thickness x:Key="tn">0,0,0,10</Thickness>
     </Window.Resources>
-    <StackPanel Orientation="Vertical" Width="400">
+    <StackPanel Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel.Resources>
             <Style TargetType="StackPanel">
                 <Setter Property="Margin" Value="{StaticResource tn}"/>
@@ -28,9 +28,9 @@
             <TextBlock Text="Description"/>
             <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
         </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Photo"/>
-            <CmsUserControl:PhotoUpload x:Name="photoUpload" />
+        <StackPanel Margin="0,0,0,10" HorizontalAlignment="Left" Width="370">
+            <TextBlock Text="Photo" Width="60"/>
+            <CmsUserControl:PhotoUpload x:Name="photoUpload" Width="300" />
         </StackPanel>
         <StackPanel>
             <TextBlock Text="Phone"/>
@@ -41,9 +41,9 @@
             <TextBox x:Name="txtAddress"/>
         </StackPanel>
         <CmsUserControl:LatitudeLongitude x:Name="latLong" />
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" Height="40" />
+            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" Height="40" />
         </StackPanel>
     </StackPanel>
 </CmsWindow:WindowBase>
