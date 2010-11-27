@@ -5,7 +5,7 @@
     <Window.Resources>
         <Thickness x:Key="tn">0,0,0,10</Thickness>
     </Window.Resources>
-    <StackPanel Orientation="Vertical" Width="400">
+    <StackPanel Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10">
         <StackPanel.Resources>
             <Style TargetType="StackPanel">
                 <Setter Property="Margin" Value="{StaticResource tn}"/>
@@ -19,39 +19,39 @@
                 <Setter Property="Width" Value="300"/>
             </Style>
         </StackPanel.Resources>
-        <StackPanel>
+        <StackPanel Margin="15,15,15,10">
             <TextBlock Text="Title"/>
             <TextBox x:Name="txtTitle"  />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Sub Category"/>
-            <ComboBox x:Name="cmbSubCategory" Width="300"/>
+            <ComboBox x:Name="cmbSubCategory" Width="300" Height="35"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Description"/>
             <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Photo"/>
-            <CmsUserControl:PhotoUpload x:Name="photoUpload" />
+            <CmsUserControl:PhotoUpload x:Name="photoUpload" Width="300" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Phone"/>
             <TextBox x:Name="txtPhone"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="15,0,15,10">
             <TextBlock Text="Address"/>
             <TextBox x:Name="txtLocation"/>
         </StackPanel>
-        <CmsUserControl:LatitudeLongitude x:Name="latLong" />
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+        <CmsUserControl:LatitudeLongitude x:Name="latLong" Margin="15,0" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="15,0,15,10">
             <TextBlock Text="Menu Pic"/>
             <StackPanel x:Name="stkMenu" Width="260" Orientation="Vertical" Margin="0"  />
             <Button Content="Browse" x:Name="btnBrowse" Click="btnBrowse_Click" VerticalAlignment="Top" Height="23"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="15,0,15,10">
+            <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" Height="40" />
+            <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" Height="40" />
         </StackPanel>
     </StackPanel>
 </CmsWindow:WindowBase>

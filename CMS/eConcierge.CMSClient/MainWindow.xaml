@@ -1,7 +1,7 @@
 ﻿<Window x:Class="eConcierge.CMSClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:CmsUserControl="clr-namespace:eConcierge.CMSClient.CmsUserControl" 
-        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="{DynamicResource WindowBackgroundBrush}">
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="{DynamicResource DefaultedBorderBrush}">
    
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
@@ -25,7 +25,7 @@
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" Grid.ZIndex="-1">
                     <!--Middle Region-->
-                    <ContentControl x:Name="middleRegion"/>
+                    <ContentControl x:Name="middleRegion" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,25,0,0"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="2">
                     <!--Right Region-->

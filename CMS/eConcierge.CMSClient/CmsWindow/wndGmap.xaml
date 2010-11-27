@@ -4,13 +4,13 @@
         Title="Get coordinate" Height="700" Width="700" WindowStartupLocation="CenterOwner"
         WindowStyle="SingleBorderWindow" ResizeMode="NoResize">
     <DockPanel >
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top">
-            <TextBlock Text="Latitude: "/>
-            <TextBlock x:Name="txbLatitude" Text="24.44"/>
-            <TextBlock Text=" Longitude: "/>
-            <TextBlock x:Name="txbLongitude" Text="24.44"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,10,0,0">
+            <TextBlock Text="Latitude: " FontSize="16"/>
+            <TextBlock x:Name="txbLatitude" Text="24.44" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Text=" Longitude: " FontSize="16" Margin="32,0,0,0"/>
+            <TextBlock x:Name="txbLongitude" Text="24.44" FontSize="16" FontWeight="Bold"/>
         </StackPanel>
-        <Button x:Name="btnOk" Content="Ok" HorizontalAlignment="Right" Width="60" DockPanel.Dock="Bottom" Click="btnOk_Click" />
-        <src:Map x:Name="MainMap" MapType="GoogleMap" Zoom="2" MaxZoom="17" MinZoom="1"  />
+        <Button x:Name="btnOk" Content="Select Current Location" HorizontalAlignment="Center" Width="200" DockPanel.Dock="Bottom" Click="btnOk_Click" Height="40" FontSize="16" Margin="0,0,0,19" />
+        <src:Map x:Name="MainMap" MapType="GoogleMap" Zoom="2" MaxZoom="17" MinZoom="1" Margin="25,12,25,20"  />
     </DockPanel>
 </Window>

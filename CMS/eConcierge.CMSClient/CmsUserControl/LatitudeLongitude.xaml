@@ -6,15 +6,15 @@
         <StackPanel Orientation="Vertical" x:Name="stkCoordinates">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Latitude" Width="60"/>
-                <TextBox x:Name="txtLatitude" Width="200"/>
+                <TextBox x:Name="txtLatitude" Width="200" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Longitude" Width="60"/>
-                <TextBox x:Name="txtLongitude" Width="200"/>
+                <TextBox x:Name="txtLongitude" Width="200" IsReadOnly="True"/>
             </StackPanel>           
         </StackPanel>
         <Button  Width="90" Margin="10,0,0,0" Height="50" VerticalAlignment="Top" Click="Button_Click">
-            <TextBlock TextAlignment="Center" Margin="0"> Fetch <LineBreak/> Coordinate</TextBlock>
+            <TextBlock TextAlignment="Center" Margin="0"> Select <LineBreak/>From Map</TextBlock>
         </Button>
     </StackPanel>
 </UserControl>

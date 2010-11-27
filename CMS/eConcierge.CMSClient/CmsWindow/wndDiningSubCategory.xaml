@@ -6,12 +6,12 @@
         <Thickness x:Key="tn">0,0,0,10</Thickness>
 
     </Window.Resources>
-    <Grid>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="90.001"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
+        <StackPanel Grid.Column="0" Margin="15,0,-11,0">
             <StackPanel.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Margin" Value="{StaticResource tn}"/>
@@ -21,18 +21,18 @@
             <TextBlock Text="Title"/>
             <TextBlock Text="Description"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Width="240">
+        <StackPanel Grid.Column="1" Width="240" Margin="15,0">
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
                     <Setter Property="Margin" Value="{StaticResource tn}"/>
                 </Style>
             </StackPanel.Resources>
-            <ComboBox x:Name="cmbCategory" Margin="{StaticResource tn}"/>
+            <ComboBox x:Name="cmbCategory" Margin="{StaticResource tn}" Height="35"/>
             <TextBox x:Name="txtTitle"  />
             <TextBox x:Name="txtDescription" AcceptsReturn="True" TextWrapping="Wrap" Height="70"/>
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,0,10">
-                <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" />
-                <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,10">
+                <Button Content="Save" Width="60" x:Name="btnSave" Margin="0,0,10,0" Click="btnSave_Click" Height="40" />
+                <Button Content="Cancel" Width="60" x:Name="btnCancel" Margin="0,0,10,0" Click="btnCancel_Click" Height="40" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -298,33 +298,16 @@
                     <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
-            <Storyboard x:Key="FocusedOn">
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="FocusVisualElement" Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Visible}"/>
-                </ObjectAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="FocusVisualElement" Storyboard.TargetProperty="(UIElement.Opacity)">
-                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-
-            </Storyboard>
-            <Storyboard x:Key="FocusedOff">
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="FocusVisualElement" Storyboard.TargetProperty="(UIElement.Opacity)">
-                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
+            <Storyboard x:Key="FocusedOn"/>
+            <Storyboard x:Key="FocusedOff"/>
         </ControlTemplate.Resources>
 
-        <Grid x:Name="Grid">
-            <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2,2,2,2" CornerRadius="2,2,2,2">
-                <Border x:Name="Hover" Background="{StaticResource HoverBrush}" CornerRadius="1,1,1,1" Height="Auto" Width="Auto" Opacity="0"/>
-            </Border>
-            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
-            <Border x:Name="FocusVisualElement"
-                    IsHitTestVisible="false"
-                    BorderBrush="{StaticResource HoverBrush}"
-                    BorderThickness="2,2,2,2"
-                    CornerRadius="2,2,2,2" Opacity="0"/>
-        </Grid>
+        <Grid x:Name="Grid" Margin="0" Height="{TemplateBinding Height}">
+    		<Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2,2,2,2" CornerRadius="2,2,2,2" HorizontalAlignment="Left" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+    			<Border x:Name="Hover" Background="{StaticResource HoverBrush}" CornerRadius="1,1,1,1" Height="Auto" Width="Auto" Opacity="0"/>
+    		</Border>
+    		<ContentPresenter RecognizesAccessKey="True" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    	</Grid>
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsDefault" Value="True">
@@ -756,7 +739,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="28"/>
             </Grid.ColumnDefinitions>
             <Rectangle Grid.ColumnSpan="2" HorizontalAlignment="Stretch" x:Name="Rectangle" VerticalAlignment="Stretch" Width="Auto" Height="Auto" RadiusX="3" RadiusY="3" Fill="{DynamicResource NormalBrush}" Stroke="{DynamicResource NormalBorderBrush}" StrokeThickness="2"/>
             <Rectangle HorizontalAlignment="Stretch" x:Name="HoverRectangle" VerticalAlignment="Stretch" Width="Auto" Height="Auto" RadiusX="3" RadiusY="3" Fill="{DynamicResource HoverBrush}" Stroke="{x:Null}" StrokeThickness="2" Grid.ColumnSpan="2" Opacity="0" Grid.Column="1" Margin="0,2,2,2"/>
