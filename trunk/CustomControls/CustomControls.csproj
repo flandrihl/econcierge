@@ -498,10 +498,6 @@
       <Project>{3265E3CC-5EA9-4240-A2BF-9DEB4B905DED}</Project>
       <Name>eConcierge.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{C954F554-399B-4BAB-9103-5EDBA2A3E241}</Project>
-      <Name>DataAccessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Global\Controls\WpfKeyboard\WpfKb\WpfKb.csproj">
       <Project>{0784CDC9-0F52-4B8B-9488-6589C11E94E2}</Project>
       <Name>WpfKb</Name>
