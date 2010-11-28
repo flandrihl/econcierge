@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using CustomControls.Abstract;
 using eConcierge.Business;
+using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Cafe
@@ -123,7 +124,13 @@ namespace CustomControls.Cafe
             var top = FrameworkManager.Canvas.ActualHeight / 2 - (control.Height / 2);
             var left = FrameworkManager.Canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
-            control.Closed += AtmDetailClosed;   
+            control.Closed += AtmDetailClosed;
+            control.ShowDirections += ShowDirectionsSelected;
+        }
+
+        void ShowDirectionsSelected(object sender, DataEventArgs e)
+        {
+            InvokeShowDirections(e);
         }
 
         private void AtmDetailClosed(object sender, EventArgs e)

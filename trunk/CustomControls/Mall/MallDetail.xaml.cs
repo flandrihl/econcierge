@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
 using eConcierge.Model;
 using Infrasturcture;
+using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Mall
@@ -12,6 +14,7 @@ namespace CustomControls.Mall
     /// </summary>
     public partial class MallDetail : LocationControl, IMTouchControl
     {
+        private readonly DTOMall _mall;
         public IMTContainer Container { get; set; }
         public IFrameworkManger FrameworkManager { get; set; }
         public BitmapImage Picture  { get; set; }
@@ -23,6 +26,7 @@ namespace CustomControls.Mall
         
         public MallDetail(DTOMall mall)
         {
+            _mall = mall;
             InitializeComponent();
             Picture = WpfUtil.BytesToImageSource(mall.Photo);
             Title = mall.Title;
@@ -30,13 +34,20 @@ namespace CustomControls.Mall
             Address = mall.Address;
             Telephone = mall.Phone;
             closeButton.Click += CloseButtonClick;
+            mapDirectionsButton.Click += MapDirectionsButtonClick;
             DataContext = this;
+        }
+
+        private void MapDirectionsButtonClick(object sender, RoutedEventArgs e)
+        {
+            InvokeShowDirections(new DataEventArgs(_mall));
         }
 
         public void Load(IFrameworkManger frameworkManger, double left, double top)
         {
             FrameworkManager = frameworkManger;
             FrameworkManager.RegisterElement((IMTouchControl)closeButton, false, new[] { TouchAction.Tap });
+            FrameworkManager.RegisterElement((IMTouchControl)mapDirectionsButton, false, new[] { TouchAction.Tap });
             FrameworkManager.AddControlWithAllGestures(this, left, top);
         }
 
@@ -49,6 +60,7 @@ namespace CustomControls.Mall
         {
             FrameworkManager.UnRegisterElement(closeButton);
             FrameworkManager.RemoveControl(this);
+            FrameworkManager.UnRegisterElement(mapDirectionsButton);
             if(Closed!=null)
                 Closed(this,new EventArgs());
         }

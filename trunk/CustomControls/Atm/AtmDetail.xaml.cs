@@ -23,13 +23,7 @@ namespace CustomControls.Atm
         public string Description { get; set; }
         public string Address { get; set; }
         public string Telephone { get; set; }
-        public event EventHandler<DataEventArgs> ShowDirections;
-        public void InvokeShowDirections(DataEventArgs e)
-        {
-            EventHandler<DataEventArgs> handler = ShowDirections;
-            if (handler != null) handler(this, e);
-        }
-
+        
         public AtmDetail(DTOATM atm)
         {
             _atm = atm;

@@ -11,6 +11,7 @@ using CustomControls.TouchCombo;
 using eConcierge.Business;
 using eConcierge.Model;
 using Infrasturcture;
+using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 using WPFMitsuControls;
 using Image = System.Windows.Controls.Image;
@@ -31,6 +32,7 @@ namespace CustomControls.Dining
         private int _currentPagerIndex;
         private string _categoryId;
         private Book _menuBook;
+        private DTODining _dining;
         public event EventHandler Closed;
 
 
@@ -40,7 +42,12 @@ namespace CustomControls.Dining
             categoryCombo.SelectionChanged += CategoryComboSelectionChanged;
             pager.ValueChanged += SldValueChanged;
             closeButton.Click += CloseButtonClick;
-            menuButton.Click += MenuButtonClick;
+            menuButton.Click += MenuButtonClick; 
+            mapDirectionsButton.Click += MapDirectionsButtonClick;
+        }
+        private void MapDirectionsButtonClick(object sender, RoutedEventArgs e)
+        {
+            InvokeShowDirections(new DataEventArgs(_dining));
         }
 
         void CategoryComboSelectionChanged(object sender, Infrasturcture.Global.Helpers.Events.DataEventArgs e)
@@ -106,6 +113,7 @@ namespace CustomControls.Dining
             FrameworkManager.RegisterElement((IMTouchControl)menuButton, false, new[] { TouchAction.Tap });
             categoryCombo.Initialize(FrameworkManager, GetCategoryComboItems());
             categoryCombo.SelectedItem = _subCategoryId;
+            FrameworkManager.RegisterElement((IMTouchControl)mapDirectionsButton, false, new[] { TouchAction.Tap });
             FrameworkManager.AddControlWithAllGestures(this, 20, 20);
             SetDiningProperties();
         }
@@ -131,6 +139,7 @@ namespace CustomControls.Dining
             FrameworkManager.UnRegisterElement(pager);
             FrameworkManager.UnRegisterElement(closeButton);
             FrameworkManager.UnRegisterElement(menuButton);
+            FrameworkManager.UnRegisterElement(mapDirectionsButton);
             categoryCombo.Close();
             if(_menuBook!=null)
                 FrameworkManager.RemoveControl(_menuBook);
@@ -169,6 +178,7 @@ namespace CustomControls.Dining
 
         private void SetDiningProperties(DTODining dining)
         {
+            _dining = dining;
             imgEvent.Source = WpfUtil.BytesToImageSource(dining.Photo);
             txbTitle.Text = dining.Title;
             txbDescription.Text = dining.Description;

@@ -51,7 +51,7 @@ namespace eConciergeClient
             Resources.MergedDictionaries.Add(resourceDictionary);
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
             FrameworkManager.Initialize();
             InitializeCanvas();

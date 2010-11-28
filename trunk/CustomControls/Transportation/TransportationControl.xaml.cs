@@ -116,7 +116,12 @@ namespace CustomControls.Transportation
             var top = FrameworkManager.Canvas.ActualHeight / 2 - (transportationDetail.Height / 2);
             var left = FrameworkManager.Canvas.ActualWidth / 2 - (transportationDetail.Width / 2);
             transportationDetail.Load(FrameworkManager, left, top);
+            transportationDetail.ShowDirections += ShowDirectionsSelected;
+        }
 
+        void ShowDirectionsSelected(object sender, DataEventArgs e)
+        {
+            InvokeShowDirections(e);
         }
 
         private void AddColumns()

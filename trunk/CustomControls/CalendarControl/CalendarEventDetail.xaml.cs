@@ -30,6 +30,12 @@ namespace CustomControls.CalendarControl
             categoryCombo.SelectionChanged += ComboItemsSelectionChanged;
             pager.ValueChanged += SldValueChanged;
             closeButton.Click += CloseButtonClick;
+            mapDirectionsButton.Click += MapDirectionsButtonClick;
+        }
+
+        private void MapDirectionsButtonClick(object sender, RoutedEventArgs e)
+        {
+            InvokeShowDirections(new DataEventArgs(_calendarEvent));
         }
 
         public void InitializeControl(IFrameworkManger frameworkManager, double left, double top)
@@ -39,11 +45,12 @@ namespace CustomControls.CalendarControl
             FrameworkManager.RegisterElement((IMTouchControl)pager, false, new[] { TouchAction.Slide, TouchAction.Tap });
             categoryCombo.Initialize(FrameworkManager, GetCategoryComboItems());
             FrameworkManager.AddControlWithAllGestures(this, left, top);
+            FrameworkManager.RegisterElement((IMTouchControl)mapDirectionsButton, false, new[] { TouchAction.Tap });
             categoryCombo.SelectedItem = CategoryId.ToString();
             SetEventProperties();
         }
 
-        private List<TouchComboBoxItem> GetCategoryComboItems()
+        private static List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
             var service = new EventCalendarCategoryService();
@@ -62,6 +69,7 @@ namespace CustomControls.CalendarControl
         {
             FrameworkManager.UnRegisterElement(pager);
             FrameworkManager.UnRegisterElement(closeButton);
+            FrameworkManager.UnRegisterElement(mapDirectionsButton);
             FrameworkManager.RemoveControl(this);
             if(Closed!=null)
                 Closed(this,new EventArgs());
@@ -114,6 +122,7 @@ namespace CustomControls.CalendarControl
 
         private void SetEventProperties(DTOCalendarEvent evnt)
         {
+            _calendarEvent = evnt;
             imgEvent.Source = ImageFromBuffer(evnt.Photo);
             txbTitle.Text = evnt.Title;
             txbDescription.Text = string.Format("{0}{1}Event {2}-{3}{4}{5}", evnt.Description, Environment.NewLine, evnt.StartDate, evnt.EndDate, Environment.NewLine, evnt.Location);
@@ -121,6 +130,8 @@ namespace CustomControls.CalendarControl
 
         private int _totalDays;
         private DateTime _eventDate;
+        private DTOCalendarEvent _calendarEvent;
+
         public DateTime EventDate
         {
             set
