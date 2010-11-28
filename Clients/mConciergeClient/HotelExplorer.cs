@@ -7,7 +7,6 @@ using Artefact.Animation;
 using CustomControls;
 using CustomControls.HotelVideoControl;
 using CustomControls.PictureControl;
-using DataAccessLayer;
 using Infrasturcture.TouchLibrary;
 
 namespace eConciergeClient
@@ -152,10 +151,10 @@ namespace eConciergeClient
         void LoadSlider()
         {
             Canvas.SetLeft(SliderCanvas, -((Width / 2) + 50));
-            var myPicturesChoser = new FlipTile3D(PhotoGalleryDAL.GetInstance().GetImages()) {mainWindow = this, Width = Width/2, Height = Height};
-            SliderCanvas.Children.Add(myPicturesChoser);
-            myPicturesChoser.Tag = FrameworkManager.RegisterElement(myPicturesChoser, false, new[] { TouchAction.Tap, TouchAction.Slide });
-            SliderCanvas.Visibility = Visibility.Visible;
+            //var myPicturesChoser = new FlipTile3D(PhotoGalleryDAL.GetInstance().GetImages()) {mainWindow = this, Width = Width/2, Height = Height};
+            //SliderCanvas.Children.Add(myPicturesChoser);
+            //myPicturesChoser.Tag = FrameworkManager.RegisterElement(myPicturesChoser, false, new[] { TouchAction.Tap, TouchAction.Slide });
+            //SliderCanvas.Visibility = Visibility.Visible;
         }
 
         void ShowPhotoViewer(bool open)

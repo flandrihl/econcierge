@@ -11,7 +11,7 @@ namespace CustomControls.Weather
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class WeatherControl : AnimatableControl, IMTouchControl
+    public partial class WeatherControl : LocationControl, IMTouchControl
     {
         private static WeatherControl _weather;
         private List<WeatherElement> _weathersData;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Mall
@@ -22,7 +22,7 @@ namespace CustomControls.Mall
             Mall = mall;
             InitializeComponent();
             DataContext = this;
-            Picture = WpfUtil.BytesToImageSource(Mall.Picture);
+            Picture = WpfUtil.BytesToImageSource(Mall.Photo);
             Title = Mall.Title;
         }
 

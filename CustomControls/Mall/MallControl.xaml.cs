@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CustomControls.Abstract;
-using DataAccessLayer;
+using eConcierge.Business;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Mall
@@ -11,7 +11,7 @@ namespace CustomControls.Mall
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class MallControl : AnimatableControl, IMTouchControl
+    public partial class MallControl : LocationControl, IMTouchControl
     {
         private static MallControl _mall;
         private List<MallItem> _mallItems;
@@ -88,10 +88,11 @@ namespace CustomControls.Mall
         private void PopulatePointOfInterests()
         {
             _mallItems = new List<MallItem>();
-            var atms = MallDAL.GetInstance().GetMalls();
+            var service = new MallService();
+            var malls = service.GetMalls();
             int col = -1, row = 0;
 
-            foreach (var atm in atms)
+            foreach (var mall in malls)
             {
                 if (grdCategory.RowDefinitions.Count < NoOfItemsPerColumn)
                 {
@@ -102,7 +103,7 @@ namespace CustomControls.Mall
                     grdCategory.ColumnDefinitions.Add(new ColumnDefinition());
                     col++;
                 }
-                var item = new MallItem(atm);
+                var item = new MallItem(mall);
                 grdCategory.Children.Add(item);
                 item.SetValue(Grid.ColumnProperty, col);
                 item.SetValue(Grid.RowProperty, row);

@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CustomControls.Abstract;
-using CustomControls.CalendarControl;
-using CustomControls.CategoryControl;
 using CustomControls.InheritedFrameworkControls;
 using CustomControls.OptionControl;
-using DataAccessLayer;
-using Infrasturcture.DTO;
+using eConcierge.Business;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
@@ -17,10 +14,10 @@ namespace CustomControls.Transportation
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class TransportationControl : AnimatableControl, IMTouchControl
+    public partial class TransportationControl : LocationControl, IMTouchControl
     {
         private List<TouchButton> _transportationButtons;
-        private const int NO_OF_ITEM_IN_COLUMN = 2;
+        private const int NoOfItemInColumn = 2;
         public event EventHandler Closed;
         public IFrameworkManger FrameworkManager { get; set; }
         private static TransportationControl _transportation;
@@ -78,11 +75,12 @@ namespace CustomControls.Transportation
         private void PopulateEventCategory()
         {
             _transportationButtons = new List<TouchButton>();
-            var categoryList = TransportationDAL.GetInstance().GetCategories();
+            var service = new TransportationService();
+            var categoryList = service.GetTransportations();
             AddColumns();
             int col = 0, row = -1;
 
-            foreach (DTOTransportationCategory category in categoryList)
+            foreach (var category in categoryList)
             {
                 if (col == 0)
                 {
@@ -101,13 +99,13 @@ namespace CustomControls.Transportation
                     item.Margin = new Thickness(100, 5, 10, 0);
 
                 _transportationButtons.Add(item.CateogoryButton);
-                item.CateogoryButton.Click += CateogoryButton_Click;
+                item.CateogoryButton.Click += CateogoryButtonClick;
                 col++;
-                if (col == NO_OF_ITEM_IN_COLUMN) col = 0;
+                if (col == NoOfItemInColumn) col = 0;
             }
         }
 
-        void CateogoryButton_Click(object sender, RoutedEventArgs e)
+        void CateogoryButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (TouchButton)sender;
             if (button == null) return;
@@ -123,7 +121,7 @@ namespace CustomControls.Transportation
 
         private void AddColumns()
         {
-            for (int col = 0; col < NO_OF_ITEM_IN_COLUMN; col++)
+            for (int col = 0; col < NoOfItemInColumn; col++)
             {
                 grdCategory.ColumnDefinitions.Add(new ColumnDefinition());
             }

@@ -12,7 +12,7 @@ namespace CustomControls.LandMark
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class LandMarkControl : AnimatableControl, IMTouchControl
+    public partial class LandMarkControl : LocationControl, IMTouchControl
     {
         private static LandMarkControl _dining;
         private List<LandMarkItem> _landMarkItems;
@@ -21,13 +21,6 @@ namespace CustomControls.LandMark
         public IFrameworkManger FrameworkManager { get; set; }
         public event EventHandler Closed;
         public IMTContainer Container { get; set; }
-        public event EventHandler<DataEventArgs> ShowDirections;
-
-        public void InvokeShowDirections(DataEventArgs e)
-        {
-            EventHandler<DataEventArgs> handler = ShowDirections;
-            if (handler != null) handler(this, e);
-        }
 
         public static LandMarkControl GetInstance()
         {

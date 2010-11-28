@@ -42,8 +42,9 @@ namespace CustomControls.TouchCombo
         {
             var combo = d as TouchComboBox;
             var id = e.NewValue.ToString();
-            var item = combo._items.Single(i => i.Item.ToString().Equals(id));
-            combo.SelectedTitle = item.DisplayText;
+            var item = combo._items.SingleOrDefault(i => i.Item.ToString().Equals(id));
+            if (item != null)
+                combo.SelectedTitle = item.DisplayText;
         }
 
 

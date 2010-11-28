@@ -11,7 +11,7 @@ namespace CustomControls.CalendarControl
     /// <summary>
     /// Interaction logic for CalendarMain.xaml
     /// </summary>
-    public partial class TouchCalendar : AnimatableControl, IMTouchControl
+    public partial class TouchCalendar : LocationControl, IMTouchControl
     {
 
         #region Declaration
@@ -479,7 +479,7 @@ namespace CustomControls.CalendarControl
             SetMonth();
         }
 
-        public override void Dispose()
+        public virtual void Dispose()
         {
             _calendar = null;
         }

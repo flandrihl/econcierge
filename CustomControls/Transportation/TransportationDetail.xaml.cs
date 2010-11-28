@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using CustomControls.Abstract;
 using CustomControls.TouchCombo;
-using DataAccessLayer;
+using eConcierge.Business;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
@@ -14,7 +14,7 @@ namespace CustomControls.Transportation
     /// <summary>
     /// Interaction logic for TransportationDetail.xaml
     /// </summary>
-    public partial class TransportationDetail : AnimatableControl, IMTouchControl
+    public partial class TransportationDetail : LocationControl, IMTouchControl
     {
         private TaxiDetail _taxiDetail;
         private MonorailDetail _monorailDetail;
@@ -67,7 +67,8 @@ namespace CustomControls.Transportation
         private List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
-            var categoryList = TransportationDAL.GetInstance().GetCategories();
+            var service = new TransportationService();
+            var categoryList = service.GetTransportations();
             foreach (var category in categoryList)
             {
                 var categoryComboItem = new TouchComboBoxItem();

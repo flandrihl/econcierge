@@ -22,7 +22,7 @@ namespace CustomControls.HotelaccommodationControl
     /// <summary>
     /// Interaction logic for AccommPhoto.xaml
     /// </summary>
-    public partial class AccommPhoto : AnimatableControl, IMTouchControl
+    public partial class AccommPhoto : LocationControl, IMTouchControl
     {
         public AccommPhoto()
         {

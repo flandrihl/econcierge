@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CustomControls.Abstract;
-using DataAccessLayer;
+using eConcierge.Business;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Atm
@@ -11,7 +11,7 @@ namespace CustomControls.Atm
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class AtmControl : AnimatableControl, IMTouchControl
+    public partial class AtmControl : LocationControl, IMTouchControl
     {
         private static AtmControl _atm;
         private List<AtmItem> _atmItems;
@@ -88,7 +88,8 @@ namespace CustomControls.Atm
         private void PopulatePointOfInterests()
         {
             _atmItems = new List<AtmItem>();
-            var atms = AtmDAL.GetInstance().GetAtms();
+            var service = new ATMService();
+            var atms = service.GetATMs();
             int col = -1, row = 0;
 
             foreach (var atm in atms)

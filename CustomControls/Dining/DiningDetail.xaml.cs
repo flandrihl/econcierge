@@ -6,12 +6,11 @@ using System.Text;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media.Imaging;
-using Artefact.Animation;
 using CustomControls.Abstract;
 using CustomControls.TouchCombo;
-using DataAccessLayer;
+using eConcierge.Business;
+using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.TouchLibrary;
 using WPFMitsuControls;
 using Image = System.Windows.Controls.Image;
@@ -23,7 +22,7 @@ namespace CustomControls.Dining
     /// <summary>
     /// Interaction logic for DiningDetail.xaml
     /// </summary>
-    public partial class DiningDetail : AnimatableControl, IMTouchControl
+    public partial class DiningDetail : LocationControl, IMTouchControl
     {
         public IMTContainer Container { get; set; }
         public IFrameworkManger FrameworkManager { get; set; }
@@ -114,7 +113,8 @@ namespace CustomControls.Dining
         private List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
-            var categoryList = DiningDAL.GetInstance().GetSubCategories(Convert.ToInt32(_categoryId));
+            var service = new DiningCategoryService();
+            var categoryList = service.GetDiningCategorys(Convert.ToInt32(_categoryId));
             foreach (var category in categoryList)
             {
                 var categoryComboItem = new TouchComboBoxItem();
@@ -141,23 +141,30 @@ namespace CustomControls.Dining
 
         void SldValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int newValue = Convert.ToInt32(e.NewValue);
-            if (newValue == _currentPagerIndex + 1 || newValue == _currentPagerIndex - 1)
+            if (_dinings != null)
             {
-                _currentPagerIndex = newValue;
-                SetDiningProperties(_dinings[newValue]);
+                int newValue = Convert.ToInt32(e.NewValue);
+                if (newValue == _currentPagerIndex + 1 || newValue == _currentPagerIndex - 1)
+                {
+                    _currentPagerIndex = newValue;
+                    SetDiningProperties(_dinings[newValue]);
+                }
             }
 
         }
 
         private void SetDiningProperties()
         {
-            _dinings = DiningDAL.GetInstance().GetDinings(Convert.ToInt32(categoryCombo.SelectedItem));
-            _currentPagerIndex = 0;
-            pager.Minimum = 0;
-            pager.Maximum = _dinings.Count - 1;
-            pager.Value = 0;
-            SetDiningProperties(_dinings[0]);
+            if (_dinings!=null && _dinings.Count > 0)
+            {
+                var service = new DiningService();
+                _dinings = service.GetDinings(Convert.ToInt32(categoryCombo.SelectedItem));
+                _currentPagerIndex = 0;
+                pager.Minimum = 0;
+                pager.Maximum = _dinings.Count - 1;
+                pager.Value = 0;
+                SetDiningProperties(_dinings[0]);
+            }
         }
 
         private void SetDiningProperties(DTODining dining)
@@ -165,7 +172,8 @@ namespace CustomControls.Dining
             imgEvent.Source = WpfUtil.BytesToImageSource(dining.Photo);
             txbTitle.Text = dining.Title;
             txbDescription.Text = dining.Description;
-            txbAddress.Text = dining.Location;
+            txbAddress.Text = dining.Address;
+            txtPhone.Text = dining.Telephone;
         }
     }
 }

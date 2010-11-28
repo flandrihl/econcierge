@@ -45,6 +45,7 @@ namespace eConciergeClient
             _transportationControl.Load(FrameworkManager, left, top);
             _skipTransportationClose = false;
             _transportationControl.Closed += Transporation_Closed;
+            _transportationControl.ShowDirections += ControlShowDirections;
             _transportationControl.DetailControlAdded += ControlDetailControlAdded;
         }
 

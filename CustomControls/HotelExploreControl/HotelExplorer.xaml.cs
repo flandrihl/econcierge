@@ -11,7 +11,7 @@ namespace CustomControls
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class HotelExplorer : AnimatableControl, IMTouchControl
+    public partial class HotelExplorer : LocationControl, IMTouchControl
     {
         private static HotelExplorer _hotelExplorer;
         public event EventHandler OnDoAnimateToOrigin;
@@ -171,7 +171,7 @@ namespace CustomControls
             }
         }
 
-        public override void Dispose()
+        public virtual void Dispose()
         {
             UnRegisterEvents();
             _hotelExplorer = null;

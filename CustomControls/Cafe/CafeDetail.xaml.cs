@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
+using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Cafe
@@ -10,7 +10,7 @@ namespace CustomControls.Cafe
     /// <summary>
     /// Interaction logic for DiningDetail.xaml
     /// </summary>
-    public partial class CafeDetail : AnimatableControl, IMTouchControl
+    public partial class CafeDetail : LocationControl, IMTouchControl
     {
         public IMTContainer Container { get; set; }
         public IFrameworkManger FrameworkManager { get; set; }
@@ -24,14 +24,20 @@ namespace CustomControls.Cafe
         public CafeDetail(DTOCafe cafe)
         {
             InitializeComponent();
-            Picture = WpfUtil.BytesToImageSource(cafe.Picture);
+            Picture = WpfUtil.BytesToImageSource(cafe.Photo);
             Title = cafe.Title;
             Description = cafe.Description;
             Address = cafe.Address;
-            Telephone = cafe.Telephone;
+            Telephone = cafe.Phone;
+            Latitude = cafe.Latitude;
+            Longitude = cafe.Longitude;
             closeButton.Click += CloseButtonClick;
             DataContext = this;
         }
+
+        protected double? Longitude { get; set; }
+
+        protected double? Latitude { get; set; }
 
         public void Load(IFrameworkManger frameworkManger, double left, double top)
         {

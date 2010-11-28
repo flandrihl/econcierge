@@ -34,6 +34,7 @@ namespace eConciergeClient
             var left = canvas.ActualWidth / 2 - 300;
             calendarControl.InitializeControl(FrameworkManager, left, top);
             calendarControl.Closed += CalendarControlClosed;
+            calendarControl.ShowDirections += ControlShowDirections;
             _skipCalendarClose = false;
         }
 

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CustomControls.Abstract;
-using CustomControls.CalendarControl;
-using CustomControls.CategoryControl;
 using CustomControls.InheritedFrameworkControls;
 using CustomControls.OptionControl;
-using DataAccessLayer;
-using Infrasturcture.DTO;
+using eConcierge.Business;
+using eConcierge.Model;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
@@ -17,13 +15,13 @@ namespace CustomControls.Dining
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class DiningControl : AnimatableControl, IMTouchControl
+    public partial class DiningControl : LocationControl, IMTouchControl
     {
         private static DiningControl _dining;
         private List<TouchButton> _eventButtons;
-        private const int NO_OF_ITEM_IN_COLUMN = 4;
+        private const int NoOfItemInColumn = 4;
         public IFrameworkManger FrameworkManager { get; set; }
-        private List<DiningSubCateogryControl> _diningSubcategories=new List<DiningSubCateogryControl>();
+        private readonly List<DiningSubCateogryControl> _diningSubcategories=new List<DiningSubCateogryControl>();
         private readonly List<DiningDetail> _diningDetailControls = new List<DiningDetail>();
 
         public event EventHandler Closed;
@@ -99,12 +97,13 @@ namespace CustomControls.Dining
         private void PopulateEventCategory()
         {
             _eventButtons = new List<TouchButton>();
-            List<DTODiningCategory> categoryList = DiningDAL.GetInstance().GetCategories();
+            var service = new EventCalendarCategoryService();
+            List<DTOEventCalendarCategory> categoryList = service.GetEventCalendarCategorys();
             int col = -1, row = 0;
 
-            foreach (DTODiningCategory category in categoryList)
+            foreach (var category in categoryList)
             {
-                if (grdCategory.RowDefinitions.Count < NO_OF_ITEM_IN_COLUMN)
+                if (grdCategory.RowDefinitions.Count < NoOfItemInColumn)
                 {
                     grdCategory.RowDefinitions.Add(new RowDefinition());
                 }
@@ -114,20 +113,20 @@ namespace CustomControls.Dining
                     col++;
                 }
                 var item = new TouchOptionItem();
-                item.CategoryText = category.Title;
+                item.CategoryText = category.Name;
                 item.CateogoryButton.Tag = category.Id;
                 grdCategory.Children.Add(item);
                 item.SetValue(Grid.ColumnProperty, col);
                 item.SetValue(Grid.RowProperty, row);
                 item.Margin = new Thickness(15, 10, 15, 10);
                 _eventButtons.Add(item.CateogoryButton);
-                item.CateogoryButton.Click += CateogoryButton_Click;
+                item.CateogoryButton.Click += CateogoryButtonClick;
                 row++;
-                if (row == NO_OF_ITEM_IN_COLUMN) row = 0;
+                if (row == NoOfItemInColumn) row = 0;
             }
         }
 
-        void CateogoryButton_Click(object sender, RoutedEventArgs e)
+        void CateogoryButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (TouchButton)sender;
             if (button == null) return;

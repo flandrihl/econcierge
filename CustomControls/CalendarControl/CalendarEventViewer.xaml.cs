@@ -5,8 +5,7 @@ using System.Windows.Controls;
 using CustomControls.Abstract;
 using CustomControls.InheritedFrameworkControls;
 using CustomControls.OptionControl;
-using DataAccessLayer;
-using Infrasturcture.DTO;
+using eConcierge.Business;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
@@ -15,15 +14,15 @@ namespace CustomControls.CalendarControl
     /// <summary>
     /// Interaction logic for EventViewer.xaml
     /// </summary>
-    public partial class CalendarEventViewer : AnimatableControl, IMTouchControl
+    public partial class CalendarEventViewer : LocationControl, IMTouchControl
     {
         protected IFrameworkManger FrameworkManager { get; set; }
         public IMTContainer Container { get; set; }
-        private const int ITEMS_PER_COLUMN = 3;
+        private const int ItemsPerColumn = 3;
         public event EventHandler Closed;
         public event EventHandler<DataEventArgs> DetailControlAdded;
         private List<TouchButton> _eventButtons;
-        public List<TouchButton> EventButtons
+        public IEnumerable<TouchButton> EventButtons
         {
             get { return _eventButtons; }
         }
@@ -117,19 +116,20 @@ namespace CustomControls.CalendarControl
         private void PopulateEventCategory()
         {
             _eventButtons = new List<TouchButton>();
-            var categoryList = CalendarDAL.GetInstance().GetCategories();
+            var service = new EventCalendarCategoryService();
+            var categoryList = service.GetEventCalendarCategorys();
             AddColumns();
             int col = 0,row=-1;
 
-            foreach (DTOEventCategory category in categoryList)
+            foreach (var category in categoryList)
             {
                 if(col == 0)
                 {
                     grdCategory.RowDefinitions.Add(new RowDefinition());
                     row++;
                 }
-                TouchOptionItem item = new TouchOptionItem();
-                item.CategoryText = category.Title;
+                var item = new TouchOptionItem();
+                item.CategoryText = category.Name;
                 item.CateogoryButton.Tag = category.Id;
                 grdCategory.Children.Add(item);
                 item.SetValue(Grid.ColumnProperty, col);
@@ -137,13 +137,13 @@ namespace CustomControls.CalendarControl
                 item.Margin = new Thickness(15,5,15,5);
                 _eventButtons.Add(item.CateogoryButton);
                 col++;
-                if (col == ITEMS_PER_COLUMN) col = 0;
+                if (col == ItemsPerColumn) col = 0;
             }
         }
 
         private void AddColumns()
         {
-            for(int col=0;col<ITEMS_PER_COLUMN;col++)
+            for(int col=0;col<ItemsPerColumn;col++)
             {
                 grdCategory.ColumnDefinitions.Add(new ColumnDefinition());
             }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows;
 using CustomControls.Atm;
+using eConcierge.Model;
 using Infrasturcture.TouchLibrary;
+using TouchControls;
 
 namespace eConciergeClient
 {
@@ -35,8 +37,9 @@ namespace eConciergeClient
             var left = canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
             control.Closed += AtmControlClosed;
+            control.ShowDirections += ControlShowDirections;
         }
-
+        
         void AtmControlClosed(object sender, EventArgs e)
         {
             _skipAtmClose = true;

@@ -5,8 +5,8 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
 using CustomControls.TouchCombo;
-using DataAccessLayer;
-using Infrasturcture.DTO;
+using eConcierge.Business;
+using eConcierge.Model;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
@@ -15,9 +15,9 @@ namespace CustomControls.CalendarControl
     /// <summary>
     /// Interaction logic for CalendarEventDetail.xaml
     /// </summary>
-    public partial class CalendarEventDetail : AnimatableControl, IMTouchControl
+    public partial class CalendarEventDetail : LocationControl, IMTouchControl
     {
-        private List<DTOEvent> _events;
+        private List<DTOCalendarEvent> _events;
         private int _currentPagerIndex;
         public IMTContainer Container { get; set; }
         protected IFrameworkManger FrameworkManager { get; set; }
@@ -27,7 +27,7 @@ namespace CustomControls.CalendarControl
         public CalendarEventDetail()
         {
             InitializeComponent();
-            categoryCombo.SelectionChanged += ComboItems_SelectionChanged;
+            categoryCombo.SelectionChanged += ComboItemsSelectionChanged;
             pager.ValueChanged += SldValueChanged;
             closeButton.Click += CloseButtonClick;
         }
@@ -46,11 +46,12 @@ namespace CustomControls.CalendarControl
         private List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
-            var categoryList = CalendarDAL.GetInstance().GetCategories();
+            var service = new EventCalendarCategoryService();
+            var categoryList = service.GetEventCalendarCategorys();
             foreach (var category in categoryList)
             {
                 var categoryComboItem = new TouchComboBoxItem();
-                categoryComboItem.DisplayText = category.Title;
+                categoryComboItem.DisplayText = category.Name;
                 categoryComboItem.Item = category.Id;
                 categoryComboItems.Add(categoryComboItem);
             }
@@ -82,19 +83,23 @@ namespace CustomControls.CalendarControl
             }
         }
 
-        void ComboItems_SelectionChanged(object sender, DataEventArgs dataEventArgs)
+        void ComboItemsSelectionChanged(object sender, DataEventArgs dataEventArgs)
         {
             SetEventProperties();
         }
 
         private void SetEventProperties()
         {
-            _events = CalendarDAL.GetInstance().Events(Convert.ToInt32(categoryCombo.SelectedItem), _eventDate);
-            _currentPagerIndex = 0;
-            pager.Minimum = 0;
-            pager.Maximum = _events.Count-1;
-            pager.Value = 0;
-            SetEventProperties(_events[0]);
+            var service = new CalendarEventService();
+            _events = service.GetCalendarEvents(Convert.ToInt32(categoryCombo.SelectedItem));
+            if (_events.Count > 0)
+            {
+                _currentPagerIndex = 0;
+                pager.Minimum = 0;
+                pager.Maximum = _events.Count - 1;
+                pager.Value = 0;
+                SetEventProperties(_events[0]);
+            }
         }
 
         public BitmapImage ImageFromBuffer(Byte[] bytes)
@@ -107,7 +112,7 @@ namespace CustomControls.CalendarControl
             return image;
         }
 
-        private void SetEventProperties(DTOEvent evnt)
+        private void SetEventProperties(DTOCalendarEvent evnt)
         {
             imgEvent.Source = ImageFromBuffer(evnt.Photo);
             txbTitle.Text = evnt.Title;
