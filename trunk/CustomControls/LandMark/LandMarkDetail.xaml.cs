@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
-using CustomControls.CategoryControl;
-using CustomControls.Dining;
-using CustomControls.InheritedFrameworkControls;
 using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
-using TouchFramework.Events;
 using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
 
 namespace CustomControls.LandMark
@@ -20,21 +13,13 @@ namespace CustomControls.LandMark
     /// <summary>
     /// Interaction logic for DiningDetail.xaml
     /// </summary>
-    public partial class LandMarkDetail : AnimatableControl, IMTouchControl
+    public partial class LandMarkDetail : LocationControl, IMTouchControl
     {
         private readonly DTOPointOfInterest _landMark;
         public IMTContainer Container { get; set; }
         public IFrameworkManger FrameworkManager { get; set; }
         public BitmapImage Picture  { get; set; }
         public event EventHandler Closed;
-        public event EventHandler<DataEventArgs> ShowDirections;
-
-        public void InvokeShowDirections(DataEventArgs e)
-        {
-            EventHandler<DataEventArgs> handler = ShowDirections;
-            if (handler != null) handler(this, e);
-        }
-
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }

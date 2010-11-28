@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Windows;
 using CustomControls.LandMark;
-using eConcierge.Model;
 using Infrasturcture.TouchLibrary;
-using TouchControls;
-using Application = System.Windows.Forms.Application;
 
 namespace eConciergeClient
 {
@@ -41,17 +38,7 @@ namespace eConciergeClient
             control.ShowDirections += ControlShowDirections;
         }
 
-        void ControlShowDirections(object sender, Infrasturcture.Global.Helpers.Events.DataEventArgs e)
-        {
-            var size = (canvas.ActualHeight < canvas.ActualWidth ? canvas.ActualHeight : canvas.ActualWidth) - 150;
-            var path = string.Format("file://{0}/{1}", Application.StartupPath, "mapbackend.html");
-            var left = (Width / 2) - (size / 2);
-            _mapBrowser = new MapBrowser(path, size, size, ((DTOPointOfInterest)e.Data).Latitude, ((DTOPointOfInterest)e.Data).Longitude);
-            _mapBrowser.Load(FrameworkManager, left, 50);
-            _mapBrowser.MenuChecked += MapMenuButtonChecked;
-            _mapBrowser.MenuUnChecked += MapMenuButtonUnchecked;
-            _mapBrowser.Closed += MapBrowserClosed;
-        }
+        
 
         void LandMarkControlClosed(object sender, EventArgs e)
         {

@@ -4,18 +4,27 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Infrasturcture.Global.Helpers.Events;
+using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Abstract
 {
-    public class AnimatableControl : UserControl, IAnimatableControl
+    public class LocationControl : UserControl, IAnimatableControl
     {
         private Canvas _canvas;
         public event EventHandler AnimationCompleted;
+        public event EventHandler<DataEventArgs> ShowDirections;
+        public void InvokeShowDirections(DataEventArgs e)
+        {
+            EventHandler<DataEventArgs> handler = ShowDirections;
+            if (handler != null) handler(this, e);
+        }
 
-        public AnimatableControl()
+        public LocationControl()
         {
              
         }
+
         public void AnimateTo(bool restore, Canvas canvas, double top, double left, double scale, double rotate, int animationDuration = 1000)
         {
             _canvas = canvas;
@@ -88,11 +97,6 @@ namespace CustomControls.Abstract
         public void AnimatedDownToCenter(Canvas canvas)
         {
             AnimateTo(false, canvas, canvas.ActualHeight / 2, canvas.ActualWidth / 2, 0, 0);
-        }
-
-        public virtual void Dispose()
-        {
-            
         }
     }
 }

@@ -46,12 +46,12 @@
   <ItemGroup>
     <Compile Include="ATMService.cs" />
     <Compile Include="CafeService.cs" />
-    <Compile Include="CalendarEventPresenter.cs" />
+    <Compile Include="CalendarEventService.cs" />
     <Compile Include="DiningCategoryService.cs" />
     <Compile Include="DiningMenuService.cs" />
     <Compile Include="DiningService.cs" />
     <Compile Include="DiningSubCategoryService.cs" />
-    <Compile Include="EventCalendarCategoryPresenter.cs" />
+    <Compile Include="EventCalendarCategoryService.cs" />
     <Compile Include="MallService.cs" />
     <Compile Include="PointOfInterestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

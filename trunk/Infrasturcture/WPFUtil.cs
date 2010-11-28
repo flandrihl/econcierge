@@ -9,6 +9,8 @@ namespace Infrasturcture
     {
         public static BitmapImage BytesToImageSource(Byte[] bytes)
         {
+            if (bytes == null)
+                return null;
             var stream = new MemoryStream(bytes);
             var image = new BitmapImage();
             image.BeginInit();

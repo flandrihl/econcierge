@@ -22,7 +22,7 @@ namespace CustomControls.MapControl
     /// <summary>
     /// Interaction logic for MapTest.xaml
     /// </summary>
-    public partial class MapControl : AnimatableControl, IMTouchControl
+    public partial class MapControl : LocationControl, IMTouchControl
     {
         protected bool? Locked { get; set; }
 
@@ -262,7 +262,7 @@ namespace CustomControls.MapControl
             return _mapControl ?? (_mapControl = new MapControl());
         }
 
-        public override void Dispose()
+        public virtual void Dispose()
         {
             veMap.Dispose();
             _mapControl = null;

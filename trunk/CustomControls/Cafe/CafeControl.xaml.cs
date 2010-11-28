@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CustomControls.Abstract;
-using DataAccessLayer;
+using eConcierge.Business;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Cafe
@@ -11,7 +11,7 @@ namespace CustomControls.Cafe
     /// <summary>
     /// Interaction logic for CalendarControl.xaml
     /// </summary>
-    public partial class CafeControl : AnimatableControl, IMTouchControl
+    public partial class CafeControl : LocationControl, IMTouchControl
     {
         private static CafeControl _cafe;
         private List<CafeItem> _atmItems;
@@ -88,10 +88,11 @@ namespace CustomControls.Cafe
         private void PopulatePointOfInterests()
         {
             _atmItems = new List<CafeItem>();
-            var atms = CafeDAL.GetInstance().GetCafes();
+            var service = new CafeService();
+            var cafes = service.GetCafes();
             int col = -1, row = 0;
 
-            foreach (var atm in atms)
+            foreach (var cafe in cafes)
             {
                 if (grdCategory.RowDefinitions.Count < NoOfItemsPerColumn)
                 {
@@ -102,7 +103,7 @@ namespace CustomControls.Cafe
                     grdCategory.ColumnDefinitions.Add(new ColumnDefinition());
                     col++;
                 }
-                var item = new CafeItem(atm);
+                var item = new CafeItem(cafe);
                 grdCategory.Children.Add(item);
                 item.SetValue(Grid.ColumnProperty, col);
                 item.SetValue(Grid.RowProperty, row);

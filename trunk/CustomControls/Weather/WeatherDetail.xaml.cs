@@ -21,7 +21,7 @@ namespace CustomControls.Weather
     /// <summary>
     /// Interaction logic for WeatherDetail.xaml
     /// </summary>
-    public partial class WeatherDetail : AnimatableControl, IMTouchControl
+    public partial class WeatherDetail : LocationControl, IMTouchControl
     {
         private List<WeatherElement> _weatherData;
         private int _currentPagerIndex;

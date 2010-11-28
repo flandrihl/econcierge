@@ -1,4 +1,4 @@
-﻿<Abstract:AnimatableControl
+﻿<Abstract:LocationControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,7 @@
              xmlns:TouchCombo="clr-namespace:CustomControls.TouchCombo" 
              x:Class="CustomControls.Dining.DiningDetail"
              mc:Ignorable="d" Width="762" Height="501">
-	<Abstract:AnimatableControl.Resources>
+	<Abstract:LocationControl.Resources>
 		<ControlTemplate x:Key="ButtonBlankControlTemplate" TargetType="{x:Type Button}">
 			<ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
 		</ControlTemplate>
@@ -59,7 +59,7 @@
 				</Border>
 			</Border>
 		</ControlTemplate>
-	</Abstract:AnimatableControl.Resources>
+	</Abstract:LocationControl.Resources>
     
     <Grid>
     
@@ -104,4 +104,4 @@
     	</Border>
 		<TouchCombo:TouchComboBox x:Name="categoryCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,15,0,0" Background="{x:Null}" />
 	</Grid>
-</Abstract:AnimatableControl>
+</Abstract:LocationControl>

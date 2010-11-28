@@ -35,6 +35,7 @@ namespace eConciergeClient
             var left = canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
             control.Closed += CafeControlClosed;
+            control.ShowDirections += ControlShowDirections;
         }
 
         void CafeControlClosed(object sender, EventArgs e)

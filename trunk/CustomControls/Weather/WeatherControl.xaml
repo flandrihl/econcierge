@@ -1,4 +1,4 @@
-﻿<Abstract:AnimatableControl
+﻿<Abstract:LocationControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
              Background="Transparent"
              mc:Ignorable="d"
              Loaded="AnimatableControl_Loaded" Width="720" Height="350">
-    <Abstract:AnimatableControl.Resources>
+    <Abstract:LocationControl.Resources>
         <Storyboard x:Key="ClosePictureStoryBoard" Duration="0:0:3">
             <ThicknessAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                 <SplineThicknessKeyFrame KeyTime="00:00:00" Value="0"/>
@@ -38,7 +38,7 @@
             <GradientStop Color="#FFDCCFCD" Offset="1"/>
             <GradientStop Color="#FF9F303A" Offset="0.978"/>
         </LinearGradientBrush>
-    </Abstract:AnimatableControl.Resources>
+    </Abstract:LocationControl.Resources>
     <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5" Background="Transparent">
         <Grid.RenderTransform>
             <TransformGroup>
@@ -66,4 +66,4 @@
     		</Grid>
     	</Border>
     </Grid>
-</Abstract:AnimatableControl>
+</Abstract:LocationControl>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Cafe
@@ -22,9 +22,15 @@ namespace CustomControls.Cafe
             Cafe = cafe;
             InitializeComponent();
             DataContext = this;
-            Picture = WpfUtil.BytesToImageSource(Cafe.Picture);
+            Picture = WpfUtil.BytesToImageSource(Cafe.Photo);
             Title = Cafe.Title;
+            Latitude = cafe.Latitude;
+            Longitude = cafe.Longitude;
         }
+
+        protected double? Longitude { get; set; }
+
+        protected double? Latitude { get; set; }
 
         public void Tapped()
         {

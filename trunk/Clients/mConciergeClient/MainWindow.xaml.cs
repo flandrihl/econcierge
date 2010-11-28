@@ -6,11 +6,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CustomControls.PictureControl;
+using eConcierge.Model;
 using Infrasturcture.TouchLibrary;
 using mConciergeClient;
 using TouchControls;
 using TouchFramework.Events;
 using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
+using Application = System.Windows.Forms.Application;
 
 namespace eConciergeClient
 {
@@ -159,6 +161,18 @@ namespace eConciergeClient
             var msg = sender as MTouchMessageBox;
             FrameworkManager.UnRegisterElement(msg.OkButton);
             FrameworkManager.RemoveControl(msg);
+        }
+
+        void ControlShowDirections(object sender, Infrasturcture.Global.Helpers.Events.DataEventArgs e)
+        {
+            var size = (canvas.ActualHeight < canvas.ActualWidth ? canvas.ActualHeight : canvas.ActualWidth) - 150;
+            var path = string.Format("file://{0}/{1}", Application.StartupPath, "mapbackend.html");
+            var left = (Width / 2) - (size / 2);
+            _mapBrowser = new MapBrowser(path, size, size, ((DTOLocationBase)e.Data).Latitude, ((DTOLocationBase)e.Data).Longitude);
+            _mapBrowser.Load(FrameworkManager, left, 50);
+            _mapBrowser.MenuChecked += MapMenuButtonChecked;
+            _mapBrowser.MenuUnChecked += MapMenuButtonUnchecked;
+            _mapBrowser.Closed += MapBrowserClosed;
         }
     }
 }

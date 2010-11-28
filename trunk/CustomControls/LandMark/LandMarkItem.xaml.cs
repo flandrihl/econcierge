@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using CustomControls.InheritedFrameworkControls;
 using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.LandMark

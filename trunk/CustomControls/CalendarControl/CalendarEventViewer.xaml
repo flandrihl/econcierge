@@ -1,4 +1,4 @@
-﻿<Abstract:AnimatableControl x:Class="CustomControls.CalendarControl.CalendarEventViewer"
+﻿<Abstract:LocationControl x:Class="CustomControls.CalendarControl.CalendarEventViewer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -46,4 +46,4 @@
 			</DockPanel>
 		</Grid>
 	</Border>
-</Abstract:AnimatableControl>
+</Abstract:LocationControl>

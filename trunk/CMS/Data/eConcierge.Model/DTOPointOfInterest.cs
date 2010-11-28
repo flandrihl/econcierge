@@ -3,7 +3,7 @@ using System;
 namespace eConcierge.Model
 {
 	[Serializable()]
-	public class DTOPointOfInterest
+    public class DTOPointOfInterest : DTOLocationBase
 	{
 		#region Field & Properties
 		private int _Id;
@@ -53,24 +53,8 @@ namespace eConcierge.Model
 			get { return _Phone; }
 			set { _Phone = value; }
 		}
-
-		private Nullable<Double> _Latitude;
-
-		public Nullable<Double> Latitude
-		{
-			get { return _Latitude; }
-			set { _Latitude = value; }
-		}
-
-		private Nullable<Double> _Longitude;
-
-		public Nullable<Double> Longitude
-		{
-			get { return _Longitude; }
-			set { _Longitude = value; }
-		}
-
-			public bool IsNew { get; set; }
+    
+        public bool IsNew { get; set; }
 		#endregion
 
 		#region Constructors

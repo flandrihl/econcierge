@@ -3,7 +3,7 @@ using System;
 namespace eConcierge.Model
 {
 	[Serializable()]
-	public class DTOCalendarEvent
+    public class DTOCalendarEvent : DTOLocationBase
 	{
 		#region Field & Properties
 		private int _Id;
@@ -70,23 +70,7 @@ namespace eConcierge.Model
 			set { _Location = value; }
 		}
 
-		private Nullable<Double> _Latitude;
-
-		public Nullable<Double> Latitude
-		{
-			get { return _Latitude; }
-			set { _Latitude = value; }
-		}
-
-		private double? _Longitude;
-
-		public double? Longitude
-		{
-			get { return _Longitude; }
-			set { _Longitude = value; }
-		}
-
-			public bool IsNew { get; set; }
+		public bool IsNew { get; set; }
 		#endregion
 
 		#region Constructors

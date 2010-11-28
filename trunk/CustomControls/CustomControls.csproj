@@ -382,7 +382,7 @@
     <Compile Include="HotelaccommodationControl\AccommPhoto.xaml.cs">
       <DependentUpon>AccommPhoto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Abstract\AnimatableControl.cs" />
+    <Compile Include="Abstract\LocationControl.cs" />
     <Compile Include="HotelExploreControl\HotelExplorer.xaml.cs">
       <DependentUpon>HotelExplorer.xaml</DependentUpon>
       <SubType>Code</SubType>

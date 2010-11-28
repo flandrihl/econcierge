@@ -1,4 +1,4 @@
-﻿<Abstract:AnimatableControl x:Class="CustomControls.Weather.WeatherDetail"
+﻿<Abstract:LocationControl x:Class="CustomControls.Weather.WeatherDetail"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              xmlns:Abstract="clr-namespace:CustomControls.Abstract"
              xmlns:CategoryControl="clr-namespace:CustomControls.CategoryControl"             
              xmlns:CircularButton="clr-namespace:CustomControls.CircularButton" mc:Ignorable="d">
-    <Abstract:AnimatableControl.Resources>
+    <Abstract:LocationControl.Resources>
         <Storyboard x:Key="ClosePictureStoryBoard" Duration="0:0:3">
             <ThicknessAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                 <SplineThicknessKeyFrame KeyTime="00:00:00" Value="0"/>
@@ -37,7 +37,7 @@
             <GradientStop Color="#FFDCCFCD" Offset="1"/>
             <GradientStop Color="#FF9F303A" Offset="0.978"/>
         </LinearGradientBrush>
-    </Abstract:AnimatableControl.Resources>
+    </Abstract:LocationControl.Resources>
     <Border CornerRadius="30" BorderThickness="5" x:Name="outterBorder" Background="{StaticResource RedBrush}">
         <Border Margin="7"  x:Name="InnerBorder" >
             <Grid x:Name="grd">
@@ -68,4 +68,4 @@
             </Grid>
         </Border>
     </Border>
-</Abstract:AnimatableControl>
+</Abstract:LocationControl>

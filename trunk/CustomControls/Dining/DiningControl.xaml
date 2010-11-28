@@ -1,4 +1,4 @@
-﻿<Abstract:AnimatableControl
+﻿<Abstract:LocationControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,9 +9,9 @@
 			 x:Class="CustomControls.Dining.DiningControl"
              Width="680" Height="450"
                             Background="Transparent" mc:Ignorable="d">
-  <Abstract:AnimatableControl.Resources>
+  <Abstract:LocationControl.Resources>
     
-  </Abstract:AnimatableControl.Resources>
+  </Abstract:LocationControl.Resources>
 
   <Border x:Name="MainControlBorder" Style="{DynamicResource DialogBorderStyle}" >
 
@@ -30,4 +30,4 @@
       </DockPanel>
     </Grid>
   </Border>
-</Abstract:AnimatableControl>
+</Abstract:LocationControl>

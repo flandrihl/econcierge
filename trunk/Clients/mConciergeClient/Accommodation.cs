@@ -7,7 +7,6 @@ using System.Windows.Shapes;
 using CustomControls;
 using CustomControls.HotelaccommodationControl;
 using CustomControls.PictureControl;
-using DataAccessLayer;
 using Helpers.Extensions;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
@@ -34,13 +33,13 @@ namespace eConciergeClient
             ResizeHotelExplorer(SCALE, _centerX, _centerY);
             FrameworkManager.ReRegisterControl(HotelExplorer.GetInstance(), false, new[] { TouchAction.Tap });
 
-            var imagesData = AccommodationDAL.GetInstance().GetImages();
-            AddImage(photoRadius, photoRadius, _centerY - (photoRadius / 2), imagesData[0], _centerX, _centerY);
-            AddImage(photoRadius, canvasWidth - (photoRadius * 2), _centerY - (photoRadius / 2), imagesData[1], _centerX, _centerY);
-            AddImage(photoRadius, _centerX - (photoRadius * 2), photoRadius, imagesData[2], _centerX, _centerY);
-            AddImage(photoRadius, _centerX + photoRadius, photoRadius, imagesData[3], _centerX, _centerY);
-            AddImage(photoRadius, _centerX - (photoRadius * 2), canvasHeight - (photoRadius * 2), imagesData[4], _centerX, _centerY);
-            AddImage(photoRadius, _centerX + photoRadius, canvasHeight - (photoRadius * 2), imagesData[5], _centerX, _centerY);
+            //var imagesData = AccommodationDAL.GetInstance().GetImages();
+            //AddImage(photoRadius, photoRadius, _centerY - (photoRadius / 2), imagesData[0], _centerX, _centerY);
+            //AddImage(photoRadius, canvasWidth - (photoRadius * 2), _centerY - (photoRadius / 2), imagesData[1], _centerX, _centerY);
+            //AddImage(photoRadius, _centerX - (photoRadius * 2), photoRadius, imagesData[2], _centerX, _centerY);
+            //AddImage(photoRadius, _centerX + photoRadius, photoRadius, imagesData[3], _centerX, _centerY);
+            //AddImage(photoRadius, _centerX - (photoRadius * 2), canvasHeight - (photoRadius * 2), imagesData[4], _centerX, _centerY);
+            //AddImage(photoRadius, _centerX + photoRadius, canvasHeight - (photoRadius * 2), imagesData[5], _centerX, _centerY);
         }
 
         private void ResizeHotelExplorer(double scale, double centerX, double centerY)

@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DataAccessLayer;
+using eConcierge.Business;
+using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 
 namespace CustomControls.Transportation
 {
@@ -22,7 +11,7 @@ namespace CustomControls.Transportation
     /// </summary>
     public partial class MonorailDetail : UserControl
     {
-        private List<DTOMonorailDetail> _monorailDetails;
+        private List<DTOTransportationMonorail> _monorailDetails;
 
         public MonorailDetail()
         {
@@ -31,16 +20,20 @@ namespace CustomControls.Transportation
 
         public int SetMonorail(int transportationId)
         {
-            _monorailDetails = TransportationDAL.GetInstance().GetMonorailDetails(transportationId);
+            var service = new TransportationMonorailService();
+            _monorailDetails = service.GetTransportationMonorails(transportationId);
             PopulateMonorailDetail();
             return _monorailDetails.Count;
         }
         public void PopulateMonorailDetail(int pageIndex = 0)
         {
-            DTOMonorailDetail detail = _monorailDetails[pageIndex];
-            txbTitle.Text = detail.Title;
-            txbDescription.Text = detail.Description;
-            imgMonorail.Source = WpfUtil.BytesToImageSource(detail.Image);
+            if (_monorailDetails.Count > 0)
+            {
+                var detail = _monorailDetails[pageIndex];
+                txbTitle.Text = detail.Title;
+                txbDescription.Text = detail.Description;
+                imgMonorail.Source = WpfUtil.BytesToImageSource(detail.Photo);
+            }
         }
     }
 }

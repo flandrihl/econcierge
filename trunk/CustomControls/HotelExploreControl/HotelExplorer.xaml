@@ -1,4 +1,4 @@
-﻿<Abstract:AnimatableControl
+﻿<Abstract:LocationControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              xmlns:Abstract="clr-namespace:CustomControls.Abstract" xmlns:Helpers_Converters="clr-namespace:Helpers.Converters;assembly=Helpers" xmlns:CircularButton="clr-namespace:CustomControls.CircularButton" x:Name="animatableControl" x:Class="CustomControls.HotelExplorer"
              mc:Ignorable="d"
              Width="716" Height="468">
-    <Abstract:AnimatableControl.Resources>
+    <Abstract:LocationControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/ButtonStyles.xaml" />
@@ -17,10 +17,10 @@
         	<Helpers_Converters:MultiplyValueConverter x:Key="MultiplyValueConverter"/>
             <ImageBrush x:Key="ExplorerInfoControlBgBrush" ImageSource="Images/HotelExterior.jpg" Opacity="0.585"/>
         </ResourceDictionary>
-    </Abstract:AnimatableControl.Resources>
-    <Abstract:AnimatableControl.RenderTransform>
+    </Abstract:LocationControl.Resources>
+    <Abstract:LocationControl.RenderTransform>
         <ScaleTransform />
-    </Abstract:AnimatableControl.RenderTransform>
+    </Abstract:LocationControl.RenderTransform>
   <Grid>
     <Border x:Name="OuterRim" Background="White" CornerRadius="40" BorderBrush="#FFC19914" BorderThickness="0" Width="{Binding ActualWidth, ElementName=animatableControl, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=animatableControl, Mode=OneWay}">
         <Border x:Name="Perimeter" Background="{DynamicResource ExplorerInfoControlBgBrush}" CornerRadius="40" Width="{Binding ActualWidth, ConverterParameter=5, Converter={StaticResource SubtractValueConverter}, ElementName=animatableControl, Mode=OneWay}" Height="{Binding ActualHeight, ConverterParameter=5, Converter={StaticResource SubtractValueConverter}, ElementName=animatableControl, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -56,4 +56,4 @@
     </Border>
     <CircularButton:CircularCloseButtonControl x:Name="closeButton" HorizontalAlignment="Right" Width="58" Margin="0,9,9,0" DockPanel.Dock="Right" VerticalAlignment="Top" />
   </Grid>
-</Abstract:AnimatableControl>
+</Abstract:LocationControl>

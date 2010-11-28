@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
+using eConcierge.Model;
 using Infrasturcture;
-using Infrasturcture.DTO;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Mall
@@ -10,7 +10,7 @@ namespace CustomControls.Mall
     /// <summary>
     /// Interaction logic for DiningDetail.xaml
     /// </summary>
-    public partial class MallDetail : AnimatableControl, IMTouchControl
+    public partial class MallDetail : LocationControl, IMTouchControl
     {
         public IMTContainer Container { get; set; }
         public IFrameworkManger FrameworkManager { get; set; }
@@ -24,11 +24,11 @@ namespace CustomControls.Mall
         public MallDetail(DTOMall mall)
         {
             InitializeComponent();
-            Picture = WpfUtil.BytesToImageSource(mall.Picture);
+            Picture = WpfUtil.BytesToImageSource(mall.Photo);
             Title = mall.Title;
             Description = mall.Description;
             Address = mall.Address;
-            Telephone = mall.Telephone;
+            Telephone = mall.Phone;
             closeButton.Click += CloseButtonClick;
             DataContext = this;
         }

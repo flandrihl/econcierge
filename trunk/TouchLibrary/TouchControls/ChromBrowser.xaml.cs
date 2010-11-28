@@ -12,7 +12,7 @@ namespace TouchControls
     /// <summary>
     /// Interaction logic for ChromBrowser.xaml
     /// </summary>
-    public partial class ChromBrowser : AnimatableControl, IMTouchControl
+    public partial class ChromBrowser : LocationControl, IMTouchControl
     {
         private readonly string _url;
         public WebBrowser newBrowser;

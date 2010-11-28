@@ -35,6 +35,7 @@ namespace eConciergeClient
                 var left = canvas.ActualWidth / 2 - (control.Width / 2);
                 control.Load(FrameworkManager, left, top);
                 control.Closed += Dining_Closed;
+                control.ShowDirections += ControlShowDirections;
                 _skipDiningClose = false;
         }
         void Dining_Closed(object sender, EventArgs e)

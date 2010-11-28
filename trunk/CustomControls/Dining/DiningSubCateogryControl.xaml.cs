@@ -1,27 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CustomControls.Abstract;
-using CustomControls.CalendarControl;
-using CustomControls.CategoryControl;
 using CustomControls.InheritedFrameworkControls;
 using CustomControls.OptionControl;
 using CustomControls.TouchCombo;
-using DataAccessLayer;
-using Infrasturcture.DTO;
+using eConcierge.Business;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
-using TouchFramework.Events;
 using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
 
 namespace CustomControls.Dining
@@ -29,7 +16,7 @@ namespace CustomControls.Dining
     /// <summary>
     /// Interaction logic for DiningSubCateogryControl.xaml
     /// </summary>
-    public partial class DiningSubCateogryControl : AnimatableControl, IMTouchControl
+    public partial class DiningSubCateogryControl : LocationControl, IMTouchControl
     {
         private const int NO_OF_ITEMS_PER_COLUMN = 2;
         private readonly List<IMTouchControl> _subCategoryItems = new List<IMTouchControl>();
@@ -78,7 +65,8 @@ namespace CustomControls.Dining
         private List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
-            var categoryList = DiningDAL.GetInstance().GetCategories();
+            var service = new DiningCategoryService();
+            var categoryList = service.GetDiningCategorys();
             foreach (var category in categoryList)
             {
                 var categoryComboItem = new TouchComboBoxItem();
@@ -122,7 +110,8 @@ namespace CustomControls.Dining
                 }
                 _subCategoryItems.Clear();
             }
-            var categoryList = DiningDAL.GetInstance().GetSubCategories(Convert.ToInt32(_categoryId));
+            var service = new DiningSubCategoryService();
+            var categoryList = service.GetDiningSubCategorys(Convert.ToInt32(_categoryId));
             AddColumns();
             int col = 0, row = -1;
 
