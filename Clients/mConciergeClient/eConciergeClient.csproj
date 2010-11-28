@@ -376,10 +376,6 @@
       <Project>{BBACA5C4-D30A-4115-8160-345DFA99791F}</Project>
       <Name>CustomControls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DAL\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{C954F554-399B-4BAB-9103-5EDBA2A3E241}</Project>
-      <Name>DataAccessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Global\Controls\3dTile\3dTile.csproj">
       <Project>{7EB07DEA-D7AB-41C2-A05F-751E52CDA070}</Project>
       <Name>3dTile</Name>
