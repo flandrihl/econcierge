@@ -5,6 +5,7 @@ using System.Windows.Media;
 using CustomControls.Abstract;
 using CustomControls.TouchCombo;
 using eConcierge.Business;
+using eConcierge.Model;
 using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 using TouchAction = Infrasturcture.TouchLibrary.TouchAction;
@@ -20,6 +21,7 @@ namespace CustomControls.Transportation
         private MonorailDetail _monorailDetail;
         public IFrameworkManger FrameworkManager { get; set; }
         private int _currentPagerIndex;
+        private List<DTOTransportationMonorail> _monorail;
         public event EventHandler Closed;
 
         private TaxiDetail TaxiDetail
@@ -47,9 +49,15 @@ namespace CustomControls.Transportation
         public TransportationDetail()
         {
             InitializeComponent();
-            categoryCombo.SelectionChanged += ComboItems_SelectionChanged;
+            categoryCombo.SelectionChanged += ComboItemsSelectionChanged;
             pager.sld.ValueChanged += SldValueChanged;
             closeButton.Click += CloseButtonClicked;
+            mapDirectionsButton.Click += MapDirectionsButtonClick;
+            DataContext = this;
+        }
+        private void MapDirectionsButtonClick(object sender, RoutedEventArgs e)
+        {
+            InvokeShowDirections(new DataEventArgs(_monorail));
         }
 
         public void Load(IFrameworkManger frameworkManger, double left, double top)
@@ -58,6 +66,7 @@ namespace CustomControls.Transportation
             FrameworkManager.RegisterElement((IMTouchControl)closeButton, false, new[] { TouchAction.Tap });
             FrameworkManager.RegisterElement(pager.sld as IMTouchControl, false, new[] { TouchAction.Slide });
             FrameworkManager.RegisterElement(categoryCombo as IMTouchControl, false, new[] { TouchAction.Tap });
+            FrameworkManager.RegisterElement((IMTouchControl)mapDirectionsButton, false, new[] { TouchAction.Tap });
             categoryCombo.Initialize(FrameworkManager, GetCategoryComboItems());
             categoryCombo.SetSelectedIndex(0);
             FrameworkManager.AddControlWithAllGestures(this, left, top);
@@ -88,6 +97,7 @@ namespace CustomControls.Transportation
             FrameworkManager.UnRegisterElement(categoryCombo);
             FrameworkManager.UnRegisterElement(closeButton);
             FrameworkManager.UnRegisterElement(pager.sld);
+            FrameworkManager.UnRegisterElement(mapDirectionsButton);
             categoryCombo.Close();
             FrameworkManager.RemoveControl(this);
             if(Closed!=null)
@@ -110,7 +120,7 @@ namespace CustomControls.Transportation
 
         }
 
-        void ComboItems_SelectionChanged(object sender, DataEventArgs dataEventArgs)
+        void ComboItemsSelectionChanged(object sender, DataEventArgs dataEventArgs)
         {
             CategoryId = categoryCombo.SelectedItem.ToString();
             PopulateSubCategory();
@@ -131,7 +141,9 @@ namespace CustomControls.Transportation
             }
             else if (IsMonorail(id))
             {
-                pager.sld.Maximum = MonorailDetail.SetMonorail(id) - 1;
+                var service = new TransportationMonorailService();
+                _monorail = service.GetTransportationMonorails(id);
+                pager.sld.Maximum = MonorailDetail.SetMonorail(_monorail) - 1;
                 MonorailDetail.Background = Brushes.SkyBlue;
                 _currentPagerIndex = 0;
                 stkBody.Children.Add(MonorailDetail);

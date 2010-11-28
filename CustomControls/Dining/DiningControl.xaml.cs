@@ -143,6 +143,12 @@ namespace CustomControls.Dining
             var diningDetail = e.Data as DiningDetail;
             diningDetail.Closed += DiningDetailClosed;
             _diningDetailControls.Add(diningDetail);
+            diningDetail.ShowDirections += ShowDirectionsSelected;
+        }
+
+        void ShowDirectionsSelected(object sender, DataEventArgs e)
+        {
+            InvokeShowDirections(e);
         }
 
         void DiningDetailClosed(object sender, EventArgs e)

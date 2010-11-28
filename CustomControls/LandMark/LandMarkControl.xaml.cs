@@ -81,7 +81,7 @@ namespace CustomControls.LandMark
             foreach (var landMarkDetail in _landMarkDetails.ToArray())
             {
                 landMarkDetail.Closed -= LandMarkDetailClosed;
-                landMarkDetail.ShowDirections -= LandMarkShowDirections;
+                landMarkDetail.ShowDirections -= ShowDirectionsSelected;
                 landMarkDetail.Close();
             }
             if (Closed != null)
@@ -127,10 +127,10 @@ namespace CustomControls.LandMark
             var left = FrameworkManager.Canvas.ActualWidth / 2 - (control.Width / 2);
             control.Load(FrameworkManager, left, top);
             control.Closed += LandMarkDetailClosed;
-            control.ShowDirections += LandMarkShowDirections;
+            control.ShowDirections += ShowDirectionsSelected;
         }
 
-        void LandMarkShowDirections(object sender, DataEventArgs e)
+        void ShowDirectionsSelected(object sender, DataEventArgs e)
         {
             InvokeShowDirections(e);
         }

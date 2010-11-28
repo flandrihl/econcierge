@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
 using eConcierge.Model;
 using Infrasturcture;
+using Infrasturcture.Global.Helpers.Events;
 using Infrasturcture.TouchLibrary;
 
 namespace CustomControls.Cafe
@@ -12,6 +14,7 @@ namespace CustomControls.Cafe
     /// </summary>
     public partial class CafeDetail : LocationControl, IMTouchControl
     {
+        private readonly DTOCafe _cafe;
         public IMTContainer Container { get; set; }
         public IFrameworkManger FrameworkManager { get; set; }
         public BitmapImage Picture  { get; set; }
@@ -23,6 +26,7 @@ namespace CustomControls.Cafe
         
         public CafeDetail(DTOCafe cafe)
         {
+            _cafe = cafe;
             InitializeComponent();
             Picture = WpfUtil.BytesToImageSource(cafe.Photo);
             Title = cafe.Title;
@@ -32,7 +36,13 @@ namespace CustomControls.Cafe
             Latitude = cafe.Latitude;
             Longitude = cafe.Longitude;
             closeButton.Click += CloseButtonClick;
+            mapDirectionsButton.Click += MapDirectionsButtonClick;   
             DataContext = this;
+        }
+
+        private void MapDirectionsButtonClick(object sender, RoutedEventArgs e)
+        {
+            InvokeShowDirections(new DataEventArgs(_cafe));
         }
 
         protected double? Longitude { get; set; }
@@ -43,6 +53,7 @@ namespace CustomControls.Cafe
         {
             FrameworkManager = frameworkManger;
             FrameworkManager.RegisterElement((IMTouchControl)closeButton, false, new[] { TouchAction.Tap });
+            FrameworkManager.RegisterElement((IMTouchControl)mapDirectionsButton, false, new[] { TouchAction.Tap });
             FrameworkManager.AddControlWithAllGestures(this, left, top);
         }
 
@@ -54,6 +65,7 @@ namespace CustomControls.Cafe
         public void Close()
         {
             FrameworkManager.UnRegisterElement(closeButton);
+            FrameworkManager.UnRegisterElement(mapDirectionsButton);
             FrameworkManager.RemoveControl(this);
             if(Closed!=null)
                 Closed(this,new EventArgs());

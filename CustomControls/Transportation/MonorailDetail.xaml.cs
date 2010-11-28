@@ -18,10 +18,9 @@ namespace CustomControls.Transportation
             InitializeComponent();
         }
 
-        public int SetMonorail(int transportationId)
+        public int SetMonorail(List<DTOTransportationMonorail> monorail)
         {
-            var service = new TransportationMonorailService();
-            _monorailDetails = service.GetTransportationMonorails(transportationId);
+            _monorailDetails = monorail;
             PopulateMonorailDetail();
             return _monorailDetails.Count;
         }
