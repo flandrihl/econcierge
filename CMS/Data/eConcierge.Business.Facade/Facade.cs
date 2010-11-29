@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using eConcierge.Common;
 using eConcierge.ServerDataHandler;
 
-namespace eConcierge.Business
+namespace eConcierge.Business.Facade
 {
     public partial class Facade
     {

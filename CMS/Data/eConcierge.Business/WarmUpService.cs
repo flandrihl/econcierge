@@ -9,7 +9,7 @@ namespace eConcierge.Business
     {
         public bool CanConnectToDatabase()
         {
-            return Facade.CanConnectToDatabase();
+            return Facade.Facade.CanConnectToDatabase();
         }
     }
 }

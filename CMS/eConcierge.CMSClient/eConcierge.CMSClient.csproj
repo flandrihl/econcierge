@@ -94,6 +94,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\HotelDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CmsUserControl\DiningCategoryDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,6 +222,9 @@
     </Compile>
     <Compile Include="CmsUserControl\CalendarEventDetail.xaml.cs">
       <DependentUpon>CalendarEventDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsUserControl\HotelDetail.xaml.cs">
+      <DependentUpon>HotelDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsUserControl\DiningCategoryDetail.xaml.cs">
       <DependentUpon>DiningCategoryDetail.xaml</DependentUpon>

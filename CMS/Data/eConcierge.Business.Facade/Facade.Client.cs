@@ -1,12 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using eConcierge.Common;
+using eConcierge.Model;
+using eConcierge.ServerDataHandler;
 
-namespace eConcierge.Business
+namespace eConcierge.Business.Facade
 {
     public partial class Facade
     {
-
+        public static DTOHotel GetHotelDetails(QueryParamList queryParamList, ref string error)
+        {
+            return new ServerDatabaseHandler().GetHotelDetails(queryParamList, ref error);
+        }
     }
 }

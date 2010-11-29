@@ -13,7 +13,7 @@ namespace eConcierge.Business
         public List<DTODiningSubCategory> GetDiningSubCategorys()
         {
             string error = string.Empty;
-            List<DTODiningSubCategory> diningsubcategory = Facade.GetDiningSubCategory(new QueryParamList(), ref error);
+            List<DTODiningSubCategory> diningsubcategory = Facade.Facade.GetDiningSubCategory(new QueryParamList(), ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -25,7 +25,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            List<DTODiningSubCategory> diningsubcategory = Facade.GetDiningSubCategory(param, ref error);
+            List<DTODiningSubCategory> diningsubcategory = Facade.Facade.GetDiningSubCategory(param, ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -42,7 +42,7 @@ namespace eConcierge.Business
             param.Add(new QueryParamObj() { ParamName = "Description", DBType = DbType.String, ParamValue = oDiningSubCategory.Description });
             string error = string.Empty;
             string spName = oDiningSubCategory.IsNew ? "INSERTDiningSubCategory " : "UPDATEDiningSubCategory";
-            bool isSuccess = Facade.SetData(param, spName, ref error);
+            bool isSuccess = Facade.Facade.SetData(param, spName, ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
         public bool Delete(int Id)
@@ -50,7 +50,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            bool isSuccess = Facade.SetData(param, "DELETEDiningSubCategory", ref error);
+            bool isSuccess = Facade.Facade.SetData(param, "DELETEDiningSubCategory", ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
     }

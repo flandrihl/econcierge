@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using eConcierge.Model;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using eConcierge.Common;
@@ -377,6 +378,32 @@ namespace eConcierge.ServerDataHandler
                 oDTOATM.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : oDTOATM.Latitude;
                 oDTOATM.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : oDTOATM.Longitude;
                 lst.Add(oDTOATM);
+            }
+            return lst;
+        }
+        #endregion
+
+        #region Hotel
+        public DTOHotel GetHotelDetails(QueryParamList pParam, ref string pErrString)
+        {
+            var query = "SELECT Id, HotelName, Description, Address, Phone, Latitude, Longitude FROM HotelDetails";
+            AddWhereClause(ref query, pParam);
+            return ExecuteDBQuery(query, pParam, PopulateHotel).ToList().FirstOrDefault();
+        }
+        private List<DTOHotel> PopulateHotel(DbDataReader oDbDataReader)
+        {
+            var lst = new List<DTOHotel>();
+            while (oDbDataReader.Read())
+            {
+                var dtoHotel = new DTOHotel();
+                dtoHotel.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : dtoHotel.Id;
+                dtoHotel.HotelName = oDbDataReader["HotelName"] != DBNull.Value ? Convert.ToString(oDbDataReader["HotelName"]) : dtoHotel.HotelName;
+                dtoHotel.Description = oDbDataReader["Description"] != DBNull.Value ? Convert.ToString(oDbDataReader["Description"]) : dtoHotel.Description;
+                dtoHotel.Address = oDbDataReader["Address"] != DBNull.Value ? Convert.ToString(oDbDataReader["Address"]) : dtoHotel.Address;
+                dtoHotel.Phone = oDbDataReader["Phone"] != DBNull.Value ? Convert.ToString(oDbDataReader["Phone"]) : dtoHotel.Phone;
+                dtoHotel.Latitude = oDbDataReader["Latitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Latitude"]) : dtoHotel.Latitude;
+                dtoHotel.Longitude = oDbDataReader["Longitude"] != DBNull.Value ? Convert.ToDouble(oDbDataReader["Longitude"]) : dtoHotel.Longitude;
+                lst.Add(dtoHotel);
             }
             return lst;
         }

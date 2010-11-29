@@ -47,6 +47,7 @@
     <Compile Include="ATMService.cs" />
     <Compile Include="CafeService.cs" />
     <Compile Include="CalendarEventService.cs" />
+    <Compile Include="HotelService.cs" />
     <Compile Include="DiningCategoryService.cs" />
     <Compile Include="DiningMenuService.cs" />
     <Compile Include="DiningService.cs" />

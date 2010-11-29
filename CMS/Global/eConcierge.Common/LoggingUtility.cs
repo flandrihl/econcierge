@@ -11,13 +11,13 @@ namespace eConcierge.Common
     {
         public static void WriteLog(string message, TraceEventType eventType = TraceEventType.Error)
         {
-            LogEntry logEntry = new LogEntry();
-            logEntry.Categories.Clear();
-            logEntry.Categories.Add("General");
-            logEntry.Priority = 5;
-            logEntry.Severity = eventType;
-            logEntry.Message = message;
-            Logger.Write(logEntry);
+            //LogEntry logEntry = new LogEntry();
+            //logEntry.Categories.Clear();
+            //logEntry.Categories.Add("General");
+            //logEntry.Priority = 5;
+            //logEntry.Severity = eventType;
+            //logEntry.Message = message;
+            //Logger.Write(logEntry);
         }
         public static void WriteLog(Exception ex, TraceEventType eventType = TraceEventType.Error)
         {

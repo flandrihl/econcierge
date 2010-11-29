@@ -11,7 +11,7 @@ namespace eConcierge.Business
 		public List<DTOCalendarEvent> GetCalendarEvents()
 		{
 			string error = string.Empty;
-			List<DTOCalendarEvent>calendarevent= Facade.GetCalendarEvent(new QueryParamList(), ref error);
+			List<DTOCalendarEvent>calendarevent= Facade.Facade.GetCalendarEvent(new QueryParamList(), ref error);
 			if (!string.IsNullOrEmpty(error))
 			{
 
@@ -23,7 +23,7 @@ namespace eConcierge.Business
 			string error = string.Empty;
 			QueryParamList param = new QueryParamList();
 			param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32 , ParamValue = Id});
-			List<DTOCalendarEvent>calendarevent=Facade.GetCalendarEvent(param, ref error);
+			List<DTOCalendarEvent>calendarevent=Facade.Facade.GetCalendarEvent(param, ref error);
 			if (!string.IsNullOrEmpty(error))
 			{
 
@@ -46,7 +46,7 @@ namespace eConcierge.Business
 			param.Add(new QueryParamObj(){ParamName="Longitude", DBType=DbType.Double, ParamValue= oCalendarEvent.Longitude});
 			string error = string.Empty;
 			string spName = oCalendarEvent.IsNew ? "INSERTCalendarEvent " : "UPDATECalendarEvent";
-			bool isSuccess = Facade.SetData(param, spName, ref error);
+			bool isSuccess = Facade.Facade.SetData(param, spName, ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
 		public bool Delete(int Id)
@@ -54,7 +54,7 @@ namespace eConcierge.Business
 			string error = string.Empty;
 			QueryParamList param = new QueryParamList();
 			param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32 , ParamValue = Id});
-			bool isSuccess = Facade.SetData(param, "DELETECalendarEvent",  ref error);
+			bool isSuccess = Facade.Facade.SetData(param, "DELETECalendarEvent",  ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
 	}

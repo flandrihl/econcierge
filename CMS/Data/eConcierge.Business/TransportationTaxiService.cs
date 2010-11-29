@@ -13,7 +13,7 @@ namespace eConcierge.Business
 		public List<DTOTransportationTaxi> GetTransportationTaxis()
 		{
 			string error = string.Empty;
-			List<DTOTransportationTaxi>transportationtaxi= Facade.GetTransportationTaxi(new QueryParamList(), ref error);
+			List<DTOTransportationTaxi>transportationtaxi= Facade.Facade.GetTransportationTaxi(new QueryParamList(), ref error);
 			if (!string.IsNullOrEmpty(error))
 			{
 
@@ -25,7 +25,7 @@ namespace eConcierge.Business
 			string error = string.Empty;
 			QueryParamList param = new QueryParamList();
 			param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32 , ParamValue = Id});
-			List<DTOTransportationTaxi>transportationtaxi= Facade.GetTransportationTaxi(param, ref error);
+			List<DTOTransportationTaxi>transportationtaxi= Facade.Facade.GetTransportationTaxi(param, ref error);
 			if (!string.IsNullOrEmpty(error))
 			{
 
@@ -37,7 +37,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "TranspotationId", DBType = DbType.Int32, ParamValue = Id });
-            List<DTOTransportationTaxi> transportationtaxi = Facade.GetTransportationTaxi(param, ref error);
+            List<DTOTransportationTaxi> transportationtaxi = Facade.Facade.GetTransportationTaxi(param, ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -54,7 +54,7 @@ namespace eConcierge.Business
 			param.Add(new QueryParamObj(){ParamName="Phone", DBType=DbType.String, ParamValue= oTransportationTaxi.Phone});
 			string error = string.Empty;
 			string spName = oTransportationTaxi.IsNew ? "INSERTTransportationTaxi " : "UPDATETransportationTaxi";
-			bool isSuccess = Facade.SetData(param, spName, ref error);
+			bool isSuccess = Facade.Facade.SetData(param, spName, ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
 		public bool Delete(int Id)
@@ -62,7 +62,7 @@ namespace eConcierge.Business
 			string error = string.Empty;
 			QueryParamList param = new QueryParamList();
 			param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32 , ParamValue = Id});
-			bool isSuccess = Facade.SetData(param, "DELETETransportationTaxi",  ref error);
+			bool isSuccess = Facade.Facade.SetData(param, "DELETETransportationTaxi",  ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
 	}

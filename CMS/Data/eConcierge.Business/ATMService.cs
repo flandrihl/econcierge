@@ -13,7 +13,7 @@ namespace eConcierge.Business
         public List<DTOATM> GetATMs()
         {
             string error = string.Empty;
-            List<DTOATM> atm = Facade.GetATM(new QueryParamList(), ref error);
+            List<DTOATM> atm = Facade.Facade.GetATM(new QueryParamList(), ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -25,7 +25,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            List<DTOATM> atm = Facade.GetATM(param, ref error);
+            List<DTOATM> atm = Facade.Facade.GetATM(param, ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -46,7 +46,7 @@ namespace eConcierge.Business
             param.Add(new QueryParamObj() { ParamName = "Longitude", DBType = DbType.Double, ParamValue = oATM.Longitude });
             string error = string.Empty;
             string spName = oATM.IsNew ? "INSERTATM " : "UPDATEATM";
-            bool isSuccess = Facade.SetData(param, spName, ref error);
+            bool isSuccess = Facade.Facade.SetData(param, spName, ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
         public bool Delete(int Id)
@@ -54,7 +54,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            bool isSuccess = Facade.SetData(param, "DELETEATM", ref error);
+            bool isSuccess = Facade.Facade.SetData(param, "DELETEATM", ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
     }
