@@ -46,6 +46,9 @@ namespace eConcierge.CMSClient
                 try
                 {
                     Server server = new Server(new ServerConnection(conn));
+                    server.ConnectionContext.Connect();
+                    if (server.ConnectionContext.IsOpen)
+                        server.ConnectionContext.Disconnect();
                     server.ConnectionContext.ExecuteNonQuery(sql);
                     File.Delete(path);
                 }
