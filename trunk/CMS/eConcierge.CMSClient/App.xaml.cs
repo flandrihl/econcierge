@@ -27,7 +27,12 @@ namespace eConcierge.CMSClient
                     "Cannot connect to database. Please check the connection string and make sure database server is running.",
                     "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            ConfigureDatabase();
+            #if (!DEBUG)
+            {	
+                ConfigureDatabase();
+            }
+            #endif
+          
         }
         private void ConfigureDatabase()
         {
