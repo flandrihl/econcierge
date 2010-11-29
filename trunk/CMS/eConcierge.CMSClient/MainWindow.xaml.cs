@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using eConcierge.CMSClient.CmsUserControl;
+using eConcierge.CMSClient.Code;
 using eConcierge.Common;
 
 namespace eConcierge.CMSClient
@@ -25,12 +26,16 @@ namespace eConcierge.CMSClient
         {
             InitializeComponent();
             PopulateMenu();
+            SetMiddleContent<HotelDetail>();
         }
 
         private void PopulateMenu()
         {
+            mnu.AddMainMenu(WellKnownNames.ToolbarString.Home, "Home", true);
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.Home, WellKnownNames.ToolbarString.HotelDetails, "Hotel Details", ShowItem);
+
             mnu.AddMainMenu(WellKnownNames.ToolbarString.EventCalendar, "Event Calendar", true);
-            mnu.AddsubMenu(WellKnownNames.ToolbarString.EventCalendar, WellKnownNames.ToolbarString.ECCategory, "Category", ShowItem, true);
+            mnu.AddsubMenu(WellKnownNames.ToolbarString.EventCalendar, WellKnownNames.ToolbarString.ECCategory, "Category", ShowItem);
             mnu.AddsubMenu(WellKnownNames.ToolbarString.EventCalendar, WellKnownNames.ToolbarString.ECEvent, "Event", ShowItem);
 
             mnu.AddMainMenu(WellKnownNames.ToolbarString.Dining, "Dining");
@@ -52,6 +57,11 @@ namespace eConcierge.CMSClient
        
         private void ShowItem(string name)
         {
+            if (name.Equals(WellKnownNames.ToolbarString.HotelDetails))
+            {
+                SetMiddleContent<HotelDetail>();
+                return;
+            }
             if (name.Equals(WellKnownNames.ToolbarString.ECCategory))
             {
                 SetMiddleContent<EventCalendarCategoryDetail>();

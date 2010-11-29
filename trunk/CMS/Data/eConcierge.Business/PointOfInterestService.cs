@@ -13,7 +13,7 @@ namespace eConcierge.Business
         public List<DTOPointOfInterest> GetPointOfInterests()
         {
             string error = string.Empty;
-            List<DTOPointOfInterest> pointofinterest = Facade.GetPointOfInterest(new QueryParamList(), ref error);
+            List<DTOPointOfInterest> pointofinterest = Facade.Facade.GetPointOfInterest(new QueryParamList(), ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -25,7 +25,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            List<DTOPointOfInterest> pointofinterest = Facade.GetPointOfInterest(param, ref error);
+            List<DTOPointOfInterest> pointofinterest = Facade.Facade.GetPointOfInterest(param, ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -46,7 +46,7 @@ namespace eConcierge.Business
             param.Add(new QueryParamObj() { ParamName = "Longitude", DBType = DbType.Double, ParamValue = oPointOfInterest.Longitude });
             string error = string.Empty;
             string spName = oPointOfInterest.IsNew ? "INSERTPointOfInterest " : "UPDATEPointOfInterest";
-            bool isSuccess = Facade.SetData(param, spName, ref error);
+            bool isSuccess = Facade.Facade.SetData(param, spName, ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
         public bool Delete(int Id)
@@ -54,7 +54,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            bool isSuccess = Facade.SetData(param, "DELETEPointOfInterest", ref error);
+            bool isSuccess = Facade.Facade.SetData(param, "DELETEPointOfInterest", ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
     }

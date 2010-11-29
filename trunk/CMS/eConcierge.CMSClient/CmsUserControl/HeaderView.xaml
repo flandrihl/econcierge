@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Code="clr-namespace:eConcierge.CMSClient.Code" mc:Ignorable="d" 
-             Width="Auto" Loaded="UserControl_Loaded" MinWidth="614">
+             Width="Auto" Loaded="UserControlLoaded" MinWidth="614">
   <UserControl.Resources>
     <DataTemplate x:Key="MainMenuItemTemplate" DataType="{x:Type Code:MainMenuItem}">
       <RadioButton Content="{Binding Header}" IsChecked="{Binding IsSelected}" IsEnabled="{Binding CanSelect}" GroupName="Menu" Style="{DynamicResource MainMenuRadioButtonStyle}"/>

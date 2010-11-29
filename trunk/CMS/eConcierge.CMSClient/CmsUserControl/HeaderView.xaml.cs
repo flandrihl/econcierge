@@ -30,32 +30,32 @@ namespace eConcierge.CMSClient.CmsUserControl
             DependencyProperty.Register("MainMenuItems", typeof(ObservableCollection<MainMenuItem>), typeof(HeaderView));
 
        
-        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void UserControlLoaded(object sender, RoutedEventArgs e)
         {
 
         }
 
-        
-        public void AddMainMenu(string name, string header, bool isSelected=false)
+        public void AddMainMenu(string name, string header, bool isSelected = false)
         {
-            MainMenuItem menuItem = new MainMenuItem();
+            var menuItem = new MainMenuItem();
             menuItem.Header = header;
             menuItem.Name = name;
-            menuItem.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(eventCalendar_PropertyChanged);
+            menuItem.PropertyChanged += EventCalendarPropertyChanged;
             menuItem.IsSelected = IsSealed;
             MainMenuItems.Add(menuItem);
         }
+
         public void AddsubMenu(string name,string submenuName, string header, Action<string> menuclickEvent, bool isSelected = false)
         {
             var menuItem = MainMenuItems.FirstOrDefault(m => m.Name.Equals(name));
             if(menuItem != null)
             {
                 var submenuItem = menuItem.AddSubMenu(submenuName, header, menuclickEvent, IsSealed);
-                submenuItem.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(eventCalendar_PropertyChanged);
+                submenuItem.PropertyChanged += EventCalendarPropertyChanged;
             }
         }
 
-        void eventCalendar_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void EventCalendarPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsSelected")
             {
@@ -111,6 +111,10 @@ namespace eConcierge.CMSClient.CmsUserControl
        
         private void Activate(MainMenuItem mainMenuItem)
         {
+            foreach (SubMenuItem item in subMenu.Items)
+            {
+                item.IsSelected = false;
+            }
             subMenu.ItemsSource = mainMenuItem.SubMenus;
         }
     }

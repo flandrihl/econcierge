@@ -5,15 +5,15 @@
     <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Top">
         <StackPanel Orientation="Vertical" x:Name="stkCoordinates">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Latitude" Width="60"/>
+                <TextBlock x:Name="lblLatitude" Text="Latitude : " Width="60" TextAlignment="Right"/>
                 <TextBox x:Name="txtLatitude" Width="200" IsReadOnly="True"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Longitude" Width="60"/>
+            <StackPanel Orientation="Horizontal"  Margin="0,15,0,0">
+                <TextBlock x:Name="lblLongitude" Text="Longitude : " Width="60" TextAlignment="Right"/>
                 <TextBox x:Name="txtLongitude" Width="200" IsReadOnly="True"/>
             </StackPanel>           
         </StackPanel>
-        <Button  Width="90" Margin="10,0,0,0" Height="50" VerticalAlignment="Top" Click="Button_Click">
+        <Button  Width="90" Height="50" Click="Button_Click" VerticalAlignment="Center" Margin="10,0,0,0">
             <TextBlock TextAlignment="Center" Margin="0"> Select <LineBreak/>From Map</TextBlock>
         </Button>
     </StackPanel>

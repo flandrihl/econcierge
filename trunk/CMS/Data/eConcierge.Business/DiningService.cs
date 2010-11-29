@@ -13,7 +13,7 @@ namespace eConcierge.Business
         public List<DTODining> GetDinings()
         {
             string error = string.Empty;
-            List<DTODining> dining = Facade.GetDining(new QueryParamList(), ref error);
+            List<DTODining> dining = Facade.Facade.GetDining(new QueryParamList(), ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -25,7 +25,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            List<DTODining> dining = Facade.GetDining(param, ref error);
+            List<DTODining> dining = Facade.Facade.GetDining(param, ref error);
             if (!string.IsNullOrEmpty(error))
             {
 
@@ -47,7 +47,7 @@ namespace eConcierge.Business
             param.Add(new QueryParamObj() { ParamName = "Longitude", DBType = DbType.Double, ParamValue = oDining.Longitude });
             string error = string.Empty;
             string spName = oDining.IsNew ? "INSERTDining " : "UPDATEDining";
-            bool isSuccess = Facade.SaveDining(param, spName, ref error, menuList);
+            bool isSuccess = Facade.Facade.SaveDining(param, spName, ref error, menuList);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
         public bool Delete(int Id)
@@ -55,7 +55,7 @@ namespace eConcierge.Business
             string error = string.Empty;
             QueryParamList param = new QueryParamList();
             param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32, ParamValue = Id });
-            bool isSuccess = Facade.SetData(param, "DELETEDining", ref error);
+            bool isSuccess = Facade.Facade.SetData(param, "DELETEDining", ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
     }

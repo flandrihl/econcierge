@@ -29,6 +29,8 @@ namespace eConcierge.Common
         }
         public static class ToolbarString
         {
+            public static string Home = "Home";
+            public static string HotelDetails = "HotelDetails";
             public static string EventCalendar = "EventCalendar";
             public static string ECCategory = "Category";
             public static string ECEvent = "Event";

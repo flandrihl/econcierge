@@ -13,7 +13,7 @@ namespace eConcierge.Business
 		public List<DTOMall> GetMalls()
 		{
 			string error = string.Empty;
-			List<DTOMall>mall= Facade.GetMall(new QueryParamList(), ref error);
+			List<DTOMall>mall= Facade.Facade.GetMall(new QueryParamList(), ref error);
 			if (!string.IsNullOrEmpty(error))
 			{
 
@@ -25,7 +25,7 @@ namespace eConcierge.Business
 			string error = string.Empty;
 			QueryParamList param = new QueryParamList();
 			param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32 , ParamValue = Id});
-			List<DTOMall>mall= Facade.GetMall(param, ref error);
+			List<DTOMall>mall= Facade.Facade.GetMall(param, ref error);
 			if (!string.IsNullOrEmpty(error))
 			{
 
@@ -46,7 +46,7 @@ namespace eConcierge.Business
 			param.Add(new QueryParamObj(){ParamName="Longitude", DBType=DbType.Double, ParamValue= oMall.Longitude});
 			string error = string.Empty;
 			string spName = oMall.IsNew ? "INSERTMall " : "UPDATEMall";
-			bool isSuccess = Facade.SetData(param, spName, ref error);
+			bool isSuccess = Facade.Facade.SetData(param, spName, ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
 		public bool Delete(int Id)
@@ -54,7 +54,7 @@ namespace eConcierge.Business
 			string error = string.Empty;
 			QueryParamList param = new QueryParamList();
 			param.Add(new QueryParamObj() { ParamName = "Id", DBType = DbType.Int32 , ParamValue = Id});
-			bool isSuccess = Facade.SetData(param, "DELETEMall",  ref error);
+			bool isSuccess = Facade.Facade.SetData(param, "DELETEMall",  ref error);
 			return string.IsNullOrEmpty(error) & isSuccess;
 		}
 	}

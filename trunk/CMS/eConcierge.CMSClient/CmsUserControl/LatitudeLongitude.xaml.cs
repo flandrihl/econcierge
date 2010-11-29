@@ -21,6 +21,14 @@ namespace eConcierge.CMSClient.CmsUserControl
     /// </summary>
     public partial class LatitudeLongitude : UserControl
     {
+        public event EventHandler LocationChanged;
+
+        public void InvokeLocationChanged(EventArgs e)
+        {
+            EventHandler handler = LocationChanged;
+            if (handler != null) handler(this, e);
+        }
+
         public LatitudeLongitude()
         {
             InitializeComponent();
@@ -71,7 +79,7 @@ namespace eConcierge.CMSClient.CmsUserControl
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            wndGmap map = new wndGmap();
+            var map = new wndGmap();
             if(Latitude != null && Longitude != null)
             {
                 map.InitializeLatLng(Latitude.Value, Longitude.Value);
@@ -84,6 +92,7 @@ namespace eConcierge.CMSClient.CmsUserControl
             {
                 txtLatitude.Text = map.Latitude.ToString();
                 txtLongitude.Text = map.Longitude.ToString();
+                InvokeLocationChanged(new EventArgs());
             }
         }
     }
