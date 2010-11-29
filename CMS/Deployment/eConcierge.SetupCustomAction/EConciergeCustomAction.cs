@@ -6,7 +6,6 @@ using System.Configuration;
 using System.Configuration.Install;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
@@ -67,7 +66,7 @@ namespace eConcierge.SetupCustomAction
             try
             {
                 // Creates the database and installs the tables.
-                string strScript = GetSql("script.sql");
+              //  string strScript = GetSql("script.sql");
                 Server myServer = new Server(serverName);
                 myServer.ConnectionContext.LoginSecure = false;
                 myServer.ConnectionContext.Login = userName;
@@ -77,7 +76,7 @@ namespace eConcierge.SetupCustomAction
 
                 if (myServer.ConnectionContext.IsOpen)
                     myServer.ConnectionContext.Disconnect();
-                ExecuteSql(serverName, databaseName, userName, password, strScript);
+              //  ExecuteSql(serverName, databaseName, userName, password, strScript);
             }
             catch (Exception ex)
             {
@@ -94,8 +93,6 @@ namespace eConcierge.SetupCustomAction
             try
             {
                 Log("Setup started");
-                
-
                 string targetDirectory = System.Reflection.Assembly.GetExecutingAssembly().Location;
                 if (targetDirectory != null)
                     targetDirectory = targetDirectory.Substring(0, targetDirectory.LastIndexOf('\\'));
