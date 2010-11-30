@@ -96,6 +96,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{9AB31D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConcierge.Common", "CMS\Global\eConcierge.Common\eConcierge.Common.csproj", "{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Development", "Development", "{E72AFB1B-46EF-4C12-9206-886BC40708C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetupCustomAction", "Development\SetupCustomAction\SetupCustomAction.csproj", "{9233AA10-D1EF-45A1-942A-17B9B311DDF9}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "eConciergeClientSetup", "Development\eConciergeClientSetup\eConciergeClientSetup.vdproj", "{888B7431-C15E-47FC-8E7A-4E7F7197148F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -288,6 +294,22 @@ Global
 		{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9}.Release|x86.ActiveCfg = Release|Any CPU
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F}.Debug|Any CPU.ActiveCfg = Debug
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F}.Debug|x86.ActiveCfg = Debug
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F}.Release|Any CPU.ActiveCfg = Release
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F}.Release|Mixed Platforms.ActiveCfg = Release
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -317,6 +339,8 @@ Global
 		{5C8343D2-5E52-4B05-80A2-05A6258BCCB4} = {5BC22922-C501-4094-8F64-FFC067B654F2}
 		{47438DB4-B072-4316-83EC-3AFDEE2DE0D3} = {5BC22922-C501-4094-8F64-FFC067B654F2}
 		{6DCDDB9A-6BCB-4134-9105-9C6DB18283C7} = {9AB31DCF-B1E1-41BC-9BC3-D4B57024260E}
+		{9233AA10-D1EF-45A1-942A-17B9B311DDF9} = {E72AFB1B-46EF-4C12-9206-886BC40708C3}
+		{888B7431-C15E-47FC-8E7A-4E7F7197148F} = {E72AFB1B-46EF-4C12-9206-886BC40708C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .
