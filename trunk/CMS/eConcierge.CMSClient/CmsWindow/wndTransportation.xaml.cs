@@ -95,16 +95,16 @@ namespace eConcierge.CMSClient.CmsWindow
             return false;
         }
 
-        public bool IsValid()
-        {
-            if (string.IsNullOrWhiteSpace(txtTitle.Text))
-            {
-                MessageBox.Show("Title cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtTitle.Focus();
-                return false;
-            }
-            return true;
-        }
+        //public bool IsValid()
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtTitle.Text))
+        //    {
+        //        MessageBox.Show("Title cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+        //        txtTitle.Focus();
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

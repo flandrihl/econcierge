@@ -81,31 +81,31 @@ namespace eConcierge.CMSClient.CmsWindow
 
         }
 
-        public bool IsValid()
-        {
-            if (string.IsNullOrWhiteSpace(txtTitle.Text))
-            {
-                MessageBox.Show("Title cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtTitle.Focus();
-                return false;
-            }
+        //public bool IsValid()
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtTitle.Text))
+        //    {
+        //        MessageBox.Show("Title cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+        //        txtTitle.Focus();
+        //        return false;
+        //    }
 
-            if (cmbCategory.SelectedIndex < 0)
-            {
-                MessageBox.Show("Select a category.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                cmbCategory.Focus();
-                return false;
-            }
+        //    if (cmbCategory.SelectedIndex < 0)
+        //    {
+        //        MessageBox.Show("Select a category.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+        //        cmbCategory.Focus();
+        //        return false;
+        //    }
 
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                MessageBox.Show("Phone Number cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtPhone.Focus();
-                return false;
-            }
+        //    if (string.IsNullOrWhiteSpace(txtPhone.Text))
+        //    {
+        //        MessageBox.Show("Phone Number cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+        //        txtPhone.Focus();
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
