@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace eConcierge.CMSClient.CmsWindow
@@ -57,5 +58,40 @@ namespace eConcierge.CMSClient.CmsWindow
                 return fileName;
             }
         }
+        protected virtual bool IsValid()
+        {
+            return IsValid(this);
+        }
+        private bool IsValid(Visual control)
+        {
+            int ChildNumber = VisualTreeHelper.GetChildrenCount(control);
+
+            for (int i = 0; i <= ChildNumber - 1; i++)
+            {
+                Visual v = (Visual)VisualTreeHelper.GetChild(control, i);
+                if(v is TextBox)
+                {
+                    TextBox txt = (TextBox)v;
+                    if(string.IsNullOrWhiteSpace(txt.Text))
+                    {
+                        MessageBox.Show("Each textbox must have a value.", "Enter data", MessageBoxButton.OK,
+                                        MessageBoxImage.Information);
+                        txt.Focus();
+                        return false;
+                    }
+                }
+                if (VisualTreeHelper.GetChildrenCount(v) > 0)
+                {
+                   bool isValid = IsValid(v);
+                    if(!isValid)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+
+        }
+       
     }
 }

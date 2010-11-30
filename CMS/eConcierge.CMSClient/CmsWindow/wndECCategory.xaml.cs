@@ -70,16 +70,16 @@ namespace eConcierge.CMSClient.CmsWindow
             }
         }
 
-        public bool IsValid()
-        {
-            if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Name cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
-                txtName.Focus();
-                return false;
-            }
-            return true;
-        }
+        //public bool IsValid()
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtName.Text))
+        //    {
+        //        MessageBox.Show("Name cannot be empty.", WellKnownNames.MessageString.IncorrectInput, MessageBoxButton.OK, MessageBoxImage.Error);
+        //        txtName.Focus();
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
