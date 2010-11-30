@@ -10,7 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Demo.WindowsPresentation.CustomMarkers;
 using GMap.NET;
+using GMap.NET.WindowsPresentation;
 
 namespace eConcierge.CMSClient.CmsWindow
 {
@@ -20,6 +22,10 @@ namespace eConcierge.CMSClient.CmsWindow
     public partial class wndGmap : Window
     {
         private Point oldPosition;
+
+        // marker
+        GMapMarker currentMarker;
+
         public wndGmap()
         {
             InitializeComponent();
@@ -27,6 +33,9 @@ namespace eConcierge.CMSClient.CmsWindow
            
             MainMap.MouseLeftButtonDown += new MouseButtonEventHandler(MainMap_MouseLeftButtonDown);
             MainMap.MouseMove += new MouseEventHandler(MainMap_MouseMove);
+
+            // set current marker
+            
             
         }
 
@@ -84,6 +93,14 @@ namespace eConcierge.CMSClient.CmsWindow
             MainMap.Position = new PointLatLng(lat, lng);
             Latitude = lat;
             Longitude = lng;
+            currentMarker = new GMapMarker(MainMap.Position);
+            {
+                currentMarker.Shape = new CustomMarkerRed(this, currentMarker, "custom position marker");
+                currentMarker.Offset = new System.Windows.Point(-15, -15);
+                currentMarker.ZIndex = int.MaxValue;
+                MainMap.Markers.Add(currentMarker);
+            }
+            currentMarker.Position = new PointLatLng(lat, lng);
         }
     }
 }

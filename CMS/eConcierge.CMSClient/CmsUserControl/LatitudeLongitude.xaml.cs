@@ -11,8 +11,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using eConcierge.Business;
 using eConcierge.CMSClient.CmsWindow;
 using eConcierge.Common;
+using eConcierge.Model;
 
 namespace eConcierge.CMSClient.CmsUserControl
 {
@@ -80,14 +82,14 @@ namespace eConcierge.CMSClient.CmsUserControl
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var map = new wndGmap();
-            if(Latitude != null && Longitude != null)
+            if(Latitude == null)
             {
-                map.InitializeLatLng(Latitude.Value, Longitude.Value);
+                DTOHotel hotel = new HotelService().GetHotelDetails();
+                txtLatitude.Text = hotel.Latitude.Value.ToString(); 
+                txtLongitude.Text = hotel.Longitude.Value.ToString(); 
             }
-            else
-            {
-                map.InitializeLatLng();
-            }
+            map.InitializeLatLng(Latitude.Value, Longitude.Value);
+
             if(map.ShowDialog().Value)
             {
                 txtLatitude.Text = map.Latitude.ToString();

@@ -97,6 +97,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CmsUserControl\CustomMarkerRed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CmsUserControl\HotelDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -225,6 +229,9 @@
     </Compile>
     <Compile Include="CmsUserControl\CalendarEventDetail.xaml.cs">
       <DependentUpon>CalendarEventDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmsUserControl\CustomMarkerRed.xaml.cs">
+      <DependentUpon>CustomMarkerRed.xaml</DependentUpon>
     </Compile>
     <Compile Include="CmsUserControl\HotelDetail.xaml.cs">
       <DependentUpon>HotelDetail.xaml</DependentUpon>
@@ -369,6 +376,7 @@
     <Resource Include="Image\delete.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="CmsUserControl\red-dot.png" />
     <Content Include="Resources\eConcierge.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

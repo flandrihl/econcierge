@@ -1,15 +1,15 @@
 ﻿<UserControl x:Class="eConcierge.CMSClient.CmsUserControl.LatitudeLongitude"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Top">
         <StackPanel Orientation="Vertical" x:Name="stkCoordinates">
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="lblLatitude" Text="Latitude : " Width="60" TextAlignment="Right"/>
+                <TextBlock x:Name="lblLatitude" Text="Latitude : " Width="60" TextAlignment="Left"/>
                 <TextBox x:Name="txtLatitude" Width="200" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Margin="0,15,0,0">
-                <TextBlock x:Name="lblLongitude" Text="Longitude : " Width="60" TextAlignment="Right"/>
+                <TextBlock x:Name="lblLongitude" Text="Longitude : " Width="60" TextAlignment="Left"/>
                 <TextBox x:Name="txtLongitude" Width="200" IsReadOnly="True"/>
             </StackPanel>           
         </StackPanel>
