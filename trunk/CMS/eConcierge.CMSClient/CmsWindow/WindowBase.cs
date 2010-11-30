@@ -74,7 +74,7 @@ namespace eConcierge.CMSClient.CmsWindow
                     TextBox txt = (TextBox)v;
                     if(string.IsNullOrWhiteSpace(txt.Text))
                     {
-                        MessageBox.Show("Each textbox must have a value.", "Enter data", MessageBoxButton.OK,
+                        MessageBox.Show("All fields are mandatory.", "Enter data", MessageBoxButton.OK,
                                         MessageBoxImage.Information);
                         txt.Focus();
                         return false;
