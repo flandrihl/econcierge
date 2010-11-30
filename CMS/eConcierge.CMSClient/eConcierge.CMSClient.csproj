@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\eConcierge.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GMap.NET.Core, Version=1.5.4.3, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -366,6 +369,9 @@
     <Resource Include="Image\delete.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\eConcierge.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="script.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
