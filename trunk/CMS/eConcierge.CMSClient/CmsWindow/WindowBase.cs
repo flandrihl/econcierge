@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using eConcierge.CMSClient.CmsUserControl;
+using eConcierge.CMSClient.Common;
 
 namespace eConcierge.CMSClient.CmsWindow
 {
@@ -64,31 +66,60 @@ namespace eConcierge.CMSClient.CmsWindow
         }
         private bool IsValid(Visual control)
         {
-            int ChildNumber = VisualTreeHelper.GetChildrenCount(control);
-
-            for (int i = 0; i <= ChildNumber - 1; i++)
+            var textBoxs = control.FindChildren<TextBox>();
+            var combos = control.FindChildren<ComboBox>();
+            var latLon = control.FindChildren<LatitudeLongitude>();
+            foreach (var textBox in textBoxs)
             {
-                Visual v = (Visual)VisualTreeHelper.GetChild(control, i);
-                if(v is TextBox)
+                if(string.IsNullOrWhiteSpace(textBox.Text))
                 {
-                    TextBox txt = (TextBox)v;
-                    if(string.IsNullOrWhiteSpace(txt.Text))
-                    {
-                        MessageBox.Show("All fields are mandatory.", "Enter data", MessageBoxButton.OK,
-                                        MessageBoxImage.Information);
-                        txt.Focus();
-                        return false;
-                    }
-                }
-                if (VisualTreeHelper.GetChildrenCount(v) > 0)
-                {
-                   bool isValid = IsValid(v);
-                    if(!isValid)
-                    {
-                        return false;
-                    }
+                    MessageBox.Show("All text fields are mandatory.", "Enter data", MessageBoxButton.OK,MessageBoxImage.Information);
+                    return false;
                 }
             }
+
+            foreach (var comboBox in combos)
+            {
+                if (comboBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a value from dropdown", "Select data", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+            }
+
+            foreach (var latitudeLongitude in latLon)
+            {
+                if (string.IsNullOrWhiteSpace(latitudeLongitude.txtLatitude.Text) || string.IsNullOrWhiteSpace(latitudeLongitude.txtLongitude.Text))
+                {
+                    MessageBox.Show("Please select a location", "Select location", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+            }
+            //int ChildNumber = VisualTreeHelper.GetChildrenCount(control);
+
+            //for (int i = 0; i <= ChildNumber - 1; i++)
+            //{
+            //    Visual v = (Visual)VisualTreeHelper.GetChild(control, i);
+            //    if(v is TextBox)
+            //    {
+            //        TextBox txt = (TextBox)v;
+            //        if(string.IsNullOrWhiteSpace(txt.Text))
+            //        {
+            //            MessageBox.Show("All fields are mandatory.", "Enter data", MessageBoxButton.OK,
+            //                            MessageBoxImage.Information);
+            //            txt.Focus();
+            //            return false;
+            //        }
+            //    }
+            //    if (VisualTreeHelper.GetChildrenCount(v) > 0)
+            //    {
+            //       bool isValid = IsValid(v);
+            //        if(!isValid)
+            //        {
+            //            return false;
+            //        }
+            //    }
+            //}
             return true;
 
         }

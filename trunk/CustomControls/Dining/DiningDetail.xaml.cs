@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CustomControls.Abstract;
 using CustomControls.TouchCombo;
@@ -50,7 +51,7 @@ namespace CustomControls.Dining
             InvokeShowDirections(new DataEventArgs(_dining));
         }
 
-        void CategoryComboSelectionChanged(object sender, Infrasturcture.Global.Helpers.Events.DataEventArgs e)
+        void CategoryComboSelectionChanged(object sender, DataEventArgs e)
         {
             SetDiningProperties();
         }
@@ -58,6 +59,16 @@ namespace CustomControls.Dining
         private void MenuButtonClick(object sender, RoutedEventArgs e)
         {
             if(_menuBook!=null) return;
+            var tempMenuDir = GetTempMenuDirectory();
+
+            var service = new DiningService();
+            var diningMenu = service.GetDiningMenu(_dining.Id);
+            int index = 1;
+            foreach (var menu in diningMenu)
+            {
+                var path = Path.Combine(tempMenuDir, string.Format("{0}.jpg", index++));
+                File.WriteAllBytes(path,menu.Photo);
+            }
 
             _menuBook = new Book();
             MemoryStream sr = null;
@@ -69,7 +80,7 @@ namespace CustomControls.Dining
             pc.XmlnsDictionary.Add("x", "http://schemas.microsoft.com/winfx/2006/xaml");
             var datatemplate = (DataTemplate)XamlReader.Load(sr, pc);
             _menuBook.ItemTemplate = datatemplate;
-            var folderName = Directory.GetCurrentDirectory() + "\\Menus\\El Sol Menu";
+            var folderName = tempMenuDir;// Directory.GetCurrentDirectory() + "\\Menus\\El Sol Menu";
             var fileNames = Directory.GetFiles(folderName);
             foreach (var fileName in fileNames)
             {
@@ -78,7 +89,6 @@ namespace CustomControls.Dining
                 {
                     var i = new Image();
                     BitmapSource bi = new BitmapImage(new Uri(fileName));
-
                     i.Source = bi;
                     bi.Freeze();
                     _menuBook.Items.Add(i);
@@ -86,10 +96,19 @@ namespace CustomControls.Dining
                     _menuBook.Height = bi.Height;
                 }
             }
-
             var cont = FrameworkManager.AddControlWithAllGestures(_menuBook,100,30);
             //_menuBook.ScaleTo(.5, .5);
             //cont.StartScale = 0.5f;
+        }
+
+        private static string GetTempMenuDirectory()
+        {
+            var tempDir = Path.GetTempPath();
+            var pictureDir = Path.Combine(tempDir, "EConciergeMenuDirectory");
+            if (Directory.Exists(pictureDir))
+                Directory.Delete(pictureDir,true);
+            Directory.CreateDirectory(pictureDir);
+            return pictureDir;
         }
 
         bool IsImageExt(string ext)
@@ -121,8 +140,9 @@ namespace CustomControls.Dining
         private List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
-            var service = new DiningCategoryService();
-            var categoryList = service.GetDiningCategorys(Convert.ToInt32(_categoryId));
+            var service = new DiningService();
+            var categoryList = service.GetDinings(Convert.ToInt32(_categoryId));
+            _dinings = categoryList;
             foreach (var category in categoryList)
             {
                 var categoryComboItem = new TouchComboBoxItem();

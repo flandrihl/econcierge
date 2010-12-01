@@ -82,13 +82,15 @@ namespace eConcierge.CMSClient.CmsUserControl
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var map = new wndGmap();
+            var hotelName = "Hotel";
             if(Latitude == null)
             {
-                DTOHotel hotel = new HotelService().GetHotelDetails();
+                var hotel = new HotelService().GetHotelDetails();
+                hotelName = hotel.HotelName;
                 txtLatitude.Text = hotel.Latitude.Value.ToString(); 
                 txtLongitude.Text = hotel.Longitude.Value.ToString(); 
             }
-            map.InitializeLatLng(Latitude.Value, Longitude.Value);
+            map.InitializeLatLng(hotelName, Latitude.Value, Longitude.Value);
 
             if(map.ShowDialog().Value)
             {

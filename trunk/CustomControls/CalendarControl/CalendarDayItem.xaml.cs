@@ -18,10 +18,10 @@ namespace CustomControls.CalendarControl
         {
             InitializeComponent();
             FontRatio = fontRatio;
-            DayButton.Click += DayButton_Click;
+            DayButton.Click += DayButtonClick;
         }
 
-        void DayButton_Click(object sender, RoutedEventArgs e)
+        void DayButtonClick(object sender, RoutedEventArgs e)
         {
             if (Click != null)
                 Click(sender, e);
@@ -34,7 +34,7 @@ namespace CustomControls.CalendarControl
 
         public double FontRatio { get; set; }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void UserControlLoaded(object sender, RoutedEventArgs e)
         {
             btn.FontSize = Height / FontRatio;
         }

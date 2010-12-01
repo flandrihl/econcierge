@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:TFC="clr-namespace:CustomControls.InheritedFrameworkControls" mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControlLoaded">
     <UserControl.Resources>
         <ControlTemplate x:Key="ButtonControlDayTemplate" TargetType="{x:Type TFC:TouchRadioButton}">
             <Grid Background="White" Name="grd" Opacity="0.895">

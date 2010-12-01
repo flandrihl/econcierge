@@ -65,8 +65,8 @@ namespace CustomControls.Dining
         private List<TouchComboBoxItem> GetCategoryComboItems()
         {
             var categoryComboItems = new List<TouchComboBoxItem>();
-            var service = new DiningCategoryService();
-            var categoryList = service.GetDiningCategorys();
+            var service = new DiningSubCategoryService();
+            var categoryList = service.GetDiningSubCategorys();
             foreach (var category in categoryList)
             {
                 var categoryComboItem = new TouchComboBoxItem();

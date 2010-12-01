@@ -270,10 +270,10 @@ namespace eConcierge.ServerDataHandler
         }
         private List<DTODiningMenu> PopulateDiningMenus(DbDataReader oDbDataReader)
         {
-            List<DTODiningMenu> lst = new List<DTODiningMenu>();
+            var lst = new List<DTODiningMenu>();
             while (oDbDataReader.Read())
             {
-                DTODiningMenu oDTODiningMenu = new DTODiningMenu();
+                var oDTODiningMenu = new DTODiningMenu();
                 oDTODiningMenu.Id = oDbDataReader["Id"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["Id"]) : oDTODiningMenu.Id;
                 oDTODiningMenu.DiningId = oDbDataReader["DiningId"] != DBNull.Value ? Convert.ToInt32(oDbDataReader["DiningId"]) : oDTODiningMenu.DiningId;
                 oDTODiningMenu.Photo = oDbDataReader["Photo"] != DBNull.Value ? (Byte[])(oDbDataReader["Photo"]) : oDTODiningMenu.Photo;

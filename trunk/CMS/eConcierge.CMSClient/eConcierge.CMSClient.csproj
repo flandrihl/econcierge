@@ -322,6 +322,7 @@
     <Compile Include="Code\ToolManager.cs" />
     <Compile Include="Common\ImageHelper.cs" />
     <Compile Include="Common\Map.cs" />
+    <Compile Include="Common\VisualTreeExtension.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -182,6 +182,7 @@ namespace eConcierge.CMSClient.CmsWindow
             item.RemovedMenuItem += new EventHandler(item_RemovedMenuItem);
             item.PhotoPath = fileName;
             item.Tag = menuId;
+            item.Width = stkMenu.Width;
             stkMenu.Children.Add(item);
         }
 

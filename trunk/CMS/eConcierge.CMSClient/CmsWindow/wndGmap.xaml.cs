@@ -25,28 +25,30 @@ namespace eConcierge.CMSClient.CmsWindow
 
         // marker
         GMapMarker currentMarker;
+        private PointLatLng _hotelPosition;
 
         public wndGmap()
         {
             InitializeComponent();
             // config map
+            WindowState = WindowState.Maximized;
            
-            MainMap.MouseLeftButtonDown += new MouseButtonEventHandler(MainMap_MouseLeftButtonDown);
-            MainMap.MouseMove += new MouseEventHandler(MainMap_MouseMove);
+            MainMap.MouseLeftButtonDown += MainMapMouseLeftButtonDown;
+            MainMap.MouseMove += MainMapMouseMove;
 
             // set current marker
             
             
         }
 
-        void MainMap_MouseMove(object sender, MouseEventArgs e)
+        void MainMapMouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                if(oldPosition != null)
                {
                    var newPosition = e.GetPosition(MainMap);
-                   MainMap.Offset((int)(oldPosition.X - newPosition.X), (int)(oldPosition.Y - newPosition.Y));
+                   MainMap.Offset((int)-(oldPosition.X - newPosition.X), (int)-(oldPosition.Y - newPosition.Y));
                }
             }
             var p = e.GetPosition(MainMap);
@@ -75,32 +77,44 @@ namespace eConcierge.CMSClient.CmsWindow
                 return Convert.ToDouble(txbLongitude.Text);
             }
         }
-        void MainMap_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        void MainMapMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Windows.Point p = e.GetPosition(MainMap);
+            Point p = e.GetPosition(MainMap);
             var latlong = MainMap.FromLocalToLatLng((int)p.X, (int)p.Y);
             Latitude = latlong.Lat;
             Longitude = latlong.Lng;
         }
 
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        private void BtnOkClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
 
-        public void InitializeLatLng(double lat = 54.6961334816182, double lng = 25.2985095977783)
+        public void InitializeLatLng(string hotelName, double lat = 41.850033, double lng = -87.6500523)
         {
-            MainMap.Position = new PointLatLng(lat, lng);
+            _hotelPosition = new PointLatLng(lat, lng);
+            MainMap.Position = _hotelPosition;
             Latitude = lat;
             Longitude = lng;
-            currentMarker = new GMapMarker(MainMap.Position);
-            {
-                currentMarker.Shape = new CustomMarkerRed(this, currentMarker, "custom position marker");
-                currentMarker.Offset = new System.Windows.Point(-15, -15);
-                currentMarker.ZIndex = int.MaxValue;
-                MainMap.Markers.Add(currentMarker);
-            }
-            currentMarker.Position = new PointLatLng(lat, lng);
+            //currentMarker = new GMapMarker(MainMap.Position);
+            //{
+            //    currentMarker.Shape = new CustomMarkerRed(this, currentMarker, hotelName);
+            //    currentMarker.Offset = new Point(-15, -15);
+            //    currentMarker.ZIndex = int.MaxValue;
+            //    MainMap.Markers.Add(currentMarker);
+            //}
+            //currentMarker.Position = new PointLatLng(lat, lng);
+        }
+
+        private void FocusHotel()
+        {
+            //MainMap.Position = currentMarker.Position;
+            MainMap.Zoom = 14;
+        }
+
+        private void BtnShowHotelClick(object sender, RoutedEventArgs e)
+        {
+            FocusHotel();
         }
     }
 }
