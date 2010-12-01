@@ -80,7 +80,7 @@
     					<CustomControls_InheritedFrameworkControls:TrackBar x:Name="pager" 
 						Minimum="0" Maximum="1" Margin="45,0,0,8" 
 						Style="{DynamicResource BlueTouchSliderStyle}" DockPanel.Dock="Left" 
-						VerticalAlignment="Center" Width="435" HorizontalAlignment="Left" />
+						VerticalAlignment="Center" Width="394" HorizontalAlignment="Left" />
     					<CustomControls_InheritedFrameworkControls:TouchButton 
                 x:Name="menuButton" Content="Menu Book" 
                 Template="{DynamicResource MenuButtonControlTemplate2}" 
@@ -92,7 +92,7 @@
     						<DockPanel x:Name="grdCategory" d:LayoutOverrides="HorizontalAlignment" >
     							<Image x:Name="imgEvent"  Height="300" Width="280" d:LayoutOverrides="HorizontalAlignment" Margin="20,0,0,0"  />
     							<DockPanel x:Name="dockPanel" Margin="15,30,20,0">
-    								<TextBlock Text="Las Vegas Wranglers" x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}"  DockPanel.Dock="Top" Foreground="White"/>
+    								<TextBlock  x:Name="txbTitle" Style="{DynamicResource DialogInnerTitleTextStyle}"  DockPanel.Dock="Top" Foreground="White"/>
     								<TextBlock  x:Name="txtPhone" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,0,0,5" TextWrapping="Wrap" Width="401" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Foreground="White"/>
     								<TextBlock  x:Name="txbAddress" Style="{DynamicResource DialogFooterTextStyle}" Margin="0,5,0,2" TextWrapping="Wrap" Width="401" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Foreground="White"/>
     								<TextBlock  x:Name="txbDescription" Style="{DynamicResource DialogDescriptionTextStyle}" Margin="0,15,0,0" DockPanel.Dock="Bottom" Width="401" TextWrapping="Wrap" TextAlignment="Justify" HorizontalAlignment="Left" Foreground="White"/>

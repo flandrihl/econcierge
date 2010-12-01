@@ -97,8 +97,8 @@ namespace CustomControls.Dining
         private void PopulateEventCategory()
         {
             _eventButtons = new List<TouchButton>();
-            var service = new EventCalendarCategoryService();
-            List<DTOEventCalendarCategory> categoryList = service.GetEventCalendarCategorys();
+            var service = new DiningCategoryService();
+            List<DTODiningCategory> categoryList = service.GetDiningCategorys();
             int col = -1, row = 0;
 
             foreach (var category in categoryList)
@@ -113,7 +113,7 @@ namespace CustomControls.Dining
                     col++;
                 }
                 var item = new TouchOptionItem();
-                item.CategoryText = category.Name;
+                item.CategoryText = category.Title;
                 item.CateogoryButton.Tag = category.Id;
                 grdCategory.Children.Add(item);
                 item.SetValue(Grid.ColumnProperty, col);

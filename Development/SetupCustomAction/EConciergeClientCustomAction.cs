@@ -31,7 +31,7 @@ namespace SetupCustomAction
                 var param3 = Context.Parameters["uname"];
                 var param4 = Context.Parameters["password"];
 
-                var exePath = string.Format("{0}\\eConciergeClient.exe", targetDirectory);
+                var exePath = string.Format("{0}\\eConcierge.exe", targetDirectory);
                 var config = ConfigurationManager.OpenExeConfiguration(exePath);
 
                 config.ConnectionStrings.ConnectionStrings["eConciergeDB"].ConnectionString = string.Format("Data Source={0};Initial Catalog={1}; User Id={2};Password={3}", param1, param2, param3, param4);

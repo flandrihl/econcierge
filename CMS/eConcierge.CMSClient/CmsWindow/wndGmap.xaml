@@ -10,7 +10,10 @@
             <TextBlock Text=" Longitude: " FontSize="16" Margin="32,0,0,0"/>
             <TextBlock x:Name="txbLongitude" Text="24.44" FontSize="16" FontWeight="Bold"/>
         </StackPanel>
-        <Button x:Name="btnOk" Content="Select Current Location" HorizontalAlignment="Center" Width="200" DockPanel.Dock="Bottom" Click="btnOk_Click" Height="40" FontSize="16" Margin="0,0,0,19" />
+        <StackPanel DockPanel.Dock="Bottom"  Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnOk" Content="Select Current Location" HorizontalAlignment="Center" Width="200" Click="BtnOkClick" Height="40" FontSize="16" Margin="0,0,0,19" />
+            <Button x:Name="btnFocus" Content="Show Hotel" HorizontalAlignment="Center" Width="200" DockPanel.Dock="Bottom" Click="BtnShowHotelClick" Height="40" FontSize="16" Margin="20,0,0,19" />
+        </StackPanel>
         <src:Map x:Name="MainMap" MapType="GoogleMap" Zoom="14" MaxZoom="17" MinZoom="1" Margin="25,12,25,20"  />
     </DockPanel>
 </Window>

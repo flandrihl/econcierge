@@ -13,6 +13,7 @@ using CustomControls.Abstract;
 using CustomControls.CircularButton;
 using CustomControls.InheritedFrameworkControls;
 using CustomControls.MapLocation;
+using eConcierge.Business;
 using Helpers;
 using Helpers.Extensions;
 using Infrasturcture.Global.Controls;
@@ -79,14 +80,21 @@ namespace TouchControls
             set { SetValue(DestinationButtonTextProperty, value); }
         }
 
+        public double? HotelLatitude { get; set; }
+
+        public double? HotelLongitude { get; set; }
+
         public static readonly DependencyProperty DestinationButtonTextProperty =
             DependencyProperty.Register("DestinationButtonText", typeof(string), typeof(MapBrowser), new UIPropertyMetadata("Set Destination"));
-
-
         #endregion
 
         public MapBrowser(string url, double width, double height, double? latitude=null, double? longitude=null)
         {
+            var hotelService = new HotelService();
+            var hotelDetails = hotelService.GetHotelDetails();
+            HotelLatitude = hotelDetails.Latitude;
+            HotelLongitude = hotelDetails.Longitude;
+
             Width = width;
             Height = height;
             _timer = new Timer { Interval = 300 };
@@ -127,10 +135,13 @@ namespace TouchControls
 
         private void FinishLoading(object sender, EventArgs e)
         {
+            if(HotelLatitude!=null && HotelLongitude!=null)
+            {
+                ChromBrowser.ExecuteJavascript(string.Format("SetSource({0},{1})", HotelLatitude, HotelLongitude), "");
+            }
             if(_latitude!=null && _longitude!=null)
             {
-                ChromBrowser.ExecuteJavascript(string.Format("SetSource({0},{1})", _latitude, _longitude), "");
-                ChromBrowser.ExecuteJavascript(string.Format("SetDestination({0},{1})", 41.8395, -87.7129), "");
+                ChromBrowser.ExecuteJavascript(string.Format("SetDestination({0},{1})", _latitude, _longitude), "");
                 GetDirections();
             }
         }

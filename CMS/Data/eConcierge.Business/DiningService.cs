@@ -58,5 +58,18 @@ namespace eConcierge.Business
             bool isSuccess = Facade.Facade.SetData(param, "DELETEDining", ref error);
             return string.IsNullOrEmpty(error) & isSuccess;
         }
+
+        public List<DTODiningMenu> GetDiningMenu(int diningId)
+        {
+            string error = string.Empty;
+            var param = new QueryParamList();
+            param.Add(new QueryParamObj() { ParamName = "DiningId", DBType = DbType.Int32, ParamValue = diningId });
+            List<DTODiningMenu> diningMenuBook = Facade.Facade.GetDiningMenu(param, ref error);
+            if (!string.IsNullOrEmpty(error))
+            {
+
+            }
+            return diningMenuBook;
+        }
     }
 }
